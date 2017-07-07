@@ -6,8 +6,7 @@
 #include "ofxGui.h"
 #include "ofxMyo.h"
 #include "ofxMaxim.h"
-#include "regression.h"
-#include "rapidStream.h"
+#include "ofxRapidLib.h"
 
 class ofApp : public ofBaseApp{
     
