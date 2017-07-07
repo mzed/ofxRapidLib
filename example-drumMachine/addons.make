@@ -1,3 +1,4 @@
 ofxGui
 ofxMaxim
 ofxMyo
+ofxRapidLib
