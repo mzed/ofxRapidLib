@@ -34,5 +34,6 @@
 #include "classification.h"
 #include "regression.h"
 #include "seriesclassification.h"
+#include "rapidStream.h"
 
 #endif
