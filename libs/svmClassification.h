@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "baseModel.h"
-#include "../dependencies/libsvm/libsvm.h"
+#include "./dependencies/libsvm/libsvm.h"
 
 
 class svmClassification : public baseModel {
