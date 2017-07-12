@@ -4,7 +4,7 @@
 #include "baseModel.h"
 
 #ifndef EMSCRIPTEN
-#include "json.h"
+#include "../dependencies/json/json.h"
 #endif
 
 #define LEARNING_RATE 0.3
@@ -98,6 +98,7 @@ private:
     /** Sigmoid function for activating hidden nodes. */
     inline double activationFunction(double);
     
+    ////////////////////////////////////////////////////////////////////////////
     /** These pertain to the training, and aren't need to run a trained model */
 public:
     /** Train a model using backpropagation.
