@@ -26,6 +26,8 @@
 		AF0580829426DC6BCA135A5C /* maxiGrains.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FB19B70632A6F86622D94 /* maxiGrains.cpp */; };
 		B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */; };
 		B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */; };
+		BE59A45C1F169B2C00B26E85 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE59A4581F169B2C00B26E85 /* jsoncpp.cpp */; };
+		BE59A45D1F169B2C00B26E85 /* libsvm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE59A45A1F169B2C00B26E85 /* libsvm.cpp */; };
 		BEEA7EED1F0FDE6B001C6910 /* classification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEEA7EDA1F0FDE6B001C6910 /* classification.cpp */; };
 		BEEA7EEE1F0FDE6B001C6910 /* dtw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEEA7EDC1F0FDE6B001C6910 /* dtw.cpp */; };
 		BEEA7EEF1F0FDE6B001C6910 /* knnClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEEA7EDE1F0FDE6B001C6910 /* knnClassification.cpp */; };
@@ -35,8 +37,6 @@
 		BEEA7EF31F0FDE6B001C6910 /* regression.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEEA7EE61F0FDE6B001C6910 /* regression.cpp */; };
 		BEEA7EF41F0FDE6B001C6910 /* seriesClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEEA7EE81F0FDE6B001C6910 /* seriesClassification.cpp */; };
 		BEEA7EF51F0FDE6B001C6910 /* svmClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEEA7EEA1F0FDE6B001C6910 /* svmClassification.cpp */; };
-		BEEA7F051F0FDEE6001C6910 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEEA7F011F0FDEE6001C6910 /* jsoncpp.cpp */; };
-		BEEA7F061F0FDEE6001C6910 /* libsvm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEEA7F031F0FDEE6001C6910 /* libsvm.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
@@ -106,6 +106,11 @@
 		B34D3539DB6F889A78540F7C /* sineTable.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = sineTable.h; path = ../../../addons/ofxMaxim/libs/sineTable.h; sourceTree = SOURCE_ROOT; };
 		B87C60311EC1FE841C1ECD89 /* ofxLabel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLabel.h; path = ../../../addons/ofxGui/src/ofxLabel.h; sourceTree = SOURCE_ROOT; };
 		BA5114869056DFF1A50CFA4A /* fft.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fft.h; path = ../../../addons/ofxMaxim/libs/fft.h; sourceTree = SOURCE_ROOT; };
+		BE59A4561F169B2C00B26E85 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
+		BE59A4571F169B2C00B26E85 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		BE59A4581F169B2C00B26E85 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
+		BE59A45A1F169B2C00B26E85 /* libsvm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libsvm.cpp; sourceTree = "<group>"; };
+		BE59A45B1F169B2C00B26E85 /* libsvm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libsvm.h; sourceTree = "<group>"; };
 		BEC2D19B1F0FE04E00847B8B /* ofxRapidLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRapidLib.h; sourceTree = "<group>"; };
 		BEEA7ED91F0FDE6B001C6910 /* baseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseModel.h; sourceTree = "<group>"; };
 		BEEA7EDA1F0FDE6B001C6910 /* classification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = classification.cpp; sourceTree = "<group>"; };
@@ -127,11 +132,6 @@
 		BEEA7EEA1F0FDE6B001C6910 /* svmClassification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svmClassification.cpp; sourceTree = "<group>"; };
 		BEEA7EEB1F0FDE6B001C6910 /* svmClassification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svmClassification.h; sourceTree = "<group>"; };
 		BEEA7EEC1F0FDE6B001C6910 /* trainingExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trainingExample.h; sourceTree = "<group>"; };
-		BEEA7EFF1F0FDEE6001C6910 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
-		BEEA7F001F0FDEE6001C6910 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
-		BEEA7F011F0FDEE6001C6910 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
-		BEEA7F031F0FDEE6001C6910 /* libsvm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libsvm.cpp; sourceTree = "<group>"; };
-		BEEA7F041F0FDEE6001C6910 /* libsvm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libsvm.h; sourceTree = "<group>"; };
 		C70D8946940288799E82131E /* ofxSliderGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSliderGroup.h; path = ../../../addons/ofxGui/src/ofxSliderGroup.h; sourceTree = SOURCE_ROOT; };
 		C88333E71C9457E441C33474 /* ofxButton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxButton.cpp; path = ../../../addons/ofxGui/src/ofxButton.cpp; sourceTree = SOURCE_ROOT; };
 		D1C864AE2FE539BE7FD1F628 /* maxiMFCC.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = maxiMFCC.h; path = ../../../addons/ofxMaxim/libs/maxiMFCC.h; sourceTree = SOURCE_ROOT; };
@@ -306,6 +306,35 @@
 			name = addons;
 			sourceTree = "<group>";
 		};
+		BE59A4541F169B2C00B26E85 /* dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				BE59A4551F169B2C00B26E85 /* json */,
+				BE59A4581F169B2C00B26E85 /* jsoncpp.cpp */,
+				BE59A4591F169B2C00B26E85 /* libsvm */,
+			);
+			name = dependencies;
+			path = ../dependencies;
+			sourceTree = "<group>";
+		};
+		BE59A4551F169B2C00B26E85 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				BE59A4561F169B2C00B26E85 /* json-forwards.h */,
+				BE59A4571F169B2C00B26E85 /* json.h */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		BE59A4591F169B2C00B26E85 /* libsvm */ = {
+			isa = PBXGroup;
+			children = (
+				BE59A45A1F169B2C00B26E85 /* libsvm.cpp */,
+				BE59A45B1F169B2C00B26E85 /* libsvm.h */,
+			);
+			path = libsvm;
+			sourceTree = "<group>";
+		};
 		BEC2D19A1F0FE04E00847B8B /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,40 +375,11 @@
 		BEEA7EFC1F0FDE81001C6910 /* ofxRapidLib */ = {
 			isa = PBXGroup;
 			children = (
+				BE59A4541F169B2C00B26E85 /* dependencies */,
 				BEC2D19A1F0FE04E00847B8B /* src */,
-				BEEA7EFD1F0FDEE6001C6910 /* dependancies */,
 				BEEA7ED81F0FDE6B001C6910 /* libs */,
 			);
 			name = ofxRapidLib;
-			sourceTree = "<group>";
-		};
-		BEEA7EFD1F0FDEE6001C6910 /* dependancies */ = {
-			isa = PBXGroup;
-			children = (
-				BEEA7EFE1F0FDEE6001C6910 /* json */,
-				BEEA7F011F0FDEE6001C6910 /* jsoncpp.cpp */,
-				BEEA7F021F0FDEE6001C6910 /* libsvm */,
-			);
-			name = dependancies;
-			path = ../dependancies;
-			sourceTree = "<group>";
-		};
-		BEEA7EFE1F0FDEE6001C6910 /* json */ = {
-			isa = PBXGroup;
-			children = (
-				BEEA7EFF1F0FDEE6001C6910 /* json-forwards.h */,
-				BEEA7F001F0FDEE6001C6910 /* json.h */,
-			);
-			path = json;
-			sourceTree = "<group>";
-		};
-		BEEA7F021F0FDEE6001C6910 /* libsvm */ = {
-			isa = PBXGroup;
-			children = (
-				BEEA7F031F0FDEE6001C6910 /* libsvm.cpp */,
-				BEEA7F041F0FDEE6001C6910 /* libsvm.h */,
-			);
-			path = libsvm;
 			sourceTree = "<group>";
 		};
 		E4328144138ABC890047C5CB /* Products */ = {
@@ -510,7 +510,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEEA7EED1F0FDE6B001C6910 /* classification.cpp in Sources */,
-				BEEA7F061F0FDEE6001C6910 /* libsvm.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				BEEA7EF01F0FDE6B001C6910 /* modelSet.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
@@ -525,16 +524,17 @@
 				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
+				BE59A45C1F169B2C00B26E85 /* jsoncpp.cpp in Sources */,
 				0FCED26D40D46CF89A58E54C /* fft.cpp in Sources */,
 				BEEA7EEF1F0FDE6B001C6910 /* knnClassification.cpp in Sources */,
 				5C4A4AA5D4784DF23EA43038 /* maxiAtoms.cpp in Sources */,
 				BEEA7EF21F0FDE6B001C6910 /* rapidStream.cpp in Sources */,
+				BE59A45D1F169B2C00B26E85 /* libsvm.cpp in Sources */,
 				ABA8875AF0C06690CC0B92B1 /* maxiBark.cpp in Sources */,
 				96084990AF216648B8B98E00 /* maxiFFT.cpp in Sources */,
 				BEEA7EF41F0FDE6B001C6910 /* seriesClassification.cpp in Sources */,
 				AF0580829426DC6BCA135A5C /* maxiGrains.cpp in Sources */,
 				083FB2094A4DE99F5A60397A /* maxiMFCC.cpp in Sources */,
-				BEEA7F051F0FDEE6001C6910 /* jsoncpp.cpp in Sources */,
 				22F21CE3B902225374BA1CA2 /* maximilian.cpp in Sources */,
 				9514C2D90467055B1447D074 /* stb_vorbis.c in Sources */,
 				6B5613CA3A873415D36173FD /* DeviceCollector.cpp in Sources */,
