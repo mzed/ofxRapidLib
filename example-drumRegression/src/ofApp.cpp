@@ -79,13 +79,7 @@ void ofApp::setup(){
     //RapidLib
     trained = false;
     
-    //loading samples
-    saron_sbpl1.load(ofToDataPath("saron-sbpl1.wav"));
-    saron_sbpl2.load(ofToDataPath("saron-sbpl2.wav"));
-    saron_sbpl3.load(ofToDataPath("saron-sbpl3.wav"));
-    saron_sbpl4.load(ofToDataPath("saron-sbpl4.wav"));
-    saron_sbpl5.load(ofToDataPath("saron-sbpl5.wav"));
-    
+    //loading samples    
     ciblon_tong.load(ofToDataPath("drums-ciblon-medium-tong.wav"));
     ciblon_thung.load(ofToDataPath("drums-ciblon-medium-thung.wav"));
     
