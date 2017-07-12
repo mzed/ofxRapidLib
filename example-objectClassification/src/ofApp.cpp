@@ -21,15 +21,8 @@ void ofApp::setup(){
     
     ofEnableAlphaBlending();
     
-    /*
-     xcfg.relativeRegularization = 0.1;
-     myGmm = new rapidmix::xmmStaticClassification(xcfg);
-     */
-    
-    
     sampleRate 	= 44100; /* Sampling Rate */
     bufferSize	= 512; /* Buffer Size. you have to fill this buffer with sound using the for loop in the audioOut method */
-    
     
     gam_1.load(ofToDataPath("261938__digitopia-cdm__saron-sdpl1.wav"));
     gam_3.load(ofToDataPath("261730__digitopia-cdm__saron-sdpl3.wav"));
@@ -110,7 +103,6 @@ void ofApp::draw(){
     
     if (runToggle) {
         result = myKnn.run(trainingInput)[0];
-        //   std::cout << "Gmm " << myGmm.run(trainingInput) << std::endl;
         for (int i = 0; i < camWidth; ++i){
             for (int j = 0; j < camHeight; ++j){
                 float lightness = pixelsRef.getColor(i,j).getLightness();
@@ -134,7 +126,10 @@ void ofApp::draw(){
     
     if (recordingState) {
         trainingOutput = { double(recordingState) };
-        myData.addElement(trainingInput, trainingOutput);
+        trainingExample tempExample;
+        tempExample.input = trainingInput;
+        tempExample.output = trainingOutput;
+        myData.push_back(tempExample);
     }
 }
 
@@ -219,15 +214,12 @@ void ofApp::keyPressed  (int key){
     switch(key) {
         case 49:
             recordingState = 1;
-            myData.startRecording("1");
             break;
         case 50:
             recordingState = 2;
-            myData.startRecording("2");
             break;
         case 51:
             recordingState = 3;
-            myData.startRecording("3");
             break;
         case 32:
             runToggle = (runToggle) ? false : true;
@@ -242,10 +234,8 @@ void ofApp::keyPressed  (int key){
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
     recordingState = 0;
-    myData.stopRecording();
-    if(myData.trainingSet.size() > 0) {
+    if(myData.size() > 0) {
         myKnn.train(myData);
-        myGmm.train(myData);
     }
 }
 

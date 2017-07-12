@@ -1,7 +1,8 @@
 #pragma once
 
+#include <vector>
 #include "ofMain.h"
-#include "rapidmix.h"
+#include "ofxRapidLib.h"
 #include "ofxMaxim.h"
 
 class ofApp : public ofBaseApp{
@@ -33,20 +34,16 @@ public:
     ofTrueTypeFont  font;
     
     //-----RAPID-MIX-----//
-    rapidmix::trainingData myData;
+    std::vector<trainingExample> myData;
     int recordingState;
-    rapidmix::staticClassification myKnn;
+    classification myKnn;
     bool runToggle;
     int result;
-    
-    
-    xmmToolConfig xcfg;
-    rapidmix::xmmStaticClassification myGmm;
     
     //-----MAXI-----//
 
     int bufferSize;
-    int	initialBufferSize; //MZ: What is this for?
+    int	initialBufferSize;
     int sampleRate;
     void audioOut(float * output, int bufferSize, int nChannels);
     double outputs[2];
