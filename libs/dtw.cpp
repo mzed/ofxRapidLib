@@ -29,8 +29,8 @@ inline double dtw::distanceFunction(std::vector<double> x, std::vector<double> y
     return euclidianDistance;
 };
 
-double dtw::run(std::vector<std::vector<double>> inputSeries) {
-    double costMatrix[inputSeries.size()][storedSeries.size()];
+double dtw::run(std::vector<std::vector<double> > inputSeries) {
+    std::vector<std::vector<double> > costMatrix(inputSeries.size(), std::vector<double>(storedSeries.size(), 0));
     int maxInput = int(inputSeries.size()) - 1;
     int maxStored = int(storedSeries.size()) - 1;
     
