@@ -8,6 +8,15 @@
 #include "emscripten/nnEmbindings.h"
 #endif
 
+void neuralNetwork::initTrainer() {
+    //initialize deltas
+    deltaWeights = std::vector<std::vector<std::vector<double> > >(numHiddenLayers, std::vector<std::vector<double> >(numHiddenNodes, std::vector<double>((numInputs + 1), 0)));
+    deltaHiddenOutput = std::vector<double>((numHiddenNodes + 1), 0);
+    
+    //initialize gradients
+    hiddenErrorGradients = std::vector<double>((numHiddenNodes + 1), 0);
+}
+
 /*!
  * This is the constructor for a model imported from JSON.
  */
@@ -72,30 +81,11 @@ outputErrorGradient(0)
         }
     }
     
-    //////////////////////////////////////////trainer
-    
-    //initialize deltas
-    for (int i = 0; i < numHiddenLayers; ++i) {
-        std::vector<std::vector<double>> layer;
-        for (int j = 0; j < numHiddenNodes; ++j) {
-            std::vector<double> node;
-            for (int k = 0; k <= numInputs; ++k) { //FIXME if numInputs =/=numHiddenNodes
-                node.push_back(0);
-            }
-            layer.push_back(node);
-        }
-        deltaWeights.push_back(layer);
-    }
-    
-    for (int i = 0; i <= numHiddenNodes; ++i) {
-        deltaHiddenOutput.push_back(0);
-    }
-    
-    //initialize gradients
-    for (int i = 0; i <= numHiddenNodes; ++i) {
-        hiddenErrorGradients.push_back(0);
-    }
+    //trainer -- do we really need this?
+    initTrainer();
 }
+
+
 
 /*!
  * This is the constructor for a model that needs to be trained.
@@ -135,29 +125,8 @@ outputErrorGradient(0)
         wHiddenOutput.push_back(distribution(generator));
     }
     
-    //////////////////////////////////////////trainer
-    
-    //initialize deltas
-    for (int i = 0; i < numHiddenLayers; ++i) {
-        std::vector<std::vector<double>> layer;
-        for (int j = 0; j < numHiddenNodes; ++j) {
-            std::vector<double> node;
-            for (int k = 0; k <= numInputs; ++k) { //FIXME if numInputs !=n umHiddenNodes
-                node.push_back(0);
-            }
-            layer.push_back(node);
-        }
-        deltaWeights.push_back(layer);
-    }
-    
-    for (int i = 0; i <= numHiddenNodes; ++i) {
-        deltaHiddenOutput.push_back(0);
-    }
-    
-    //initialize gradients
-    for (int i = 0; i <= numHiddenNodes; ++i) {
-        hiddenErrorGradients.push_back(0);
-    }
+    //trainer
+    initTrainer();
 }
 
 /*!
