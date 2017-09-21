@@ -57,7 +57,7 @@ void knnClassification::addNeighbour(const int &classNum, const std::vector<doub
     updateK();
 };
 
-void knnClassification::train(const std::vector<trainingExample> &trainingSet) {
+void knnClassification::train(const std::vector<trainingExample> &trainingSet) { //FIXME: Does numInputs need to be reset here? -MZ
     neighbours.clear();
     neighbours = trainingSet;
     updateK();

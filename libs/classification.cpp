@@ -42,37 +42,34 @@ classification::classification(const std::vector<trainingExample> &trainingSet) 
 
 bool classification::train(const std::vector<trainingExample> &trainingSet) {
     //TODO: time this process?
-    if (created) {
-        return modelSet::train(trainingSet);
-    } else {
-        //create model(s) here
-        numInputs = int(trainingSet[0].input.size());
-        for (int i = 0; i < numInputs; ++i) {
-            inputNames.push_back("inputs-" + std::to_string(i + 1));
-        }
-        numOutputs = int(trainingSet[0].output.size());
-        for ( auto example : trainingSet) {
-            if (example.input.size() != numInputs) {
-                return false;
-            }
-            if (example.output.size() != numOutputs) {
-                return false;
-            }
-        }
-        std::vector<int> whichInputs;
-        for (int j = 0; j < numInputs; ++j) {
-            whichInputs.push_back(j);
-        }
-        for (int i = 0; i < numOutputs; ++i) {
-            if (classificationType == svm) {
-                myModelSet.push_back(new svmClassification(numInputs));
-            } else {
-                myModelSet.push_back(new knnClassification(numInputs, whichInputs, trainingSet, 1));
-            }
-        }
-        created = true;
-        return modelSet::train(trainingSet);
+    myModelSet.clear();
+    //create model(s) here
+    numInputs = int(trainingSet[0].input.size());
+    for (int i = 0; i < numInputs; ++i) {
+        inputNames.push_back("inputs-" + std::to_string(i + 1));
     }
+    numOutputs = int(trainingSet[0].output.size());
+    for ( auto example : trainingSet) {
+        if (example.input.size() != numInputs) {
+            return false;
+        }
+        if (example.output.size() != numOutputs) {
+            return false;
+        }
+    }
+    std::vector<int> whichInputs;
+    for (int j = 0; j < numInputs; ++j) {
+        whichInputs.push_back(j);
+    }
+    for (int i = 0; i < numOutputs; ++i) {
+        if (classificationType == svm) {
+            myModelSet.push_back(new svmClassification(numInputs));
+        } else {
+            myModelSet.push_back(new knnClassification(numInputs, whichInputs, trainingSet, 1));
+        }
+    }
+    created = true;
+    return modelSet::train(trainingSet);
 }
 
 std::vector<int> classification::getK() {

@@ -1,8 +1,8 @@
 //
-//  seriesClassification.hp
+//  seriesClassification.h
 //  RapidAPI
 //
-//  Created by mzed on 08/06/2017.
+//  Created by Michael Zbyszynski on 08/06/2017.
 //  Copyright © 2017 Goldsmiths. All rights reserved.
 //
 
@@ -10,7 +10,8 @@
 #define seriesClassification_hpp
 
 #include <vector>
-#include "dtw.h"
+#include <string>
+#include "fastDTW.h"
 #include "trainingExample.h"
 
 class seriesClassification {
@@ -19,22 +20,13 @@ public:
     seriesClassification();
     ~seriesClassification();
     
-    bool addSeries(const std::vector<std::vector<double>> &newSeries);
-    bool addTrainingSet(const std::vector<trainingExample> &trainingSet);
-    
-    bool train(const std::vector<std::vector<std::vector<double>>> &newSeriesSet);
-    bool trainTrainingSet(const std::vector<std::vector<trainingExample>> &seriesSet);
-    
+    bool train(const std::vector<trainingSeries> &seriesSet);
     void reset();
-    
-    int run(const std::vector<std::vector<double>> &inputSeries);
-    int runTrainingSet(const std::vector<trainingExample> &inputSet);
-    
+    std::string run(const std::vector<std::vector<double>> &inputSeries);
     std::vector<double> getCosts();
-    std::vector<double> getCosts(const std::vector<trainingExample> &inputSet);
     
 private:
-    std::vector<dtw> dtwClassifiers;
+    std::vector<trainingSeries> allTrainingSeries;
     std::vector<double> allCosts;
     
 };

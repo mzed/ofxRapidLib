@@ -4,7 +4,7 @@
 #include "baseModel.h"
 
 #ifndef EMSCRIPTEN
-#include "./dependencies/json/json.h"
+#include "../dependencies/json/json.h"
 #endif
 
 #define LEARNING_RATE 0.3
@@ -57,8 +57,13 @@ public:
     
     int getNumInputs() const;
     std::vector<int> getWhichInputs() const;
+    
     int getNumHiddenLayers() const;
+    void setNumHiddenLayers(int num_hidden_layers);
+    
     int getNumHiddenNodes() const;
+    
+    void setEpochs(const int &epochs);
     
     std::vector<double> getWeights() const;
     std::vector<double> getWHiddenOutput() const;
@@ -119,7 +124,6 @@ private:
     std::vector<double> deltaHiddenOutput;
     
     /** Parameters and functions for calculating amount of change for each weight */
-    std::vector<double> hiddenErrorGradients;
     double outputErrorGradient;
     inline double getHiddenErrorGradient(int layer, int neuron);
     

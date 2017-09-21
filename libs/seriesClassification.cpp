@@ -1,8 +1,7 @@
 //
 //  seriesClassification.cpp
-//  RapidAPI
 //
-//  Created by mzed on 08/06/2017.
+//  Created by Michael Zbyszynski on 08/06/2017.
 //  Copyright © 2017 Goldsmiths. All rights reserved.
 //
 
@@ -16,77 +15,47 @@ seriesClassification::seriesClassification() {};
 
 seriesClassification::~seriesClassification() {};
 
-bool seriesClassification::addSeries(const std::vector<std::vector<double>> &newSeries) {
-    dtw newDTW;
-    newDTW.setSeries(newSeries);
-    dtwClassifiers.push_back(newDTW);
-    return true;
-}
+bool seriesClassification::train(const std::vector<trainingSeries> &seriesSet) {
+    reset();
+    bool trained = true;
+    allTrainingSeries = seriesSet;
 
-bool seriesClassification::addTrainingSet(const std::vector<trainingExample> &trainingSet) {
-    std::vector<std::vector<double>> newSeries;
-    for (int i = 0; i < trainingSet.size(); ++i) {
-        newSeries.push_back(trainingSet[i].input);
-    }
-    return addSeries(newSeries);
+    //TODO: calculate some size statistics here?
+    
+    return trained;
 };
 
-bool seriesClassification::train(const std::vector<std::vector<std::vector<double> > > &newSeriesSet) {
-    bool trained = true;
-    reset();
-    for (int i = 0; i < newSeriesSet.size(); ++i) {
-        if (!addSeries(newSeriesSet[i])) {
-            trained = false;
-        };
-    }
-    return trained;
-}
-
-bool seriesClassification::trainTrainingSet(const std::vector<std::vector<trainingExample> > &seriesSet) {
-    bool trained = true;
-    reset();
-    for (int i = 0; i < seriesSet.size(); ++i) {
-        if (!addTrainingSet(seriesSet[i])) {
-            trained = false;
-        };
-    }
-    return trained;
-}
-
 void seriesClassification::reset() {
-    dtwClassifiers.clear();
+    allCosts.clear();
+    allTrainingSeries.clear();
 }
 
-int seriesClassification::run(const std::vector<std::vector<double>> &inputSeries) {
-    //TODO: check vector sizes and reject bad data
+std::string seriesClassification::run(const std::vector<std::vector<double>> &inputSeries) {
+    fastDTW fastDtw;
+    int searchRadius = 1; //TODO: Define this properly, elsewhere?
     int closestSeries = 0;
     allCosts.clear();
-    double lowestCost = dtwClassifiers[0].run(inputSeries);
+    double lowestCost = fastDtw.getCost(inputSeries, allTrainingSeries[0].input, searchRadius);
     allCosts.push_back(lowestCost);
-    for (int i = 1; i < dtwClassifiers.size(); ++i) {
-        double currentCost = dtwClassifiers[i].run(inputSeries);
+    
+    for (int i = 1; i < allTrainingSeries.size(); ++i) {
+        double currentCost = fastDtw.getCost(inputSeries, allTrainingSeries[i].input, searchRadius);
         allCosts.push_back(currentCost);
         if (currentCost < lowestCost) {
             lowestCost = currentCost;
             closestSeries = i;
         }
     }
-    return closestSeries;
+    return allTrainingSeries[closestSeries].label;
 };
 
-int seriesClassification::runTrainingSet(const std::vector<trainingExample> &trainingSet) {
-    std::vector<std::vector<double>> newSeries;
-    for (int i = 0; i < trainingSet.size(); ++i) {
-        newSeries.push_back(trainingSet[i].input);
-    }
-    return run(newSeries);
-};
 
 std::vector<double> seriesClassification::getCosts() {
     return allCosts;
 }
 
-std::vector<double> seriesClassification::getCosts(const std::vector<trainingExample> &trainingSet) {
-    runTrainingSet(trainingSet);
-    return allCosts;
-}
+//
+//std::vector<double> seriesClassification::getCosts(const std::vector<trainingExample> &trainingSet) {
+//    run(trainingSet);
+//    return allCosts;
+//}
