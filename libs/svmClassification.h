@@ -11,7 +11,7 @@
 
 #include <vector>
 #include "baseModel.h"
-#include "../dependencies/libsvm/libsvm.h"
+#include "./dependencies/libsvm/libsvm.h"
 
 template<typename T>
 class svmClassification : public baseModel<T> {

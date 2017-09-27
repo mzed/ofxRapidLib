@@ -80,11 +80,11 @@ private:
     int currentBeat;
     
     //---------RapidLib---------------//
-    regression myNN;
-    std::vector<trainingExample> trainingSet;
+    regression<double> myNN;
+    std::vector<trainingExample<double> > trainingSet;
     int recordingState;
     bool trained;
     
-    rapidStream streamBuf = rapidStream(25);
+    rapidStream<double> streamBuf = rapidStream<double>(25);
     
 };
