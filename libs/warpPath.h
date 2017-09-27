@@ -1,6 +1,6 @@
 //
 //  warpPath.h
-//  RapidAPI
+//  RapidLib
 //
 //  Created by mzed on 13/09/2017.
 //  Copyright © 2017 Goldsmiths. All rights reserved.

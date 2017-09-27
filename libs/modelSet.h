@@ -1,3 +1,11 @@
+//
+//  modelSet.h
+//  RapidLib
+//
+//  Created by mzed on 26/09/2016.
+//  Copyright © 2016 Goldsmiths. All rights reserved.
+//
+
 #ifndef modelSet_h
 #define modelSet_h
 
@@ -12,20 +20,20 @@
 #endif
 
 /** This class holds a set of models with the same or different algorithms. */
-
+template<typename T>
 class modelSet {
 public:
     modelSet();
     virtual ~modelSet();
     /** Train on a specified set, causes creation if not created */
-    virtual bool train(const std::vector<trainingExample> &trainingSet);
+    virtual bool train(const std::vector<trainingExample<T> > &trainingSet);
     /** reset to pre-training state */
     bool reset();
     /** run regression or classification for each model */
-    std::vector<double> run(const std::vector<double> &inputVector);
+    std::vector<T> run(const std::vector<T> &inputVector);
     
 protected:
-    std::vector<baseModel*> myModelSet;
+    std::vector<baseModel<T>*> myModelSet;
     int numInputs;
     std::vector<std::string> inputNames;
     int numOutputs;

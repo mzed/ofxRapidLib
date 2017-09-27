@@ -1,6 +1,6 @@
 //
 //  fastDTW.h
-//  RapidAPI
+//  RapidLib
 //
 //  Created by mzed on 07/09/2017.
 //  Copyright © 2017 Goldsmiths. All rights reserved.
@@ -12,18 +12,19 @@
 #include <vector>
 #include "warpPath.h"
 
+template<typename T>
 class fastDTW {
 public:
     fastDTW();
     ~fastDTW();
     
-    double getCost(const std::vector<std::vector<double>> &seriesX, const std::vector<std::vector<double > > &seriesY, int searchRadius);
-    warpInfo fullFastDTW(const std::vector<std::vector<double>> &seriesX, const std::vector<std::vector<double > > &seriesY, int searchRadius);
+    static T getCost(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY, int searchRadius);
+    static warpInfo fullFastDTW(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY, int searchRadius);
 
-    warpPath getWarpPath(const std::vector<std::vector<double>> &seriesX, const std::vector<std::vector<double > > &seriesY, int searchRadius);
+    static warpPath getWarpPath(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY, int searchRadius);
     
 private:
-    std::vector<std::vector<double> > downsample(const std::vector<std::vector<double>> &series, double resolution);
+    static std::vector<std::vector<T> > downsample(const std::vector<std::vector<T>> &series, T resolution);
     
 };
 

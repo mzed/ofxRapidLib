@@ -1,87 +1,107 @@
+//
+//  classification.h
+//  RapidLib
+//
+//  Created by mzed on 26/09/2016.
+//  Copyright © 2016 Goldsmiths. All rights reserved.
+//
+
+
 #include <vector>
 #include "classification.h"
 #ifdef EMSCRIPTEN
 #include "emscripten/classificationEmbindings.h"
 #endif
 
-classification::classification() {
-    numInputs = 0;
-    numOutputs = 0;
-    created = false;
+template<typename T>
+classification<T>::classification() {
+    modelSet<T>::numInputs = 0;
+    modelSet<T>::numOutputs = 0;
+    modelSet<T>::created = false;
     classificationType = knn; //this is the default algorithm
 };
 
-classification::classification(classificationTypes classification_type) {
-    numInputs = 0;
-    numOutputs = 0;
-    created = false;
+template<typename T>
+classification<T>::classification(classificationTypes classification_type) {
+    modelSet<T>::numInputs = 0;
+    modelSet<T>::numOutputs = 0;
+    modelSet<T>::created = false;
     classificationType = classification_type;
 };
 
-classification::classification(const int &num_inputs, const int &num_outputs) { //TODO: this feature isn't really useful
-    numInputs = num_inputs;
-    numOutputs = num_outputs;
-    created = false;
+template<typename T>
+classification<T>::classification(const int &num_inputs, const int &num_outputs) { //TODO: this feature isn't really useful
+    modelSet<T>::numInputs = num_inputs;
+    modelSet<T>::numOutputs = num_outputs;
+    modelSet<T>::created = false;
     std::vector<int> whichInputs;
-    for (int i = 0; i < numInputs; ++i) {
+    for (int i = 0; i < modelSet<T>::numInputs; ++i) {
         whichInputs.push_back(i);
     }
-    std::vector<trainingExample> trainingSet;
-    for (int i = 0; i < numOutputs; ++i) {
-        myModelSet.push_back(new knnClassification(numInputs, whichInputs, trainingSet, 1));
+    std::vector<trainingExample<T> > trainingSet;
+    for (int i = 0; i < modelSet<T>::numOutputs; ++i) {
+       modelSet<T>::myModelSet.push_back(new knnClassification<T>(modelSet<T>::numInputs, whichInputs, trainingSet, 1));
     }
-    created = true;
+    modelSet<T>::created = true;
 };
 
-classification::classification(const std::vector<trainingExample> &trainingSet) {
-    numInputs = 0;
-    numOutputs = 0;
-    created = false;
+template<typename T>
+classification<T>::classification(const std::vector<trainingExample<T> > &trainingSet) {
+    modelSet<T>::numInputs = 0;
+    modelSet<T>::numOutputs = 0;
+    modelSet<T>::created = false;
     train(trainingSet);
 };
 
-bool classification::train(const std::vector<trainingExample> &trainingSet) {
+template<typename T>
+bool classification<T>::train(const std::vector<trainingExample<T> > &trainingSet) {
     //TODO: time this process?
-    myModelSet.clear();
+    modelSet<T>::myModelSet.clear();
     //create model(s) here
-    numInputs = int(trainingSet[0].input.size());
-    for (int i = 0; i < numInputs; ++i) {
-        inputNames.push_back("inputs-" + std::to_string(i + 1));
+    modelSet<T>::numInputs = int(trainingSet[0].input.size());
+    for (int i = 0; i < modelSet<T>::numInputs; ++i) {
+        modelSet<T>::inputNames.push_back("inputs-" + std::to_string(i + 1));
     }
-    numOutputs = int(trainingSet[0].output.size());
+    modelSet<T>::numOutputs = int(trainingSet[0].output.size());
     for ( auto example : trainingSet) {
-        if (example.input.size() != numInputs) {
+        if (example.input.size() != modelSet<T>::numInputs) {
             return false;
         }
-        if (example.output.size() != numOutputs) {
+        if (example.output.size() != modelSet<T>::numOutputs) {
             return false;
         }
     }
     std::vector<int> whichInputs;
-    for (int j = 0; j < numInputs; ++j) {
+    for (int j = 0; j < modelSet<T>::numInputs; ++j) {
         whichInputs.push_back(j);
     }
-    for (int i = 0; i < numOutputs; ++i) {
+    for (int i = 0; i < modelSet<T>::numOutputs; ++i) {
         if (classificationType == svm) {
-            myModelSet.push_back(new svmClassification(numInputs));
+            modelSet<T>::myModelSet.push_back(new svmClassification<T>(modelSet<T>::numInputs));
         } else {
-            myModelSet.push_back(new knnClassification(numInputs, whichInputs, trainingSet, 1));
+            modelSet<T>::myModelSet.push_back(new knnClassification<T>(modelSet<T>::numInputs, whichInputs, trainingSet, 1));
         }
     }
-    created = true;
-    return modelSet::train(trainingSet);
+    modelSet<T>::created = true;
+    return modelSet<T>::train(trainingSet);
 }
 
-std::vector<int> classification::getK() {
+template<typename T>
+std::vector<int> classification<T>::getK() {
     std::vector<int> kVector;
-    for (baseModel* model : myModelSet) {
-        knnClassification* kNNModel = dynamic_cast<knnClassification*>(model); //FIXME: I really dislike this design
+    for (baseModel<T>* model : modelSet<T>::myModelSet) {
+        knnClassification<T>* kNNModel = dynamic_cast<knnClassification<T>*>(model); //FIXME: I really dislike this design
         kVector.push_back(kNNModel->getK());
     }
     return kVector;
 }
 
-void classification::setK(const int whichModel, const int newK) {
-    knnClassification* kNNModel = dynamic_cast<knnClassification*>(myModelSet[whichModel]); //FIXME: I really dislike this design
+template<typename T>
+void classification<T>::setK(const int whichModel, const int newK) {
+    knnClassification<T>* kNNModel = dynamic_cast<knnClassification<T>*>(modelSet<T>::myModelSet[whichModel]); //FIXME: I really dislike this design
     kNNModel->setK(newK);
 }
+
+//explicit instantiation
+template class classification<double>;
+template class classification<float>;

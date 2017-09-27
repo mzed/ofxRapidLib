@@ -1,15 +1,15 @@
 //
 //  searchWindow.cpp
-//  RapidAPI
+//  RapidLib
 //
 //  Created by mzed on 14/09/2017.
 //  Copyright © 2017 Goldsmiths. All rights reserved.
 //
 
-
 #include "searchWindow.h"
 
-searchWindow::searchWindow(const std::vector<std::vector<double>> &seriesX, const std::vector<std::vector<double>> &seriesY, const std::vector<std::vector<double>> &shrunkenX, const std::vector<std::vector<double>> &shrunkenY, warpPath shrunkenWarpPath, int searchRadius) :
+template<typename T>
+searchWindow<T>::searchWindow(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T>> &seriesY, const std::vector<std::vector<T>> &shrunkenX, const std::vector<std::vector<T>> &shrunkenY, warpPath shrunkenWarpPath, int searchRadius) :
 minValues(seriesX.size(), -1), maxValues(seriesX.size(), 0), maxY(int(seriesY.size() - 1)), size(0) {
     
     //Current location of higher resolution path
@@ -56,7 +56,8 @@ minValues(seriesX.size(), -1), maxValues(seriesX.size(), 0), maxY(int(seriesY.si
     }
 }
 
-void searchWindow::markVisited(int col, int row) {
+template<typename T>
+void searchWindow<T>::markVisited(int col, int row) {
     if (row <= maxY) { //FIXME: This is kind of a hack. row shouln't be > maxY
         if (minValues[col] == -1) {
             minValues[col] = row;
@@ -72,7 +73,8 @@ void searchWindow::markVisited(int col, int row) {
     }
 }
 
-void searchWindow::expandWindow(int radius) {
+template<typename T>
+void searchWindow<T>::expandWindow(int radius) {
     if (radius > 0) {
         
         //Add all cells in the current window to a vector.
@@ -183,3 +185,6 @@ void searchWindow::expandWindow(int radius) {
     }
 }
 
+//explicit instantiation
+template class searchWindow<double>;
+template class searchWindow<float>;

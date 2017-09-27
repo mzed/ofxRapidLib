@@ -1,3 +1,11 @@
+//
+//  svmClassification.h
+//  RapidLib
+//
+//  Created by mzed on 23/02/2017.
+//  Copyright © 2017 Goldsmiths. All rights reserved.
+//
+
 #ifndef svm_h
 #define svm_h
 
@@ -5,8 +13,8 @@
 #include "baseModel.h"
 #include "../dependencies/libsvm/libsvm.h"
 
-
-class svmClassification : public baseModel {
+template<typename T>
+class svmClassification : public baseModel<T> {
     
 public:
     enum SVMType{ C_SVC = 0, NU_SVC, ONE_CLASS, EPSILON_SVR, NU_SVR };
@@ -56,13 +64,13 @@ public:
      * @param The training set is a vector of training examples that contain both a vector of input values and a double specifying desired output class.
      *
      */
-    void train(const std::vector<trainingExample> &trainingSet);
+    void train(const std::vector<trainingExample<T> > &trainingSet);
     
     /** Generate an output value from a single input vector.
      * @param A standard vector of doubles to be evaluated.
      * @return A single double: the nearest class as determined by k-nearest neighbor.
      */
-    double run(const std::vector<double> &inputVector);
+    T run(const std::vector<T> &inputVector);
     
     void reset();
     

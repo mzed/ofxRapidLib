@@ -1,6 +1,6 @@
 //
 //  searchWindow.h
-//  RapidAPI
+//  RapidLib
 //
 //  Created by mzed on 14/09/2017.
 //  Copyright © 2017 Goldsmiths. All rights reserved.
@@ -12,12 +12,13 @@
 #include <vector>
 #include "warpPath.h"
 
+template<typename T>
 class searchWindow {
 public:
-    searchWindow(const std::vector<std::vector<double>> &seriesX,
-                 const std::vector<std::vector<double>> &seriesY,
-                 const std::vector<std::vector<double>> &shrunkenX,
-                 const std::vector<std::vector<double>> &shrunkenY,
+    searchWindow(const std::vector<std::vector<T>> &seriesX,
+                 const std::vector<std::vector<T>> &seriesY,
+                 const std::vector<std::vector<T>> &shrunkenX,
+                 const std::vector<std::vector<T>> &shrunkenY,
                  warpPath shrunkenWarpPath,
                  int searchRadius);
     

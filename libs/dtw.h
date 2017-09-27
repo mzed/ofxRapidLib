@@ -1,6 +1,6 @@
 //
 //  dtw.h
-//  RapidAPI
+//  RapidLib
 //
 //  Created by mzed on 07/06/2017.
 //  Copyright © 2017 Goldsmiths. All rights reserved.
@@ -13,30 +13,25 @@
 #include "warpPath.h"
 #include "searchWindow.h"
 
+template<typename T>
 class dtw {
 public:
     dtw();
     ~dtw();
     
     /* Calculates and returns a simple cost value between two input series */
-    double getCost(const std::vector<std::vector<double>> &seriesX, const std::vector<std::vector<double > > &seriesY);
+    T getCost(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY);
     
     /* Calculates both cost and the warp path */
-    warpInfo dynamicTimeWarp(const std::vector<std::vector<double> > &seriesX, const std::vector<std::vector<double> > &seriesY); //This returns everything, including a path
+    warpInfo dynamicTimeWarp(const std::vector<std::vector<T> > &seriesX, const std::vector<std::vector<T> > &seriesY); //This returns everything, including a path
     
     /* Calculates both the cost and the warp path, with a given window as a constraint */
-    warpInfo constrainedDTW(const std::vector<std::vector<double> > &seriesX, const std::vector<std::vector<double> > &seriesY, searchWindow window); //This takes a window object
-    
-    /* Returns the warp path that was found by one of the above methods. */
-    warpPath getPath();
+    warpInfo constrainedDTW(const std::vector<std::vector<T> > &seriesX, const std::vector<std::vector<T> > &seriesY, searchWindow<T> window); //This takes a window object
     
 private:
-    inline double distanceFunction(const std::vector<double> &pointX, const std::vector<double> &point);
-    std::vector<std::vector<double> > costMatrix;
-    warpPath warpPath;
-    double cost;
-    
-    void calculatePath(int seriesXsize, int seriesYsize);
+    inline T distanceFunction(const std::vector<T> &pointX, const std::vector<T> &point);
+    std::vector<std::vector<T> > costMatrix;
+    warpPath calculatePath(int seriesXsize, int seriesYsize);
 };
 
 #endif /* dtw_h */

@@ -1,10 +1,19 @@
+//
+//  svmClassification.cpp
+//  RapidLib
+//
+//  Created by mzed on 23/02/2017.
+//  Copyright © 2017 Goldsmiths. All rights reserved.
+//
+
 #include <iostream>
 #include "svmClassification.h"
 #ifdef EMSCRIPTEN
 #include "emscripten/svmEmbindings.h"
 #endif
 
-svmClassification::svmClassification(
+template<typename T>
+svmClassification<T>::svmClassification(
                                      KernelType kernelType,
                                      SVMType svmType,
                                      bool useScaling,
@@ -57,7 +66,8 @@ svmClassification::svmClassification(
     init(kernelType,svmType,useScaling,useNullRejection,useAutoGamma,gamma,degree,coef0,nu,C,useCrossValidation,kFoldValue);
 }
 
-svmClassification::svmClassification(int num_inputs) {
+template<typename T>
+svmClassification<T>::svmClassification(int num_inputs) {
     
     numInputs = num_inputs;
     
@@ -88,15 +98,18 @@ svmClassification::svmClassification(int num_inputs) {
 
 }
 
-svmClassification::~svmClassification() {
+template<typename T>
+svmClassification<T>::~svmClassification() {
     
 }
 
-void svmClassification::reset() {
+template<typename T>
+void svmClassification<T>::reset() {
     //TODO: implement me
 }
 
-bool svmClassification::init(
+template<typename T>
+bool svmClassification<T>::init(
                              KernelType kernelType,
                              SVMType svmType,
                              bool useScaling,
@@ -154,11 +167,12 @@ bool svmClassification::init(
     return true;
 }
 
-void svmClassification::train(const std::vector<trainingExample> &trainingSet) {
+template<typename T>
+void svmClassification<T>::train(const std::vector<trainingExample<T> > &trainingSet) {
     //TODO: should be scaling data -1 to 1
     //Get normalization parameters
-    std::vector<double> inMax = trainingSet[0].input;
-    std::vector<double> inMin = trainingSet[0].input;
+    std::vector<T> inMax = trainingSet[0].input;
+    std::vector<T> inMin = trainingSet[0].input;
     for (int ti = 1; ti < (int) trainingSet.size(); ++ti) {
         for (int i = 0; i < numInputs; ++i) {
             if (trainingSet[ti].input[i] > inMax[i]) {
@@ -208,7 +222,8 @@ void svmClassification::train(const std::vector<trainingExample> &trainingSet) {
     trained = true;
 };
 
-double svmClassification::run(const std::vector<double> &inputVector) {
+template<typename T>
+T svmClassification<T>::run(const std::vector<T> &inputVector) {
     if (trained) {
         double predictedClass = 0.;
         
@@ -230,17 +245,24 @@ double svmClassification::run(const std::vector<double> &inputVector) {
     }
 }
 
-int svmClassification::getNumInputs() const {
+template<typename T>
+int svmClassification<T>::getNumInputs() const {
     return 0;
 };
 
-std::vector<int> svmClassification::getWhichInputs() const {
+template<typename T>
+std::vector<int> svmClassification<T>::getWhichInputs() const {
     std::vector<int> returnVec;
     return returnVec;
 };
 
 #ifndef EMSCRIPTEN
-void svmClassification::getJSONDescription(Json::Value &currentModel){
+template<typename T>
+void svmClassification<T>::getJSONDescription(Json::Value &currentModel){
     
 };
 #endif
+
+//explicit instantiation
+template class svmClassification<double>;
+template class svmClassification<float>;

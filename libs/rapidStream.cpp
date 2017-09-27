@@ -13,56 +13,64 @@
 #include "emscripten/rapidStreamEmbindings.h"
 #endif
 
-
-rapidStream::rapidStream(int window_size) {
+template<typename T>
+rapidStream<T>::rapidStream(int window_size) {
     windowSize = window_size;
     windowIndex = 0;
-    circularWindow = new double[window_size];
+    circularWindow = new T[window_size];
     for (int i = 0; i < windowSize; ++i) {
         circularWindow[i] = 0;
     }
 }
 
-rapidStream::rapidStream() {
+template<typename T>
+rapidStream<T>::rapidStream() {
     windowSize = 3;
     windowIndex = 0;
-    circularWindow = new double[windowSize];
+    circularWindow = new T[windowSize];
     for (int i = 0; i < windowSize; ++i) {
         circularWindow[i] = 0;
     }
 }
 
-rapidStream::~rapidStream() {
+template<typename T>
+rapidStream<T>::~rapidStream() {
     delete []circularWindow;
 }
 
-void rapidStream::clear() {
+template<typename T>
+void rapidStream<T>::clear() {
     windowIndex = 0;
-    circularWindow = new double[windowSize];
+    circularWindow = new T[windowSize];
     for (int i = 0; i < windowSize; ++i) {
         circularWindow[i] = 0;
     }
 }
 
-void rapidStream::pushToWindow(double input) {
+template<typename T>
+void rapidStream<T>::pushToWindow(T input) {
     circularWindow[windowIndex] = input;
     windowIndex = (windowIndex + 1) % windowSize;
 }
 
-inline double rapidStream::calcCurrentVel(int i) {
+template<typename T>
+inline T rapidStream<T>::calcCurrentVel(int i) {
     return circularWindow[(i + windowIndex) % windowSize] - circularWindow[(i + windowIndex - 1) % windowSize];
 }
 
-double rapidStream::velocity() {
+template<typename T>
+T rapidStream<T>::velocity() {
     return calcCurrentVel(-1);
 };
 
-double rapidStream::acceleration() {
+template<typename T>
+T rapidStream<T>::acceleration() {
     return calcCurrentVel(-2) - calcCurrentVel(-3);
 };
 
-double rapidStream::minimum() {
-    double minimum = std::numeric_limits<double>::infinity();
+template<typename T>
+T rapidStream<T>::minimum() {
+    T minimum = std::numeric_limits<T>::infinity();
     for (int i = 0; i < windowSize; ++i) {
         if (circularWindow[i] < minimum) {
             minimum = circularWindow[i];
@@ -71,8 +79,9 @@ double rapidStream::minimum() {
     return minimum;
 }
 
-double rapidStream::maximum() {
-    double maximum = std::numeric_limits<double>::min();
+template<typename T>
+T rapidStream<T>::maximum() {
+    T maximum = std::numeric_limits<T>::min();
     for (int i = 0; i < windowSize; ++i) {
         if (circularWindow[i] > maximum) {
             maximum = circularWindow[i];
@@ -81,8 +90,9 @@ double rapidStream::maximum() {
     return maximum;
 }
 
-double rapidStream::sum() {
-    double newSum = 0;
+template<typename T>
+T rapidStream<T>::sum() {
+    T newSum = 0;
     for(int i = 0; i < windowSize; ++i)
     {
         newSum += circularWindow[i];
@@ -90,21 +100,24 @@ double rapidStream::sum() {
     return newSum;
 }
 
-double rapidStream::mean() {
+template<typename T>
+T rapidStream<T>::mean() {
     return sum()/windowSize;
 }
 
-double rapidStream::standardDeviation() {
-    double newMean = mean();
-    double standardDeviation = 0.;
+template<typename T>
+T rapidStream<T>::standardDeviation() {
+    T newMean = mean();
+    T standardDeviation = 0.;
     for(int i = 0; i < windowSize; ++i) {
         standardDeviation += pow(circularWindow[i] - newMean, 2);
     }
     return sqrt(standardDeviation / windowSize);
 }
 
-double rapidStream::rms() {
-    double rms;
+template<typename T>
+T rapidStream<T>::rms() {
+    T rms;
     for (int i = 0; i < windowSize; ++i) {
         rms += (circularWindow[i] * circularWindow[i]);
     }
@@ -112,10 +125,11 @@ double rapidStream::rms() {
     return sqrt(rms);
 }
 
-double rapidStream::minVelocity() {
-    double minVel = std::numeric_limits<double>::infinity();
+template<typename T>
+T rapidStream<T>::minVelocity() {
+    T minVel = std::numeric_limits<T>::infinity();
     for (int i = 0; i < windowSize; ++i) {
-        double currentVel = calcCurrentVel(i);
+        T currentVel = calcCurrentVel(i);
         if ( currentVel < minVel) {
             minVel = currentVel;
         }
@@ -123,10 +137,11 @@ double rapidStream::minVelocity() {
     return minVel;
 }
 
-double rapidStream::maxVelocity() {
-    double maxVel = std::numeric_limits<double>::lowest();
+template<typename T>
+T rapidStream<T>::maxVelocity() {
+    T maxVel = std::numeric_limits<T>::lowest();
     for (int i = 0; i < windowSize; ++i) {
-        double currentVel = calcCurrentVel(i);
+        T currentVel = calcCurrentVel(i);
         if (currentVel > maxVel) {
             maxVel = currentVel;
         }
@@ -134,12 +149,13 @@ double rapidStream::maxVelocity() {
     return maxVel;
 }
 
-double rapidStream::minAcceleration() {
-    double minAccel = std::numeric_limits<double>::infinity();
-    double lastVel = calcCurrentVel(1);
+template<typename T>
+T rapidStream<T>::minAcceleration() {
+    T minAccel = std::numeric_limits<T>::infinity();
+    T lastVel = calcCurrentVel(1);
     for (int i = 2; i < windowSize; ++i) {
-        double currentVel = calcCurrentVel(i);
-        double currentAccel =  currentVel - lastVel;
+        T currentVel = calcCurrentVel(i);
+        T currentAccel =  currentVel - lastVel;
         lastVel = currentVel;
             if (currentAccel < minAccel) {
             minAccel = currentAccel;
@@ -148,12 +164,13 @@ double rapidStream::minAcceleration() {
     return minAccel;
 }
 
-double rapidStream::maxAcceleration() {
-    double maxAccel = std::numeric_limits<double>::lowest();
-    double lastVel = calcCurrentVel(1);
+template<typename T>
+T rapidStream<T>::maxAcceleration() {
+    T maxAccel = std::numeric_limits<T>::lowest();
+    T lastVel = calcCurrentVel(1);
     for (int i = 2; i < windowSize; ++i) {
-        double currentVel = calcCurrentVel(i);
-        double currentAccel = currentVel - lastVel;
+        T currentVel = calcCurrentVel(i);
+        T currentAccel = currentVel - lastVel;
         lastVel = currentVel;
         if (currentAccel > maxAccel) {
             maxAccel = currentAccel;
@@ -161,3 +178,8 @@ double rapidStream::maxAcceleration() {
     }
     return maxAccel;
 }
+
+//explicit instantiation
+template class rapidStream<double>;
+template class rapidStream<float>;
+

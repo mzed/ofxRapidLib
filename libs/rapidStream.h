@@ -8,6 +8,8 @@
 #define rapidStream_h
 
 #include <stdint.h>
+
+template<typename T>
 class rapidStream {
 public:
     
@@ -31,74 +33,74 @@ public:
     /** Add a value to a circular buffer whose size is defined at creation.
      * @param double: value to be pushed into circular buffer.
      */
-    void pushToWindow(double input);
+    void pushToWindow(T input);
     
     /** Calculate the first-order difference (aka velocity) between the last two inputs.
      * @return double: difference between last two inputs.
      */
-    double velocity();
+    T velocity();
     
     /** Calculate the second-order difference (aka acceleration) over the last three inputs.
      * @return double: acceleration over the last three inputs.
      */
-    double acceleration();
+    T acceleration();
     
     /** Find the minimum value in the buffer.
      * @return double: minimum.
      */
-    double minimum();
+    T minimum();
     
     /** Find the maximum value in the buffer.
      * @return double: maximum.
      */
-    double maximum();
+    T maximum();
     
     /** Calculate the sum of all values in the buffer.
      * @return double: sum.
      */
-    double sum();
+    T sum();
     
     /** Calculate the mean of all values in the buffer.
      * @return double: mean.
      */
-    double mean();
+    T mean();
     
     /** Calculate the standard deviation of all values in the buffer.
      * @return double: standard deviation.
      */
-    double standardDeviation();
+    T standardDeviation();
     
     /** Calculate the root mean square of the values in the buffer
      * @return double: rms
      */
-     double rms();
+     T rms();
     
     /** Calculate the minimum first-order difference over consecutive inputs in the buffer.
      * @return double: minimum velocity.
      */
-    double minVelocity();
+    T minVelocity();
     
     /** Calculate the maximum first-order difference over consecutive inputs in the buffer.
      * @return double: maximum velocity.
      */
-    double maxVelocity();
+    T maxVelocity();
     
     /** Calculate the minimum second-order difference over consecutive inputs in the buffer.
      * @return double: minimum acceleration.
      */
-    double minAcceleration();
+    T minAcceleration();
     
     /** Calculate the maximum second-order difference over consecutive inputs in the buffer.
      * @return double: maximum acceleration.
      */
-    double maxAcceleration();
+    T maxAcceleration();
 
 private:
     uint32_t windowSize;
     uint32_t windowIndex;
-    double *circularWindow;
+    T *circularWindow;
     
-    double calcCurrentVel(int i);
+    T calcCurrentVel(int i);
 };
 
 
