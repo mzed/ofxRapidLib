@@ -16,7 +16,7 @@
 #include "knnClassification.h"
 #include "svmClassification.h"
 #ifndef EMSCRIPTEN
-#include "./dependencies/json/json.h"
+#include "../dependencies/json/json.h"
 #endif
 
 /** This class holds a set of models with the same or different algorithms. */
@@ -26,7 +26,7 @@ public:
     modelSet();
     virtual ~modelSet();
     /** Train on a specified set, causes creation if not created */
-    virtual bool train(const std::vector<trainingExample<T> > &trainingSet);
+    virtual bool train(const std::vector<trainingExampleTemplate<T> > &trainingSet);
     /** reset to pre-training state */
     bool reset();
     /** run regression or classification for each model */

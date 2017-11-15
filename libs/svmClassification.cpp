@@ -1,10 +1,11 @@
-//
-//  svmClassification.cpp
-//  RapidLib
-//
-//  Created by mzed on 23/02/2017.
-//  Copyright © 2017 Goldsmiths. All rights reserved.
-//
+/**
+ * @file svmClassification.cpp
+ * RapidLib
+ *
+ * @author Michael Zbyszynski
+ * @date 23 Feb 2017
+ * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
+ */
 
 #include <iostream>
 #include "svmClassification.h"
@@ -14,19 +15,19 @@
 
 template<typename T>
 svmClassification<T>::svmClassification(
-                                     KernelType kernelType,
-                                     SVMType svmType,
-                                     bool useScaling,
-                                     bool useNullRejection,
-                                     bool useAutoGamma,
-                                     float gamma,
-                                     unsigned int degree,
-                                     float coef0,
-                                     float nu,
-                                     float C,
-                                     bool useCrossValidation,
-                                     unsigned int kFoldValue
-                                     )
+                                        KernelType kernelType,
+                                        SVMType svmType,
+                                        bool useScaling,
+                                        bool useNullRejection,
+                                        bool useAutoGamma,
+                                        float gamma,
+                                        unsigned int degree,
+                                        float coef0,
+                                        float nu,
+                                        float C,
+                                        bool useCrossValidation,
+                                        unsigned int kFoldValue
+                                        )
 {
     
     //Setup the default SVM parameters
@@ -95,7 +96,7 @@ svmClassification<T>::svmClassification(int num_inputs) {
     param.nr_weight = 0;
     param.weight_label = NULL;
     param.weight = NULL;
-
+    
 }
 
 template<typename T>
@@ -110,19 +111,19 @@ void svmClassification<T>::reset() {
 
 template<typename T>
 bool svmClassification<T>::init(
-                             KernelType kernelType,
-                             SVMType svmType,
-                             bool useScaling,
-                             bool useNullRejection,
-                             bool useAutoGamma,
-                             float gamma,
-                             unsigned int degree,
-                             float coef0,
-                             float nu,
-                             float C,
-                             bool useCrossValidation,
-                             unsigned int kFoldValue
-                             ){
+                                KernelType kernelType,
+                                SVMType svmType,
+                                bool useScaling,
+                                bool useNullRejection,
+                                bool useAutoGamma,
+                                float gamma,
+                                unsigned int degree,
+                                float coef0,
+                                float nu,
+                                float C,
+                                bool useCrossValidation,
+                                unsigned int kFoldValue
+                                ){
     
     /*
      //Clear any previous models or problems
@@ -168,7 +169,7 @@ bool svmClassification<T>::init(
 }
 
 template<typename T>
-void svmClassification<T>::train(const std::vector<trainingExample<T> > &trainingSet) {
+void svmClassification<T>::train(const std::vector<trainingExampleTemplate<T> > &trainingSet) {
     //TODO: should be scaling data -1 to 1
     //Get normalization parameters
     std::vector<T> inMax = trainingSet[0].input;
@@ -194,7 +195,7 @@ void svmClassification<T>::train(const std::vector<trainingExample<T> > &trainin
             inRanges[i] = 1.0; //Prevent divide by zero later.
         }
     }
-
+    
     //initialize problem
     problem.l = 0;
     problem.x = NULL;
@@ -210,14 +211,14 @@ void svmClassification<T>::train(const std::vector<trainingExample<T> > &trainin
         problem.y[i] = trainingSet[i].output[0]; //model set makes this a one item list
         problem.x[i] = new LIBSVM::svm_node[numberOfFeatures + 1]; //dummy node at the end of array
         for (int j = 0; j < numberOfFeatures; j++) {
-        // x = svn_nodes[]  == index and value pairs
+            // x = svn_nodes[]  == index and value pairs
             problem.x[i][j].index = j + 1;
             problem.x[i][j].value = ((trainingSet[i].input[j] - inBases[j]) / inRanges[j]); //TODO: make normalization optional
         }
         problem.x[i][numberOfFeatures].index = -1; //Assign the final node value
         problem.x[i][numberOfFeatures].value = 0;
     }
-  
+    
     model = LIBSVM::svm_train(&problem, &param);
     trained = true;
 };
@@ -236,7 +237,7 @@ T svmClassification<T>::run(const std::vector<T> &inputVector) {
         }
         inputNodes[numInputs].index = -1;
         inputNodes[numInputs].value = 0;
-
+        
         predictedClass = LIBSVM::svm_predict(model, inputNodes);
         delete[] inputNodes;
         return predictedClass;

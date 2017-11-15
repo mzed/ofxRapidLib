@@ -14,7 +14,7 @@
 #endif
 
 template<typename T>
-classification<T>::classification() {
+classificationTemplate<T>::classificationTemplate() {
     modelSet<T>::numInputs = 0;
     modelSet<T>::numOutputs = 0;
     modelSet<T>::created = false;
@@ -22,7 +22,7 @@ classification<T>::classification() {
 };
 
 template<typename T>
-classification<T>::classification(classificationTypes classification_type) {
+classificationTemplate<T>::classificationTemplate(classificationTypes classification_type) {
     modelSet<T>::numInputs = 0;
     modelSet<T>::numOutputs = 0;
     modelSet<T>::created = false;
@@ -30,7 +30,7 @@ classification<T>::classification(classificationTypes classification_type) {
 };
 
 template<typename T>
-classification<T>::classification(const int &num_inputs, const int &num_outputs) { //TODO: this feature isn't really useful
+classificationTemplate<T>::classificationTemplate(const int &num_inputs, const int &num_outputs) { //TODO: this feature isn't really useful
     modelSet<T>::numInputs = num_inputs;
     modelSet<T>::numOutputs = num_outputs;
     modelSet<T>::created = false;
@@ -38,7 +38,7 @@ classification<T>::classification(const int &num_inputs, const int &num_outputs)
     for (int i = 0; i < modelSet<T>::numInputs; ++i) {
         whichInputs.push_back(i);
     }
-    std::vector<trainingExample<T> > trainingSet;
+    std::vector<trainingExampleTemplate<T> > trainingSet;
     for (int i = 0; i < modelSet<T>::numOutputs; ++i) {
        modelSet<T>::myModelSet.push_back(new knnClassification<T>(modelSet<T>::numInputs, whichInputs, trainingSet, 1));
     }
@@ -46,7 +46,7 @@ classification<T>::classification(const int &num_inputs, const int &num_outputs)
 };
 
 template<typename T>
-classification<T>::classification(const std::vector<trainingExample<T> > &trainingSet) {
+classificationTemplate<T>::classificationTemplate(const std::vector<trainingExampleTemplate<T> > &trainingSet) {
     modelSet<T>::numInputs = 0;
     modelSet<T>::numOutputs = 0;
     modelSet<T>::created = false;
@@ -54,7 +54,7 @@ classification<T>::classification(const std::vector<trainingExample<T> > &traini
 };
 
 template<typename T>
-bool classification<T>::train(const std::vector<trainingExample<T> > &trainingSet) {
+bool classificationTemplate<T>::train(const std::vector<trainingExampleTemplate<T> > &trainingSet) {
     //TODO: time this process?
     modelSet<T>::myModelSet.clear();
     //create model(s) here
@@ -87,7 +87,7 @@ bool classification<T>::train(const std::vector<trainingExample<T> > &trainingSe
 }
 
 template<typename T>
-std::vector<int> classification<T>::getK() {
+std::vector<int> classificationTemplate<T>::getK() {
     std::vector<int> kVector;
     for (baseModel<T>* model : modelSet<T>::myModelSet) {
         knnClassification<T>* kNNModel = dynamic_cast<knnClassification<T>*>(model); //FIXME: I really dislike this design
@@ -97,11 +97,11 @@ std::vector<int> classification<T>::getK() {
 }
 
 template<typename T>
-void classification<T>::setK(const int whichModel, const int newK) {
+void classificationTemplate<T>::setK(const int whichModel, const int newK) {
     knnClassification<T>* kNNModel = dynamic_cast<knnClassification<T>*>(modelSet<T>::myModelSet[whichModel]); //FIXME: I really dislike this design
     kNNModel->setK(newK);
 }
 
 //explicit instantiation
-template class classification<double>;
-template class classification<float>;
+template class classificationTemplate<double>;
+template class classificationTemplate<float>;

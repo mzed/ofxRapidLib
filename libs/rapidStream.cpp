@@ -1,7 +1,8 @@
-/*
- * rapidStream.cpp
- * Created by Michael Zbyszynski on 6 Feb 2017
- * Copyright © 2017 Goldsmiths. All rights reserved.
+/**
+ * @file    rapidStream.cpp
+ * @author  Michael Zbyszynski
+ * @date    6 Feb 2017
+ * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
  */
 
 #include "rapidStream.h"

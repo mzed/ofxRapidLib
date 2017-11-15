@@ -1,17 +1,18 @@
-//
-//  svmClassification.h
-//  RapidLib
-//
-//  Created by mzed on 23/02/2017.
-//  Copyright © 2017 Goldsmiths. All rights reserved.
-//
+/**
+ * @file svmClassification.h
+ * RapidLib
+ *
+ * @author Michael Zbyszynski
+ * @date 23 Feb 2017
+ * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
+ */
 
 #ifndef svm_h
 #define svm_h
 
 #include <vector>
 #include "baseModel.h"
-#include "./dependencies/libsvm/libsvm.h"
+#include "../dependencies/libsvm/libsvm.h"
 
 template<typename T>
 class svmClassification : public baseModel<T> {
@@ -64,7 +65,7 @@ public:
      * @param The training set is a vector of training examples that contain both a vector of input values and a double specifying desired output class.
      *
      */
-    void train(const std::vector<trainingExample<T> > &trainingSet);
+    void train(const std::vector<trainingExampleTemplate<T> > &trainingSet);
     
     /** Generate an output value from a single input vector.
      * @param A standard vector of doubles to be evaluated.

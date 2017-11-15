@@ -1,11 +1,10 @@
-//
-//  neuralNetwork.cpp
-//  RapidLib
-//
-//  Created by mzed on 05/09/2016.
-//  Copyright © 2016 Goldsmiths. All rights reserved.
-//
-
+/**
+ * @file neuralNetwork.cpp
+ *  RapidLib
+ *
+ * @date 05 Sep 2016
+ * @copyright Copyright © 2016 Goldsmiths. All rights reserved.
+ */
 
 #include <math.h>
 #include <random>
@@ -344,7 +343,7 @@ T neuralNetwork<T>::run(const std::vector<T> &inputVector) {
 }
 
 template<typename T>
-void neuralNetwork<T>::train(const std::vector<trainingExample<T > > &trainingSet) {
+void neuralNetwork<T>::train(const std::vector<trainingExampleTemplate<T > > &trainingSet) {
     initTrainer();
     //setup maxes and mins
     std::vector<T> inMax = trainingSet[0].input;

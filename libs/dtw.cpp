@@ -1,10 +1,11 @@
-//
-//  dtw.cpp
-//  RapidLib
-//
-//  Created by mzed on 07/06/2017.
-//  Copyright © 2017 Goldsmiths. All rights reserved.
-//
+/**
+ * @file dtw.cpp
+ * RapidLib
+ *
+ * @author Michael Zbyszynski
+ * @date 07 Jun 2017
+ * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
+ */
 
 #include <vector>
 #include <cmath>

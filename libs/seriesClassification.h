@@ -1,10 +1,11 @@
-//
-//  seriesClassification.h
-//  RapidLib
-//
-//  Created by Michael Zbyszynski on 08/06/2017.
-//  Copyright © 2017 Goldsmiths. All rights reserved.
-//
+/**
+ * @file seriesClassification.h
+ * RapidLib
+ *
+ * @author Michael Zbyszynski
+ * @date 08 Jun 2017
+ * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
+ */
 
 #ifndef seriesClassification_hpp
 #define seriesClassification_hpp
@@ -21,17 +22,17 @@
  */
 
 template<typename T>
-class seriesClassification {
+class seriesClassificationTemplate {
 public:
     
     /** Constructor, no params */
-    seriesClassification();
-    ~seriesClassification();
+    seriesClassificationTemplate();
+    ~seriesClassificationTemplate();
     
     /**  Train on a specified set of trainingSeries
      * @param std::vector<trainingSeries> A vector of training series
      */
-    bool train(const std::vector<trainingSeries<T> > &seriesSet);
+    bool train(const std::vector<trainingSeriesTemplate<T> > &seriesSet);
     
     /** Reset model to its initial state, forget all costs and training data*/
     void reset();
@@ -97,11 +98,15 @@ public:
     minMax<T> calculateCosts(std::string label1, std::string label2) const;
     
 private:
-    std::vector<trainingSeries<T > > allTrainingSeries;
+    std::vector<trainingSeriesTemplate<T> > allTrainingSeries;
     std::vector<T> allCosts;
     int maxLength;
     int minLength;
     std::map<std::string, minMax<int> > lengthsPerLabel;
 };
+
+//This is here to keep the old API working
+using seriesClassification = seriesClassificationTemplate<double>;
+using seriesClassificationFloat = seriesClassificationTemplate<float>;
 
 #endif

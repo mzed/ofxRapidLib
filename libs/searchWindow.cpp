@@ -1,16 +1,16 @@
-//
-//  searchWindow.cpp
-//  RapidLib
-//
-//  Created by mzed on 14/09/2017.
-//  Copyright © 2017 Goldsmiths. All rights reserved.
-//
+/**
+ * @file    searchWindow.cpp
+ * RapidLib
+ * @author  Michael Zbyszynski
+ * @date    14 Sep 2017
+ * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
+ */
 
 #include "searchWindow.h"
 
 template<typename T>
-searchWindow<T>::searchWindow(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T>> &seriesY, const std::vector<std::vector<T>> &shrunkenX, const std::vector<std::vector<T>> &shrunkenY, warpPath shrunkenWarpPath, int searchRadius) :
-minValues(seriesX.size(), -1), maxValues(seriesX.size(), 0), maxY(int(seriesY.size() - 1)), size(0) {
+searchWindow<T>::searchWindow(const int seriesXSize, const int seriesYSize, const warpPath &shrunkenWarpPath, const int searchRadius) :
+minValues(seriesXSize, -1), maxValues(seriesXSize, 0), maxY(seriesYSize - 1) {
     
     //Current location of higher resolution path
     int currentX = shrunkenWarpPath.xIndices[0];
@@ -20,20 +20,19 @@ minValues(seriesX.size(), -1), maxValues(seriesX.size(), 0), maxY(int(seriesY.si
     int lastWarpedX = std::numeric_limits<int>::max();
     int lastWarpedY = std::numeric_limits<int>::max();
     
+    int blockSize = 2; //TODO: something other than 2? Different for x and y?
+    
     //project each part of the low-res path to high res cells
     for (int i = 0; i < shrunkenWarpPath.xIndices.size(); ++i) {
         
         int warpedX = shrunkenWarpPath.xIndices[i];
         int warpedY = shrunkenWarpPath.yIndices[i];
         
-        int blockXSize = 2; //TODO: This could be something other than 2?
-        int blockYSize = 2;
-        
         if (warpedX > lastWarpedX) {
-            currentX += 2; //TODO: this should be the block size
+            currentX += blockSize;
         }
         if (warpedY > lastWarpedY) {
-            currentY += 2;
+            currentY += blockSize;
         }
         
         if ((warpedX > lastWarpedX) && (warpedY > lastWarpedY))
@@ -42,14 +41,15 @@ minValues(seriesX.size(), -1), maxValues(seriesX.size(), 0), maxY(int(seriesY.si
             markVisited(currentX, currentY-1);
         }
         
-        for (int j = 0; j < blockXSize; ++j) {
+        for (int j = 0; j < blockSize; ++j) {
             markVisited(currentX + j, currentY);
-            markVisited(currentX + j, currentY + blockYSize - 1); //TODO: These are redundant?
+            markVisited(currentX + j, currentY + blockSize - 1); //TODO: These are redundant?
         }
         
         lastWarpedX = warpedX;
         lastWarpedY = warpedY;
     }
+    
     if (searchRadius > 0) {
         expandWindow(1);
         expandWindow(searchRadius-1);
@@ -58,16 +58,16 @@ minValues(seriesX.size(), -1), maxValues(seriesX.size(), 0), maxY(int(seriesY.si
 
 template<typename T>
 void searchWindow<T>::markVisited(int col, int row) {
-    if (row <= maxY) { //FIXME: This is kind of a hack. row shouln't be > maxY
+    if (row <= maxY && col < minValues.size()) { //Don't mark beyond the edge of the window
         if (minValues[col] == -1) {
             minValues[col] = row;
             maxValues[col] = row;
-            size++;
+            //size++;
         } else if (minValues[col] > row) {
-            size += minValues[col] - row;
+            //size += minValues[col] - row;
             minValues[col] = row;
         } else if (maxValues[col] < row) {
-            size += row - maxValues[col];
+            //size += row - maxValues[col];
             maxValues[col] = row;
         }
     }
@@ -85,7 +85,7 @@ void searchWindow<T>::expandWindow(int radius) {
                 windowCells.push_back(currentCell);
             }
         }
-        //minX = 0;
+
         int maxX = int(minValues.size() - 1);
         
         for (int cell = 0; cell < windowCells.size(); ++cell) {

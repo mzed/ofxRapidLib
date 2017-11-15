@@ -17,7 +17,7 @@
 #endif
 
 template<typename T>
-knnClassification<T>::knnClassification(const int &num_inputs, const std::vector<int> &which_inputs, const std::vector<trainingExample<T> > &_neighbours, const int k)
+knnClassification<T>::knnClassification(const int &num_inputs, const std::vector<int> &which_inputs, const std::vector<trainingExampleTemplate<T> > &_neighbours, const int k)
 : numInputs(num_inputs),
 whichInputs(which_inputs),
 neighbours(_neighbours),
@@ -69,13 +69,13 @@ template<typename T>
 void knnClassification<T>::addNeighbour(const int &classNum, const std::vector<T> &features) {
     std::vector<T> classVec;
     classVec.push_back(T(classNum));
-    trainingExample<T>  newNeighbour = {features, classVec};
+    trainingExampleTemplate<T>  newNeighbour = {features, classVec};
     neighbours.push_back(newNeighbour);
     updateK();
 };
 
 template<typename T>
-void knnClassification<T>::train(const std::vector<trainingExample<T> > &trainingSet) { //FIXME: Does numInputs need to be reset here? -MZ
+void knnClassification<T>::train(const std::vector<trainingExampleTemplate<T> > &trainingSet) { //FIXME: Does numInputs need to be reset here? -MZ
     neighbours.clear();
     neighbours = trainingSet;
     updateK();
@@ -95,7 +95,7 @@ T knnClassification<T>::run(const std::vector<T> &inputVector) {
     
     //Find k nearest neighbours
     int index = 0;
-    for (typename std::vector<trainingExample<T> >::iterator it = neighbours.begin(); it != neighbours.end(); ++it) {
+    for (typename std::vector<trainingExampleTemplate<T> >::iterator it = neighbours.begin(); it != neighbours.end(); ++it) {
         //find Euclidian distance for this neighbor
         T euclidianDistance = 0;
         for(int j = 0; j < numInputs ; ++j){
@@ -156,7 +156,7 @@ void knnClassification<T>::getJSONDescription(Json::Value &jsonModelDescription)
     jsonModelDescription["whichInputs"] = this->vector2json(whichInputs);
     jsonModelDescription["k"] = desiredK;
     Json::Value examples;
-    for (typename std::vector<trainingExample<T> >::iterator it = neighbours.begin(); it != neighbours.end(); ++it) {
+    for (typename std::vector<trainingExampleTemplate<T> >::iterator it = neighbours.begin(); it != neighbours.end(); ++it) {
         Json::Value oneExample;
         oneExample["class"] = it->output[0];
         oneExample["features"] = this->vector2json(it->input);

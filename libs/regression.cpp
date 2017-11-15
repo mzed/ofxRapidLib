@@ -1,10 +1,11 @@
-//
-//  regression.cpp
-//  RapidLib
-//
-//  Created by mzed on 26/09/2016.
-//  Copyright © 2016 Goldsmiths. All rights reserved.
-//
+/**
+ * @file regression.cpp
+ * RapidLib
+ *
+ * @author Michael Zbsyzynski
+ * @date 26 Sep 2016
+ * @copyright Copyright © 2016 Goldsmiths. All rights reserved.
+ */
 
 #include <vector>
 #include "regression.h"
@@ -15,7 +16,7 @@
 #endif
 
 template<typename T>
-regression<T>::regression() {
+regressionTemplate<T>::regressionTemplate() {
     modelSet<T>::numInputs = 0;
     modelSet<T>::numOutputs = 0;
     numHiddenLayers = 1;
@@ -24,7 +25,7 @@ regression<T>::regression() {
 };
 
 template<typename T>
-regression<T>::regression(const int &num_inputs, const int &num_outputs) {
+regressionTemplate<T>::regressionTemplate(const int &num_inputs, const int &num_outputs) {
     modelSet<T>::numInputs = num_inputs;
     modelSet<T>::numOutputs = num_outputs;
     numHiddenLayers = 1;
@@ -41,7 +42,7 @@ regression<T>::regression(const int &num_inputs, const int &num_outputs) {
 };
 
 template<typename T>
-regression<T>::regression(const std::vector<trainingExample<T> > &training_set) {
+regressionTemplate<T>::regressionTemplate(const std::vector<trainingExampleTemplate<T> > &training_set) {
     modelSet<T>::numInputs = 0;
     modelSet<T>::numOutputs = 0;
     modelSet<T>::created = false;
@@ -49,7 +50,7 @@ regression<T>::regression(const std::vector<trainingExample<T> > &training_set) 
 };
 
 template<typename T>
-std::vector<int> regression<T>::getNumHiddenLayers() {
+std::vector<int> regressionTemplate<T>::getNumHiddenLayers() {
     std::vector<int> vecNumHiddenLayers;
     if (std::begin(modelSet<T>::myModelSet) != std::end(modelSet<T>::myModelSet)) {
         for (baseModel<T>* model : modelSet<T>::myModelSet) {
@@ -63,7 +64,7 @@ std::vector<int> regression<T>::getNumHiddenLayers() {
 }
 
 template<typename T>
-void regression<T>::setNumHiddenLayers(const int &num_hidden_layers){
+void regressionTemplate<T>::setNumHiddenLayers(const int &num_hidden_layers){
     numHiddenLayers = num_hidden_layers;
     //Set any existing models
     if (std::begin(modelSet<T>::myModelSet) != std::end(modelSet<T>::myModelSet)) {
@@ -75,7 +76,7 @@ void regression<T>::setNumHiddenLayers(const int &num_hidden_layers){
 }
 
 template<typename T>
-void regression<T>::setNumEpochs(const int &epochs) {
+void regressionTemplate<T>::setNumEpochs(const int &epochs) {
     numEpochs = epochs;
     //set any existing models
     if (std::begin(modelSet<T>::myModelSet) != std::end(modelSet<T>::myModelSet)) {
@@ -87,7 +88,7 @@ void regression<T>::setNumEpochs(const int &epochs) {
 }
 
 template<typename T>
-bool regression<T>::train(const std::vector<trainingExample<T> > &training_set) {
+bool regressionTemplate<T>::train(const std::vector<trainingExampleTemplate<T> > &training_set) {
     //TODO: time this process?
     if (training_set.size() > 0) {
         if (modelSet<T>::created) {
@@ -128,5 +129,5 @@ bool regression<T>::train(const std::vector<trainingExample<T> > &training_set) 
 }
 
 //explicit instantiation
-template class regression<double>;
-template class regression<float>;
+template class regressionTemplate<double>;
+template class regressionTemplate<float>;

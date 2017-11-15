@@ -18,26 +18,26 @@
  */
 
 template<typename T>
-class classification : public modelSet<T> {
+class classificationTemplate : public modelSet<T> {
 public:
     enum classificationTypes { knn, svm };
     
     /** with no arguments, just make an empty vector */
-    classification();
+    classificationTemplate();
     
     /** speciify classification type */
-    classification(classificationTypes classificationType);
+    classificationTemplate(classificationTypes classificationType);
     
     /** create based on training set inputs and outputs */
-    classification(const std::vector<trainingExample<T> > &trainingSet);
+    classificationTemplate(const std::vector<trainingExampleTemplate<T> > &trainingSet);
     /** create with proper models, but not trained */
-    classification(const int &numInputs, const int &numOutputs);
+    classificationTemplate(const int &numInputs, const int &numOutputs);
     
     /** destructor */
-    ~classification() {}
+    ~classificationTemplate() {}
     
     /** Train on a specified set, causes creation if not created */
-    bool train(const std::vector<trainingExample<T> > &trainingSet);
+    bool train(const std::vector<trainingExampleTemplate<T> > &trainingSet);
     
     /** Check the K values for each model. This feature is temporary, and will be replaced by a different design. */
     std::vector<int> getK();
@@ -49,5 +49,9 @@ public:
 private:
     classificationTypes classificationType;
 };
+
+//This is here so that the old API still works as expected.
+using classification = classificationTemplate<double>;
+using classificationFloat = classificationTemplate<float>;
 
 #endif

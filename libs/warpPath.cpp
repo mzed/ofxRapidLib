@@ -1,10 +1,11 @@
-//
-//  warpPath.cpp
-//  RapidLib
-//
-//  Created by mzed on 13/09/2017.
-//  Copyright © 2017 Goldsmiths. All rights reserved.
-//
+/**
+ * @file warpPath.cpp
+ * RapidLib
+ * @author Michael Zbyszysnski
+ * @date 13 Sep 2017
+ *
+ * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
+ */
 
 #include "warpPath.h"
 
@@ -12,6 +13,6 @@ warpPath::warpPath() {};
 warpPath::~warpPath() {};
 
 void warpPath::add(int x, int y) {
-        xIndices.insert(xIndices.begin(), x);
-        yIndices.insert(yIndices.begin(), y);
+    xIndices.insert(xIndices.begin(), x);
+    yIndices.insert(yIndices.begin(), y);
 };

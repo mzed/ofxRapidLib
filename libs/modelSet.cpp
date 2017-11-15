@@ -36,8 +36,8 @@ modelSet<T>::~modelSet() {
 };
 
 template<typename T>
-bool modelSet<T>::train(const std::vector<trainingExample<T> > &training_set) {
-    for (trainingExample<T> example : training_set) {
+bool modelSet<T>::train(const std::vector<trainingExampleTemplate<T> > &training_set) {
+    for (trainingExampleTemplate<T> example : training_set) {
         if (example.input.size() != numInputs) {
             return false;
         }
@@ -46,13 +46,13 @@ bool modelSet<T>::train(const std::vector<trainingExample<T> > &training_set) {
         }
     }
     for (int i = 0; i < myModelSet.size(); ++i) {
-        std::vector<trainingExample<T> > modelTrainingSet; //just one output
-        for (trainingExample<T> example : training_set) {
+        std::vector<trainingExampleTemplate<T> > modelTrainingSet; //just one output
+        for (trainingExampleTemplate<T> example : training_set) {
             std::vector<T> tempT;
             for (int j = 0; j < numInputs; ++j) {
                 tempT.push_back(example.input[j]);
             }
-            trainingExample<T> tempObj = {tempT, std::vector<T> {example.output[i]}};
+            trainingExampleTemplate<T> tempObj = {tempT, std::vector<T> {example.output[i]}};
             modelTrainingSet.push_back(tempObj);
         }
         myModelSet[i]->train(modelTrainingSet);
@@ -211,10 +211,10 @@ void modelSet<T>::json2modelSet(const Json::Value &root) {
             
             myModelSet.push_back(new neuralNetwork<T>(modelNumInputs, whichInputs, numHiddenLayers, numHiddenNodes, weights, wHiddenOutput, inRanges, inBases, outRange, outBase));
         } else if (model["modelType"].asString() == "kNN Classificiation") {
-            std::vector<trainingExample<T> > trainingSet;
+            std::vector<trainingExampleTemplate<T> > trainingSet;
             const Json::Value examples = model["examples"];
             for (unsigned int i = 0; i < examples.size(); ++i) {
-                trainingExample<T> tempExample;
+                trainingExampleTemplate<T> tempExample;
                 tempExample.input = json2vector<T>(examples[i]["features"]);
                 tempExample.output.push_back(examples[i]["class"].asDouble());
                 trainingSet.push_back(tempExample);

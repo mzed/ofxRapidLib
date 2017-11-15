@@ -13,7 +13,7 @@
 #include "baseModel.h"
 
 #ifndef EMSCRIPTEN
-#include "./dependencies/json/json.h"
+#include "../dependencies/json/json.h"
 #endif
 
 /** Class for implementing a knn classifier */
@@ -29,7 +29,7 @@ public:
      */
     knnClassification(const int &num_inputs,
                       const std::vector<int> &which_inputs,
-                      const std::vector<trainingExample<T> > &trainingSet,
+                      const std::vector<trainingExampleTemplate<T> > &trainingSet,
                       const int k);
     ~knnClassification();
     
@@ -50,7 +50,7 @@ public:
      * @param The training set is a vector of training examples that contain both a vector of input values and a value specifying desired output class.
      *
      */
-    void train(const std::vector<trainingExample<T> > &trainingSet);
+    void train(const std::vector<trainingExampleTemplate<T> > &trainingSet);
     
     /** Reset the model to its empty state. */
     void reset();
@@ -82,7 +82,7 @@ public:
 private:
     int numInputs;
     std::vector<int> whichInputs;
-    std::vector<trainingExample<T>> neighbours;
+    std::vector<trainingExampleTemplate<T>> neighbours;
     int desiredK; //K that user asked for might be limited but number of examples
     int currentK; //K minimum of desiredK or neighbours.size()
     inline void updateK();

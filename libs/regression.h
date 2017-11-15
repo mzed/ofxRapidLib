@@ -1,10 +1,11 @@
-//
-//  regression.h
-//  RapidLib
-//
-//  Created by mzed on 26/09/2016.
-//  Copyright © 2016 Goldsmiths. All rights reserved.
-//
+/**
+ * @file regression.h
+ * RapidLib
+ *
+ * @author Michael Zbsyzynski
+ * @date 26 Sep 2016
+ * @copyright Copyright © 2016 Goldsmiths. All rights reserved.
+ */
 
 #ifndef regression_h
 #define regression_h
@@ -18,20 +19,20 @@
  */
 
 template<typename T>
-class regression : public modelSet<T> {
+class regressionTemplate : public modelSet<T> {
 public:
     /** with no arguments, just make an empty vector */
-    regression();
+    regressionTemplate();
     /** create based on training set inputs and outputs */
-    regression(const std::vector<trainingExample<T> > &trainingSet);
+    regressionTemplate(const std::vector<trainingExampleTemplate<T> > &trainingSet);
     /** create with proper models, but not trained */
-    regression(const int &numInputs, const int &numOutputs);
+    regressionTemplate(const int &numInputs, const int &numOutputs);
     
     /** destructor */
-    ~regression() {};
+    ~regressionTemplate() {};
     
     /** Train on a specified set, causes creation if not created */
-    bool train(const std::vector<trainingExample<T> > &trainingSet);
+    bool train(const std::vector<trainingExampleTemplate<T> > &trainingSet);
     
     /** Call before train, to set the number of training epochs */
     void setNumEpochs(const int &epochs);
@@ -46,5 +47,9 @@ private:
     int numHiddenLayers; //Temporary -- this should be part of the nn class. -mz
     int numEpochs; //Temporary -- also should be part of nn only. -mz
 };
+
+//This is here so the old API still works
+using regression = regressionTemplate<double>;
+using regressionFloat = regressionTemplate<float>;
 
 #endif

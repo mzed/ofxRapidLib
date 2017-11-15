@@ -1,10 +1,11 @@
-//
-//  seriesClassification.cpp
-//  RapidLib
-//
-//  Created by Michael Zbyszynski on 08/06/2017.
-//  Copyright © 2017 Goldsmiths. All rights reserved.
-//
+/**
+ *  @file seriesClassification.cpp
+ *  RapidLib
+ *
+ *  @author Michael Zbyszynski
+ *  @date 08 Jun 2017
+ *  @copyright Copyright © 2017 Goldsmiths. All rights reserved.
+ */
 
 #include <vector>
 #include <cassert>
@@ -16,13 +17,13 @@
 #define SEARCH_RADIUS 1
 
 template<typename T>
-seriesClassification<T>::seriesClassification() {};
+seriesClassificationTemplate<T>::seriesClassificationTemplate() {};
 
 template<typename T>
-seriesClassification<T>::~seriesClassification() {};
+seriesClassificationTemplate<T>::~seriesClassificationTemplate() {};
 
 template<typename T>
-bool seriesClassification<T>::train(const std::vector<trainingSeries<T> > &seriesSet) {
+bool seriesClassificationTemplate<T>::train(const std::vector<trainingSeriesTemplate<T> > &seriesSet) {
     assert(seriesSet.size() > 0);
     reset();
     bool trained = true;
@@ -57,7 +58,7 @@ bool seriesClassification<T>::train(const std::vector<trainingSeries<T> > &serie
 };
 
 template<typename T>
-void seriesClassification<T>::reset() {
+void seriesClassificationTemplate<T>::reset() {
     allCosts.clear();
     allTrainingSeries.clear();
     lengthsPerLabel.clear();
@@ -66,7 +67,8 @@ void seriesClassification<T>::reset() {
 }
 
 template<typename T>
-std::string seriesClassification<T>::run(const std::vector<std::vector<T>> &inputSeries) {
+std::string seriesClassificationTemplate<T>::run(const std::vector<std::vector<T>> &inputSeries) {
+    //TODO: Check to see if trained
     int closestSeries = 0;
     allCosts.clear();
     T lowestCost = fastDTW<T>::getCost(inputSeries, allTrainingSeries[0].input, SEARCH_RADIUS);
@@ -84,7 +86,8 @@ std::string seriesClassification<T>::run(const std::vector<std::vector<T>> &inpu
 };
 
 template<typename T>
-T seriesClassification<T>::run(const std::vector<std::vector<T>> &inputSeries, std::string label) {
+T seriesClassificationTemplate<T>::run(const std::vector<std::vector<T>> &inputSeries, std::string label) {
+    //TODO: Check to see if trained
     int closestSeries = 0;
     allCosts.clear();
     T lowestCost = std::numeric_limits<T>::max();
@@ -102,17 +105,17 @@ T seriesClassification<T>::run(const std::vector<std::vector<T>> &inputSeries, s
 };
 
 template<typename T>
-std::vector<T> seriesClassification<T>::getCosts() const{
+std::vector<T> seriesClassificationTemplate<T>::getCosts() const{
     return allCosts;
 }
 
 template<typename T>
-int seriesClassification<T>::getMinLength() const{
+int seriesClassificationTemplate<T>::getMinLength() const{
     return minLength;
 }
 
 template<typename T>
-int seriesClassification<T>::getMinLength(std::string label) const {
+int seriesClassificationTemplate<T>::getMinLength(std::string label) const {
     int labelMinLength = -1;
     typename std::map<std::string, minMax<int> >::const_iterator it = lengthsPerLabel.find(label);
     if (it != lengthsPerLabel.end()) {
@@ -122,12 +125,12 @@ int seriesClassification<T>::getMinLength(std::string label) const {
 }
 
 template<typename T>
-int seriesClassification<T>::getMaxLength() const {
+int seriesClassificationTemplate<T>::getMaxLength() const {
     return maxLength;
 }
 
 template<typename T>
-int seriesClassification<T>::getMaxLength(std::string label) const {
+int seriesClassificationTemplate<T>::getMaxLength(std::string label) const {
     int labelMaxLength = -1;
     typename std::map<std::string, minMax<int> >::const_iterator it = lengthsPerLabel.find(label);
     if (it != lengthsPerLabel.end()) {
@@ -137,7 +140,7 @@ int seriesClassification<T>::getMaxLength(std::string label) const {
 }
 
 template<typename T>
-seriesClassification<T>::minMax<T> seriesClassification<T>::calculateCosts(std::string label) const {
+seriesClassificationTemplate<T>::minMax<T> seriesClassificationTemplate<T>::calculateCosts(std::string label) const {
     minMax<T> calculatedMinMax;
     bool foundSeries = false;
     std::vector<T> labelCosts;
@@ -162,7 +165,7 @@ seriesClassification<T>::minMax<T> seriesClassification<T>::calculateCosts(std::
 }
 
 template<typename T>
-seriesClassification<T>::minMax<T> seriesClassification<T>::calculateCosts(std::string label1, std::string label2) const {
+seriesClassificationTemplate<T>::minMax<T> seriesClassificationTemplate<T>::calculateCosts(std::string label1, std::string label2) const {
     minMax<T> calculatedMinMax;
     bool foundSeries = false;
     std::vector<T> labelCosts;
@@ -187,8 +190,8 @@ seriesClassification<T>::minMax<T> seriesClassification<T>::calculateCosts(std::
 }
 
 //explicit instantiation
-template class seriesClassification<double>;
-template class seriesClassification<float>;
+template class seriesClassificationTemplate<double>;
+template class seriesClassificationTemplate<float>;
 
 
 //

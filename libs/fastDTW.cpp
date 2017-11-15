@@ -1,10 +1,11 @@
-//
-//  fastDTW.cpp
-//  RapidLib
-//
-//  Created by mzed on 07/09/2017.
-//  Copyright © 2017 Goldsmiths. All rights reserved.
-//
+/**
+ * @file fastDTW.cpp
+ * RapidLib
+ *
+ * @author Michael Zbyszynski
+ * @date 07 Sep 2017
+ * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
+ */
 
 #include "fastDTW.h"
 #include "dtw.h"
@@ -36,8 +37,7 @@ warpInfo fastDTW<T>::fullFastDTW(const std::vector<std::vector<T>> &seriesX, con
     std::vector<std::vector<T>> shrunkenY = downsample(seriesY, resolution);
     
     //some nice recursion here
-    searchWindow<T> window(seriesX, seriesY, shrunkenX, shrunkenY, getWarpPath(shrunkenX, shrunkenY, searchRadius), searchRadius);
-    
+    searchWindow<T> window(int(seriesX.size()), int(seriesY.size()), getWarpPath(shrunkenX, shrunkenY, searchRadius), searchRadius);
     return dtw.constrainedDTW(seriesX, seriesY, window);
 };
 
