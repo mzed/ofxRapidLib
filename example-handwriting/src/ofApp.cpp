@@ -4,11 +4,11 @@
 void ofApp::setup(){
     ofBackground(0, 0, 0);
     instructionCount = 0;
-    instructions[0] = "Draw a letter V with the mouse.";
-    instructions[1] = "Now draw a letter Z.";
+    instructions[0] = "Draw a figure 8 with the mouse.";
+    instructions[1] = "Now draw a number 2.";
     instructions[2] = "Draw shapes for continuous classification.";
     
-    tempSeries.label = "V";
+    tempSeries.label = "8";
     trained = false;
     classLabel = "";
 }
@@ -62,11 +62,11 @@ void ofApp::mouseDragged(int x, int y, int button){
 void ofApp::mousePressed(int x, int y, int button){
     line.clear();
     if (instructionCount == 1) {
-        //Put the V example in the training set
+        //Put the 8 example in the training set
         trainingSet.push_back(tempSeries);
-        //Get ready for Z example
+        //Get ready for 2 example
         tempSeries.input.clear();
-        tempSeries.label = "Z";
+        tempSeries.label = "2";
     }
 }
 
