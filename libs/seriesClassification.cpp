@@ -61,7 +61,7 @@ bool seriesClassificationTemplate<T>::train(const std::vector<trainingSeriesTemp
     for (int i = 0; i < vectorLength; ++i) {
         zeroVector.push_back(0.0);
     }
-    for (int i = 0; i < minLength; ++i ) {
+    for (int i = 0; i < minLength; ++i ) {
         seriesBuffer.push_back(zeroVector); //set size of continuous buffer
     }
     return trained;
