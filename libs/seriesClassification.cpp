@@ -17,7 +17,7 @@
 #define SEARCH_RADIUS 1
 
 template<typename T>
-seriesClassificationTemplate<T>::seriesClassificationTemplate() {};
+seriesClassificationTemplate<T>::seriesClassificationTemplate() : hopSize(1), counter(0) {};
 
 template<typename T>
 seriesClassificationTemplate<T>::~seriesClassificationTemplate() {};
@@ -26,6 +26,7 @@ template<typename T>
 bool seriesClassificationTemplate<T>::train(const std::vector<trainingSeriesTemplate<T> > &seriesSet) {
     assert(seriesSet.size() > 0);
     reset();
+    vectorLength = int(seriesSet[0].input[0].size()); //TODO: check that all vectors are the same size
     bool trained = true;
     allTrainingSeries = seriesSet;
     minLength = maxLength = int(allTrainingSeries[0].input.size());
@@ -54,6 +55,14 @@ bool seriesClassificationTemplate<T>::train(const std::vector<trainingSeriesTemp
             tempLengths.min = tempLengths.max = int(allTrainingSeries[i].input.size());
             lengthsPerLabel[allTrainingSeries[i].label] = tempLengths;
         }
+    }
+    //TODO: make this size smarter?
+    std::vector<T> zeroVector;
+    for (int i = 0; i < vectorLength; ++i) {
+        zeroVector.push_back(0.0);
+    }
+    for (int i = 0; i < minLength; ++i ) {
+        seriesBuffer.push_back(zeroVector); //set size of continuous buffer
     }
     return trained;
 };
@@ -104,6 +113,19 @@ T seriesClassificationTemplate<T>::run(const std::vector<std::vector<T>> &inputS
     }
     return lowestCost;
 };
+
+template<typename T>
+std::string seriesClassificationTemplate<T>::runContinuous(const std::vector<T> &inputVector) {
+    seriesBuffer.erase(seriesBuffer.begin());
+    seriesBuffer.push_back(inputVector);
+    std::string returnString = "none";
+    if ((counter % hopSize) == 0 ) {
+        returnString = run(seriesBuffer);
+        counter = 0;
+    }
+    ++counter;
+    return returnString;
+}
 
 template<typename T>
 std::vector<T> seriesClassificationTemplate<T>::getCosts() const{
