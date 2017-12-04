@@ -16,3 +16,11 @@ In addition to machine learning, ofxRapidLib provides users with some basic sign
 
 # Examples  
 Description of examples  
+
+# JavaScript
+RapidLib has been ported to JavaScript. A node module is maintained [here](https://www.npmjs.com/package/rapidlib) Add it to your node app with:
+```
+npm install rapidlib
+```
+The RapidLib JavaScript library also runs client side.  It is extensively documented on CodeCircle. Search for the tag "#RapidLib"
+- [RapidLib_001: Basic](https://live.codecircle.com/d/wiCgiE7ogQXFgMEMt)
