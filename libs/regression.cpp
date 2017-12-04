@@ -8,6 +8,8 @@
  */
 
 #include <vector>
+#include <iostream>
+#include <time.h>
 #include "regression.h"
 
 
@@ -17,8 +19,8 @@
 
 template<typename T>
 regressionTemplate<T>::regressionTemplate() {
-    modelSet<T>::numInputs = 0;
-    modelSet<T>::numOutputs = 0;
+    modelSet<T>::numInputs = -1;
+    modelSet<T>::numOutputs = -1;
     numHiddenLayers = 1;
     numEpochs = 500;
     modelSet<T>::created = false;
@@ -43,8 +45,8 @@ regressionTemplate<T>::regressionTemplate(const int &num_inputs, const int &num_
 
 template<typename T>
 regressionTemplate<T>::regressionTemplate(const std::vector<trainingExampleTemplate<T> > &training_set) {
-    modelSet<T>::numInputs = 0;
-    modelSet<T>::numOutputs = 0;
+    modelSet<T>::numInputs = -1;
+    modelSet<T>::numOutputs = -1;
     modelSet<T>::created = false;
     train(training_set);
 };
@@ -89,42 +91,46 @@ void regressionTemplate<T>::setNumEpochs(const int &epochs) {
 
 template<typename T>
 bool regressionTemplate<T>::train(const std::vector<trainingExampleTemplate<T> > &training_set) {
-    //TODO: time this process?
+    clock_t timer;
+    timer = clock();
+    modelSet<T>::reset();
     if (training_set.size() > 0) {
-        if (modelSet<T>::created) {
-            return modelSet<T>::train(training_set);
-        } else {
-            //create model(s) here
-            modelSet<T>::numInputs = int(training_set[0].input.size());
-            for (int i = 0; i < modelSet<T>::numInputs; ++i) {
-                modelSet<T>::inputNames.push_back("inputs-" + std::to_string(i + 1));
-            }
-            modelSet<T>::numOutputs = int(training_set[0].output.size());
-            for ( auto example : training_set) {
-                if (example.input.size() != modelSet<T>::numInputs) {
-                    return false;
-                }
-                if (example.output.size() != modelSet<T>::numOutputs) {
-                    return false;
-                }
-            }
-            std::vector<int> whichInputs;
-            for (int j = 0; j < modelSet<T>::numInputs; ++j) {
-                whichInputs.push_back(j);
-            }
-            for (int i = 0; i < modelSet<T>::numOutputs; ++i) {
-                modelSet<T>::myModelSet.push_back(new neuralNetwork<T>(modelSet<T>::numInputs, whichInputs, numHiddenLayers, modelSet<T>::numInputs));
-            }
-            if (numEpochs != 500) {
-                for (baseModel<T>* model : modelSet<T>::myModelSet) {
-                    neuralNetwork<T>* nnModel = dynamic_cast<neuralNetwork<T>*>(model); //FIXME: I really dislike this design
-                    nnModel->setEpochs(numEpochs);
-                }
-            }
-            modelSet<T>::created = true;
-            return modelSet<T>::train(training_set);
+        //create model(s) here
+        modelSet<T>::numInputs = int(training_set[0].input.size());
+        modelSet<T>::numOutputs = int(training_set[0].output.size());
+        for (int i = 0; i < modelSet<T>::numInputs; ++i) {
+            modelSet<T>::inputNames.push_back("inputs-" + std::to_string(i + 1));
         }
+        modelSet<T>::numOutputs = int(training_set[0].output.size());
+        for ( auto example : training_set) {
+            if (example.input.size() != modelSet<T>::numInputs) {
+                throw std::length_error("unequal feature vectors in input.");
+                return false;
+            }
+            if (example.output.size() != modelSet<T>::numOutputs) {
+                throw std::length_error("unequal output vectors.");
+                return false;
+            }
+        }
+        std::vector<int> whichInputs;
+        for (int j = 0; j < modelSet<T>::numInputs; ++j) {
+            whichInputs.push_back(j);
+        }
+        for (int i = 0; i < modelSet<T>::numOutputs; ++i) {
+            modelSet<T>::myModelSet.push_back(new neuralNetwork<T>(modelSet<T>::numInputs, whichInputs, numHiddenLayers, modelSet<T>::numInputs));
+        }
+        if (numEpochs != 500) {
+            for (baseModel<T>* model : modelSet<T>::myModelSet) {
+                neuralNetwork<T>* nnModel = dynamic_cast<neuralNetwork<T>*>(model); //FIXME: I really dislike this design
+                nnModel->setEpochs(numEpochs);
+            }
+        }
+        modelSet<T>::created = true;
+        timer = clock() - timer;
+        std::cout << "Regression trained in " << (float)timer/CLOCKS_PER_SEC << " ms." << std::endl;
+        return modelSet<T>::train(training_set);
     }
+    throw std::length_error("empty training set.");
     return false;
 }
 

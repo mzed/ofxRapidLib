@@ -113,7 +113,7 @@ void ofApp::update(){
         
         if (inputDevice) {
             if (recordingState > 0) {
-                trainingExample<double> tempExample;
+                trainingExample tempExample;
                 tempExample.input = { myoX, myoY, myoZ, myoW };
                 for (int i = 0; i < allSliders.size() ; ++i) {
                     tempExample.output.push_back(double(allSliders[i]));
@@ -272,7 +272,7 @@ void ofApp::keyReleased(int key){
 void ofApp::mouseMoved(int x, int y ){
     if (inputDevice == false) { //don't do this with Myo is on
         if (recordingState > 0) {
-            trainingExample<double> tempExample;
+            trainingExample tempExample;
             tempExample.input = { double(x), double(y) };
             for (int i = 0; i < allSliders.size() ; ++i) {
                 tempExample.output.push_back(double(allSliders[i]));

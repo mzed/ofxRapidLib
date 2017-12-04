@@ -14,7 +14,7 @@
 #include "modelSet.h"
 
 #ifndef EMSCRIPTEN
-#include "json.h"
+#include "../dependencies/json/json.h"
 #else
 #include "emscripten/modelSetEmbindings.h"
 #endif
@@ -22,9 +22,8 @@
 /** No arguments, don't create any models yet */
 template<typename T>
 modelSet<T>::modelSet() :
-numInputs(0),
-numOutputs(0),
-created(false)
+numInputs(-1),
+numOutputs(-1)
 {
 };
 
@@ -39,9 +38,11 @@ template<typename T>
 bool modelSet<T>::train(const std::vector<trainingExampleTemplate<T> > &training_set) {
     for (trainingExampleTemplate<T> example : training_set) {
         if (example.input.size() != numInputs) {
+            throw std::length_error("unequal feature vectors in input.");
             return false;
         }
         if (example.output.size() != numOutputs) {
+            throw std::length_error("unequal output vectors.");
             return false;
         }
     }
@@ -67,8 +68,8 @@ bool modelSet<T>::reset() {
         delete *i;
     }
     myModelSet.clear();
-    numInputs = 0;
-    numOutputs = 0;
+    numInputs = -1;
+    numOutputs = -1;
     created = false;
     return true;
 }
@@ -81,6 +82,8 @@ std::vector<T> modelSet<T>::run(const std::vector<T> &inputVector) {
             returnVector.push_back(model->run(inputVector));
         }
     } else {
+        std::string badSize = std::to_string(inputVector.size());
+        throw std::length_error("bad input size: " + badSize);
         returnVector.push_back(0);
     }
     return returnVector;
@@ -93,8 +96,8 @@ std::vector<T> modelSet<T>::run(const std::vector<T> &inputVector) {
 template<typename T>
 std::vector<T> json2vector(Json::Value json) {
     std::vector<T> returnVec;
-    for (unsigned int i = 0; i < json.size(); ++i) {
-        returnVec.push_back(json[i].asDouble());
+    for (auto jsonValue : json) {
+        returnVec.push_back(jsonValue.asDouble());
     }
     return returnVec;
 }
@@ -223,7 +226,6 @@ void modelSet<T>::json2modelSet(const Json::Value &root) {
             myModelSet.push_back(new knnClassification<T>(modelNumInputs, whichInputs, trainingSet, k));
         }
     }
-    created = true;
 }
 
 template<typename T>
@@ -232,7 +234,7 @@ bool modelSet<T>::readJSON(const std::string &filepath) {
     std::ifstream file(filepath);
     file >> root;
     json2modelSet(root);
-    return created; //TODO: check something first
+    return true; //TODO: check something first
 }
 #endif
 

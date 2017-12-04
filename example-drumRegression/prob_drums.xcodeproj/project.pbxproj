@@ -28,6 +28,9 @@
 		B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */; };
 		BE59A46B1F169DCC00B26E85 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE59A4671F169DCC00B26E85 /* jsoncpp.cpp */; };
 		BE59A46C1F169DCC00B26E85 /* libsvm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE59A4691F169DCC00B26E85 /* libsvm.cpp */; };
+		BEB159861FD56094008A6436 /* BayesianFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEB159811FD56094008A6436 /* BayesianFilter.cpp */; };
+		BEB159871FD56094008A6436 /* filter_utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEB159831FD56094008A6436 /* filter_utilities.cpp */; };
+		BEB1598A1FD560D0008A6436 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB159891FD560C4008A6436 /* Accelerate.framework */; };
 		BEEA7EED1F0FDE6B001C6910 /* classification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEEA7EDA1F0FDE6B001C6910 /* classification.cpp */; };
 		BEEA7EEE1F0FDE6B001C6910 /* dtw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEEA7EDC1F0FDE6B001C6910 /* dtw.cpp */; };
 		BEEA7EEF1F0FDE6B001C6910 /* knnClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEEA7EDE1F0FDE6B001C6910 /* knnClassification.cpp */; };
@@ -111,6 +114,13 @@
 		BE59A4671F169DCC00B26E85 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
 		BE59A4691F169DCC00B26E85 /* libsvm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libsvm.cpp; sourceTree = "<group>"; };
 		BE59A46A1F169DCC00B26E85 /* libsvm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libsvm.h; sourceTree = "<group>"; };
+		BEB159801FD56094008A6436 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		BEB159811FD56094008A6436 /* BayesianFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BayesianFilter.cpp; sourceTree = "<group>"; };
+		BEB159821FD56094008A6436 /* BayesianFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BayesianFilter.h; sourceTree = "<group>"; };
+		BEB159831FD56094008A6436 /* filter_utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filter_utilities.cpp; sourceTree = "<group>"; };
+		BEB159841FD56094008A6436 /* filter_utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filter_utilities.h; sourceTree = "<group>"; };
+		BEB159851FD56094008A6436 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BEB159891FD560C4008A6436 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BEC2D19B1F0FE04E00847B8B /* ofxRapidLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxRapidLib.h; sourceTree = "<group>"; };
 		BEEA7ED91F0FDE6B001C6910 /* baseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseModel.h; sourceTree = "<group>"; };
 		BEEA7EDA1F0FDE6B001C6910 /* classification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = classification.cpp; sourceTree = "<group>"; };
@@ -155,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB1598A1FD560D0008A6436 /* Accelerate.framework in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				9269198B2B052E84D66A191A /* myo.framework in Frameworks */,
 			);
@@ -309,6 +320,7 @@
 		BE59A4631F169DCC00B26E85 /* dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				BEB1597F1FD56094008A6436 /* bayesfilter */,
 				BE59A4641F169DCC00B26E85 /* json */,
 				BE59A4671F169DCC00B26E85 /* jsoncpp.cpp */,
 				BE59A4681F169DCC00B26E85 /* libsvm */,
@@ -332,6 +344,27 @@
 				BE59A46A1F169DCC00B26E85 /* libsvm.h */,
 			);
 			path = libsvm;
+			sourceTree = "<group>";
+		};
+		BEB1597F1FD56094008A6436 /* bayesfilter */ = {
+			isa = PBXGroup;
+			children = (
+				BEB159801FD56094008A6436 /* .gitignore */,
+				BEB159811FD56094008A6436 /* BayesianFilter.cpp */,
+				BEB159821FD56094008A6436 /* BayesianFilter.h */,
+				BEB159831FD56094008A6436 /* filter_utilities.cpp */,
+				BEB159841FD56094008A6436 /* filter_utilities.h */,
+				BEB159851FD56094008A6436 /* README.md */,
+			);
+			path = bayesfilter;
+			sourceTree = "<group>";
+		};
+		BEB159881FD560C4008A6436 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BEB159891FD560C4008A6436 /* Accelerate.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BEC2D19A1F0FE04E00847B8B /* src */ = {
@@ -399,6 +432,7 @@
 				BB4B014C10F69532006C3DED /* addons */,
 				6948EE371B920CB800B5AC1A /* local_addons */,
 				E4B69B5B0A3A1756003C02F2 /* prob_drumsDebug.app */,
+				BEB159881FD560C4008A6436 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -529,6 +563,8 @@
 				5C4A4AA5D4784DF23EA43038 /* maxiAtoms.cpp in Sources */,
 				BEEA7EF21F0FDE6B001C6910 /* rapidStream.cpp in Sources */,
 				BE59A46C1F169DCC00B26E85 /* libsvm.cpp in Sources */,
+				BEB159871FD56094008A6436 /* filter_utilities.cpp in Sources */,
+				BEB159861FD56094008A6436 /* BayesianFilter.cpp in Sources */,
 				ABA8875AF0C06690CC0B92B1 /* maxiBark.cpp in Sources */,
 				96084990AF216648B8B98E00 /* maxiFFT.cpp in Sources */,
 				BEEA7EF41F0FDE6B001C6910 /* seriesClassification.cpp in Sources */,
@@ -730,54 +766,9 @@
 				GCC_MODEL_TUNING = NONE;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					src,
-					src/RapidLib,
-					src/RapidLib/IvanSrc,
-					src/RapidLib/dependancies,
-					src/RapidLib/dependancies/json,
-					src/RapidLib/dependancies/libsvm,
-					src/RapidLib/docs_doxygen/html,
-					src/RapidLib/docs_doxygen/html/search,
-					src/RapidLib/docs_doxygen/latex,
-					src/RapidLib/docs_doxygen/xml,
-					src/RapidLib/docs_jsdoc,
-					src/RapidLib/docs_jsdoc/fonts,
-					src/RapidLib/docs_jsdoc/scripts,
-					src/RapidLib/docs_jsdoc/scripts/prettify,
-					src/RapidLib/docs_jsdoc/styles,
-					src/RapidLib/examples/html,
-					"src/RapidLib/examples/html/RAPID-Myo",
-					"src/RapidLib/examples/html/RAPID-Myo/img",
-					src/RapidLib/examples/ofx/FaceToSound1,
-					src/RapidLib/examples/ofx/FaceToSound1/FaceToSound1.xcodeproj,
-					src/RapidLib/examples/ofx/FaceToSound1/FaceToSound1.xcodeproj/project.xcworkspace,
-					src/RapidLib/examples/ofx/FaceToSound1/FaceToSound1.xcodeproj/project.xcworkspace/xcuserdata/mzed.xcuserdatad,
-					src/RapidLib/examples/ofx/FaceToSound1/FaceToSound1.xcodeproj/xcshareddata/xcschemes,
-					src/RapidLib/examples/ofx/FaceToSound1/FaceToSound1.xcodeproj/xcuserdata/mzed.xcuserdatad/xcschemes,
-					src/RapidLib/examples/ofx/FaceToSound1/bin/FaceToSound1Debug.app/Contents,
-					src/RapidLib/examples/ofx/FaceToSound1/bin/data,
-					src/RapidLib/examples/ofx/FaceToSound1/bin/data/model,
-					src/RapidLib/examples/ofx/FaceToSound1/src,
-					src/RapidLib/examples/ofx/rapidAPI006,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/project.xcworkspace,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/project.xcworkspace/xcshareddata,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/project.xcworkspace/xcuserdata/michaelgrierson.xcuserdatad,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/project.xcworkspace/xcuserdata/mzed.xcuserdatad,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/xcuserdata/michaelgrierson.xcuserdatad/xcschemes,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/xcuserdata/mzed.xcuserdatad/xcdebugger,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/xcuserdata/mzed.xcuserdatad/xcschemes,
-					src/RapidLib/examples/ofx/rapidAPI006/src,
-					src/RapidLib/src,
-					src/RapidLib/src/emscripten,
-					../../../addons/ofxGui/src,
-					../../../addons/ofxMaxim/libs,
-					../../../addons/ofxMaxim/src,
-					../../../addons/ofxMyo/libs,
-					../../../addons/ofxMyo/libs/myo,
-					../../../addons/ofxMyo/libs/myo/lib,
-					../../../addons/ofxMyo/libs/myo/lib/osx,
-					../../../addons/ofxMyo/src,
+					../../../addons/ofxRapidLib/libs,
+					../../../addons/ofxRapidLib/libs/dependencies,
+					../../../addons/ofxRapidLib/libs/dependencies/json,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -806,54 +797,9 @@
 				GCC_MODEL_TUNING = NONE;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					src,
-					src/RapidLib,
-					src/RapidLib/IvanSrc,
-					src/RapidLib/dependancies,
-					src/RapidLib/dependancies/json,
-					src/RapidLib/dependancies/libsvm,
-					src/RapidLib/docs_doxygen/html,
-					src/RapidLib/docs_doxygen/html/search,
-					src/RapidLib/docs_doxygen/latex,
-					src/RapidLib/docs_doxygen/xml,
-					src/RapidLib/docs_jsdoc,
-					src/RapidLib/docs_jsdoc/fonts,
-					src/RapidLib/docs_jsdoc/scripts,
-					src/RapidLib/docs_jsdoc/scripts/prettify,
-					src/RapidLib/docs_jsdoc/styles,
-					src/RapidLib/examples/html,
-					"src/RapidLib/examples/html/RAPID-Myo",
-					"src/RapidLib/examples/html/RAPID-Myo/img",
-					src/RapidLib/examples/ofx/FaceToSound1,
-					src/RapidLib/examples/ofx/FaceToSound1/FaceToSound1.xcodeproj,
-					src/RapidLib/examples/ofx/FaceToSound1/FaceToSound1.xcodeproj/project.xcworkspace,
-					src/RapidLib/examples/ofx/FaceToSound1/FaceToSound1.xcodeproj/project.xcworkspace/xcuserdata/mzed.xcuserdatad,
-					src/RapidLib/examples/ofx/FaceToSound1/FaceToSound1.xcodeproj/xcshareddata/xcschemes,
-					src/RapidLib/examples/ofx/FaceToSound1/FaceToSound1.xcodeproj/xcuserdata/mzed.xcuserdatad/xcschemes,
-					src/RapidLib/examples/ofx/FaceToSound1/bin/FaceToSound1Debug.app/Contents,
-					src/RapidLib/examples/ofx/FaceToSound1/bin/data,
-					src/RapidLib/examples/ofx/FaceToSound1/bin/data/model,
-					src/RapidLib/examples/ofx/FaceToSound1/src,
-					src/RapidLib/examples/ofx/rapidAPI006,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/project.xcworkspace,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/project.xcworkspace/xcshareddata,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/project.xcworkspace/xcuserdata/michaelgrierson.xcuserdatad,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/project.xcworkspace/xcuserdata/mzed.xcuserdatad,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/xcuserdata/michaelgrierson.xcuserdatad/xcschemes,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/xcuserdata/mzed.xcuserdatad/xcdebugger,
-					src/RapidLib/examples/ofx/rapidAPI006/rapidAPI_006.xcodeproj/xcuserdata/mzed.xcuserdatad/xcschemes,
-					src/RapidLib/examples/ofx/rapidAPI006/src,
-					src/RapidLib/src,
-					src/RapidLib/src/emscripten,
-					../../../addons/ofxGui/src,
-					../../../addons/ofxMaxim/libs,
-					../../../addons/ofxMaxim/src,
-					../../../addons/ofxMyo/libs,
-					../../../addons/ofxMyo/libs/myo,
-					../../../addons/ofxMyo/libs/myo/lib,
-					../../../addons/ofxMyo/libs/myo/lib/osx,
-					../../../addons/ofxMyo/src,
+					../../../addons/ofxRapidLib/libs,
+					../../../addons/ofxRapidLib/libs/dependencies,
+					../../../addons/ofxRapidLib/libs/dependencies/json,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";

@@ -30,6 +30,7 @@ bool seriesClassificationTemplate<T>::train(const std::vector<trainingSeriesTemp
     allTrainingSeries = seriesSet;
     minLength = maxLength = int(allTrainingSeries[0].input.size());
     for (int i = 0; i < allTrainingSeries.size(); ++i) {
+        //for (auto trainingSeries : allTrainingSeries)
         //Global
         int newLength = int(allTrainingSeries[i].input.size());
         if (newLength < minLength) {

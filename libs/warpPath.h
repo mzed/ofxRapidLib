@@ -22,8 +22,7 @@ public:
      */
     void add(int x, int y);
     
-    std::vector<int> xIndices;
-    std::vector<int> yIndices;
+    std::vector< std::pair<int, int> > indices;
 };
 
 /** return struct holding a warp path and the cost of that path */

@@ -22,6 +22,13 @@ rapidStream<T>::rapidStream(int window_size) {
     for (int i = 0; i < windowSize; ++i) {
         circularWindow[i] = 0;
     }
+    
+    //Baysian Filter setup
+    bayesFilt.diffusion = powf(10., -2);
+    bayesFilt.jump_rate = powf(10., -10);
+    bayesFilt.mvc[0] = 1.;
+    bayesFilt.init();
+    
 }
 
 template<typename T>
@@ -118,13 +125,39 @@ T rapidStream<T>::standardDeviation() {
 
 template<typename T>
 T rapidStream<T>::rms() {
-    T rms;
+    T rms = 0;
     for (int i = 0; i < windowSize; ++i) {
         rms += (circularWindow[i] * circularWindow[i]);
     }
     rms = rms/windowSize;
     return sqrt(rms);
 }
+
+template<typename T>
+T rapidStream<T>::bayesFilter(T input) {
+    std::vector<float> inputVec = { float(input) };
+    bayesFilt.update(inputVec);
+    return T(bayesFilt.output[0]);
+}
+
+template<typename T>
+void rapidStream<T>::bayesSetDiffusion(float diffusion) {
+    bayesFilt.diffusion = powf(10., diffusion);
+    bayesFilt.init();
+}
+
+template<typename T>
+void rapidStream<T>::bayesSetJumpRate(float jump_rate) {
+    bayesFilt.jump_rate = powf(10., jump_rate);
+    bayesFilt.init();
+}
+
+template<typename T>
+void rapidStream<T>::bayesSetMVC(float mvc) {
+    bayesFilt.mvc[0] = mvc;
+    bayesFilt.init();
+}
+
 
 template<typename T>
 T rapidStream<T>::minVelocity() {
@@ -158,7 +191,7 @@ T rapidStream<T>::minAcceleration() {
         T currentVel = calcCurrentVel(i);
         T currentAccel =  currentVel - lastVel;
         lastVel = currentVel;
-            if (currentAccel < minAccel) {
+        if (currentAccel < minAccel) {
             minAccel = currentAccel;
         }
     }

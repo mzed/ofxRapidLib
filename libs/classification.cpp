@@ -15,16 +15,16 @@
 
 template<typename T>
 classificationTemplate<T>::classificationTemplate() {
-    modelSet<T>::numInputs = 0;
-    modelSet<T>::numOutputs = 0;
+    modelSet<T>::numInputs = -1;
+    modelSet<T>::numOutputs = -1;
     modelSet<T>::created = false;
     classificationType = knn; //this is the default algorithm
 };
 
 template<typename T>
 classificationTemplate<T>::classificationTemplate(classificationTypes classification_type) {
-    modelSet<T>::numInputs = 0;
-    modelSet<T>::numOutputs = 0;
+    modelSet<T>::numInputs = -1;
+    modelSet<T>::numOutputs = -1;
     modelSet<T>::created = false;
     classificationType = classification_type;
 };
@@ -40,50 +40,56 @@ classificationTemplate<T>::classificationTemplate(const int &num_inputs, const i
     }
     std::vector<trainingExampleTemplate<T> > trainingSet;
     for (int i = 0; i < modelSet<T>::numOutputs; ++i) {
-       modelSet<T>::myModelSet.push_back(new knnClassification<T>(modelSet<T>::numInputs, whichInputs, trainingSet, 1));
+        modelSet<T>::myModelSet.push_back(new knnClassification<T>(modelSet<T>::numInputs, whichInputs, trainingSet, 1));
     }
     modelSet<T>::created = true;
 };
 
 template<typename T>
 classificationTemplate<T>::classificationTemplate(const std::vector<trainingExampleTemplate<T> > &trainingSet) {
-    modelSet<T>::numInputs = 0;
-    modelSet<T>::numOutputs = 0;
+    modelSet<T>::numInputs = -1;
+    modelSet<T>::numOutputs = -1;
     modelSet<T>::created = false;
     train(trainingSet);
 };
 
 template<typename T>
-bool classificationTemplate<T>::train(const std::vector<trainingExampleTemplate<T> > &trainingSet) {
+bool classificationTemplate<T>::train(const std::vector<trainingExampleTemplate<T> > &training_set) {
     //TODO: time this process?
-    modelSet<T>::myModelSet.clear();
-    //create model(s) here
-    modelSet<T>::numInputs = int(trainingSet[0].input.size());
-    for (int i = 0; i < modelSet<T>::numInputs; ++i) {
-        modelSet<T>::inputNames.push_back("inputs-" + std::to_string(i + 1));
-    }
-    modelSet<T>::numOutputs = int(trainingSet[0].output.size());
-    for ( auto example : trainingSet) {
-        if (example.input.size() != modelSet<T>::numInputs) {
-            return false;
+    modelSet<T>::reset();
+    if (training_set.size() > 0) {
+        //create model(s) here
+        modelSet<T>::numInputs = int(training_set[0].input.size());
+        modelSet<T>::numOutputs = int(training_set[0].output.size());
+        for (int i = 0; i < modelSet<T>::numInputs; ++i) {
+            modelSet<T>::inputNames.push_back("inputs-" + std::to_string(i + 1));
         }
-        if (example.output.size() != modelSet<T>::numOutputs) {
-            return false;
+        modelSet<T>::numOutputs = int(training_set[0].output.size());
+        for ( auto example : training_set) {
+            if (example.input.size() != modelSet<T>::numInputs) {
+                throw std::length_error("unequal feature vectors in input.");
+                return false;
+            }
+            if (example.output.size() != modelSet<T>::numOutputs) {
+                throw std::length_error("unequal output vectors.");
+                return false;
+            }
         }
-    }
-    std::vector<int> whichInputs;
-    for (int j = 0; j < modelSet<T>::numInputs; ++j) {
-        whichInputs.push_back(j);
-    }
-    for (int i = 0; i < modelSet<T>::numOutputs; ++i) {
-        if (classificationType == svm) {
-            modelSet<T>::myModelSet.push_back(new svmClassification<T>(modelSet<T>::numInputs));
-        } else {
-            modelSet<T>::myModelSet.push_back(new knnClassification<T>(modelSet<T>::numInputs, whichInputs, trainingSet, 1));
+        std::vector<int> whichInputs;
+        for (int j = 0; j < modelSet<T>::numInputs; ++j) {
+            whichInputs.push_back(j);
         }
+        for (int i = 0; i < modelSet<T>::numOutputs; ++i) {
+            if (classificationType == svm) {
+                modelSet<T>::myModelSet.push_back(new svmClassification<T>(modelSet<T>::numInputs));
+            } else {
+                modelSet<T>::myModelSet.push_back(new knnClassification<T>(modelSet<T>::numInputs, whichInputs, training_set, 1));
+            }
+        }
+        modelSet<T>::created = true;
+        return modelSet<T>::train(training_set);
     }
-    modelSet<T>::created = true;
-    return modelSet<T>::train(trainingSet);
+    return false;
 }
 
 template<typename T>

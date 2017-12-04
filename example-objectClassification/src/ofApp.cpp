@@ -126,7 +126,7 @@ void ofApp::draw(){
     
     if (recordingState) {
         trainingOutput = { double(recordingState) };
-        trainingExample<double> tempExample;
+        trainingExample tempExample;
         tempExample.input = trainingInput;
         tempExample.output = trainingOutput;
         myData.push_back(tempExample);

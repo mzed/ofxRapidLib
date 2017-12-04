@@ -9,45 +9,38 @@
 #include "searchWindow.h"
 
 template<typename T>
-searchWindow<T>::searchWindow(const int seriesXSize, const int seriesYSize, const warpPath &shrunkenWarpPath, const int searchRadius) :
-minValues(seriesXSize, -1), maxValues(seriesXSize, 0), maxY(seriesYSize - 1) {
+searchWindow<T>::searchWindow(const int seriesXSize, const int seriesYSize, const warpPath &shrunkenWarpPath, const int searchRadius) : minMaxValues(seriesXSize, std::make_pair(-1, 0)), maxY(seriesYSize - 1) {
     
     //Current location of higher resolution path
-    int currentX = shrunkenWarpPath.xIndices[0];
-    int currentY = shrunkenWarpPath.yIndices[0];
+    std::pair<int, int> currentIndex = shrunkenWarpPath.indices[0];
     
     //Last evaluated part of low resolution path
-    int lastWarpedX = std::numeric_limits<int>::max();
-    int lastWarpedY = std::numeric_limits<int>::max();
+    std::pair<int, int> lastWarped = std::make_pair(std::numeric_limits<int>::max(), std::numeric_limits<int>::max());
     
     int blockSize = 2; //TODO: something other than 2? Different for x and y?
     
     //project each part of the low-res path to high res cells
-    for (int i = 0; i < shrunkenWarpPath.xIndices.size(); ++i) {
+    for ( auto &xyIndex : shrunkenWarpPath.indices) {
         
-        int warpedX = shrunkenWarpPath.xIndices[i];
-        int warpedY = shrunkenWarpPath.yIndices[i];
-        
-        if (warpedX > lastWarpedX) {
-            currentX += blockSize;
+        if (xyIndex.first > lastWarped.first) {
+            currentIndex.first += blockSize;
         }
-        if (warpedY > lastWarpedY) {
-            currentY += blockSize;
+        if (xyIndex.second > lastWarped.second) {
+            currentIndex.second += blockSize;
         }
         
-        if ((warpedX > lastWarpedX) && (warpedY > lastWarpedY))
+        if ((xyIndex.first > lastWarped.first) && (xyIndex.second > lastWarped.second))
         {
-            markVisited(currentX-1, currentY);
-            markVisited(currentX, currentY-1);
+            markVisited(currentIndex.first - 1, currentIndex.second);
+            markVisited(currentIndex.first, currentIndex.second - 1);
         }
         
         for (int j = 0; j < blockSize; ++j) {
-            markVisited(currentX + j, currentY);
-            markVisited(currentX + j, currentY + blockSize - 1); //TODO: These are redundant?
+            markVisited(currentIndex.first + j, currentIndex.second);
+            markVisited(currentIndex.first + j, currentIndex.second + blockSize - 1); //TODO: These are redundant?
         }
         
-        lastWarpedX = warpedX;
-        lastWarpedY = warpedY;
+        lastWarped = xyIndex;
     }
     
     if (searchRadius > 0) {
@@ -58,17 +51,14 @@ minValues(seriesXSize, -1), maxValues(seriesXSize, 0), maxY(seriesYSize - 1) {
 
 template<typename T>
 void searchWindow<T>::markVisited(int col, int row) {
-    if (row <= maxY && col < minValues.size()) { //Don't mark beyond the edge of the window
-        if (minValues[col] == -1) {
-            minValues[col] = row;
-            maxValues[col] = row;
-            //size++;
-        } else if (minValues[col] > row) {
-            //size += minValues[col] - row;
-            minValues[col] = row;
-        } else if (maxValues[col] < row) {
-            //size += row - maxValues[col];
-            maxValues[col] = row;
+    if (row <= maxY && col < minMaxValues.size()) { //Don't mark beyond the edge of the window
+        if (minMaxValues[col].first == -1) {
+            minMaxValues[col].first = row;
+            minMaxValues[col].second = row;
+        } else if (minMaxValues[col].first > row) {
+            minMaxValues[col].first = row;
+        } else if (minMaxValues[col].second < row) {
+             minMaxValues[col].second = row;
         }
     }
 }
@@ -79,17 +69,15 @@ void searchWindow<T>::expandWindow(int radius) {
         
         //Add all cells in the current window to a vector.
         std::vector<std::pair<int, int>> windowCells;
-        for (int currentX = 0; currentX < minValues.size(); ++currentX) {
-            for (int currentY = minValues[currentX]; currentY <= maxValues[currentX]; ++currentY) {
-                std::pair<int, int> currentCell = std::make_pair(currentX, currentY);
-                windowCells.push_back(currentCell);
+        for (int currentX = 0; currentX < minMaxValues.size(); ++currentX) {
+            for (int currentY = minMaxValues[currentX].first; currentY <= minMaxValues[currentX].second; ++currentY) {
+                windowCells.push_back(std::make_pair(currentX, currentY));
             }
         }
-
-        int maxX = int(minValues.size() - 1);
         
-        for (int cell = 0; cell < windowCells.size(); ++cell) {
-            std::pair<int, int> currentCell = windowCells[cell]; //TODO: is pair necessary? easier to make currentX and currentY?
+        int maxX = int(minMaxValues.size() - 1);
+        
+        for (auto &currentCell : windowCells) {
             
             if (currentCell.first != 0 && currentCell.second != maxY) { //move to upper left if possible
                 //expand until edges are met
