@@ -15,7 +15,26 @@
 #include "trainingExample.h"
 
 #ifndef EMSCRIPTEN
-#include "../libs/dependencies/json/json.h"
+#include "../dependencies/json/json.h"
+#endif
+
+#ifdef __ANDROID__
+#include <ostream>
+namespace std
+{ // Workaround for android
+    template <typename T>
+    std::string to_string(T Value)
+    {
+        std::ostringstream TempStream;
+        TempStream << Value;
+        return TempStream.str();
+    }
+
+    inline long double strtold(const char * str, char ** str_end)
+    {
+        return strtod(str, str_end);
+    }
+}
 #endif
 
 /** Base class for wekinator models. Implemented by NN and KNN classes */

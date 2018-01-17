@@ -9,6 +9,8 @@
 
 #include <vector>
 #include <cassert>
+#include <limits>
+#include <algorithm>
 #include "seriesClassification.h"
 #ifdef EMSCRIPTEN
 #include "emscripten/seriesClassificationEmbindings.h"
@@ -83,7 +85,7 @@ std::string seriesClassificationTemplate<T>::run(const std::vector<std::vector<T
     allCosts.clear();
     T lowestCost = fastDTW<T>::getCost(inputSeries, allTrainingSeries[0].input, SEARCH_RADIUS);
     allCosts.push_back(lowestCost);
-    
+
     for (int i = 1; i < allTrainingSeries.size(); ++i) {
         T currentCost = fastDTW<T>::getCost(inputSeries, allTrainingSeries[i].input, SEARCH_RADIUS);
         allCosts.push_back(currentCost);
@@ -163,7 +165,8 @@ int seriesClassificationTemplate<T>::getMaxLength(std::string label) const {
 }
 
 template<typename T>
-seriesClassificationTemplate<T>::minMax<T> seriesClassificationTemplate<T>::calculateCosts(std::string label) const {
+typename
+seriesClassificationTemplate<T>::template minMax<T> seriesClassificationTemplate<T>::calculateCosts(std::string label) const {
     minMax<T> calculatedMinMax;
     bool foundSeries = false;
     std::vector<T> labelCosts;
@@ -188,7 +191,7 @@ seriesClassificationTemplate<T>::minMax<T> seriesClassificationTemplate<T>::calc
 }
 
 template<typename T>
-seriesClassificationTemplate<T>::minMax<T> seriesClassificationTemplate<T>::calculateCosts(std::string label1, std::string label2) const {
+typename seriesClassificationTemplate<T>::template minMax<T> seriesClassificationTemplate<T>::calculateCosts(std::string label1, std::string label2) const {
     minMax<T> calculatedMinMax;
     bool foundSeries = false;
     std::vector<T> labelCosts;

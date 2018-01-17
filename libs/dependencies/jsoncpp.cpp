@@ -104,11 +104,16 @@ license you like.
 
 namespace Json {
 static char getDecimalPoint() {
+#ifdef __ANDROID__
+  // Workaround for android NDK 10
+  return '\0';
+#else
 #ifdef NO_LOCALE_SUPPORT
   return '\0';
 #else
   struct lconv* lc = localeconv();
   return lc ? *(lc->decimal_point) : '\0';
+#endif
 #endif
 }
 

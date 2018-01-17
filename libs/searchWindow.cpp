@@ -6,6 +6,7 @@
  * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
  */
 
+#include <limits>
 #include "searchWindow.h"
 
 template<typename T>
@@ -50,7 +51,7 @@ searchWindow<T>::searchWindow(const int seriesXSize, const int seriesYSize, cons
 }
 
 template<typename T>
-void searchWindow<T>::markVisited(int col, int row) {
+inline void searchWindow<T>::markVisited(int col, int row) {
     if (row <= maxY && col < minMaxValues.size()) { //Don't mark beyond the edge of the window
         if (minMaxValues[col].first == -1) {
             minMaxValues[col].first = row;

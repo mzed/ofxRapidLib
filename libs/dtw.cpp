@@ -10,6 +10,7 @@
 #include <vector>
 #include <cmath>
 #include <cassert>
+#include <limits>
 #include "dtw.h"
 
 template<typename T>
@@ -65,7 +66,7 @@ T dtw<T>::getCost(const std::vector<std::vector<T> > &seriesX, const std::vector
 };
 
 template<typename T>
-warpPath dtw<T>::calculatePath(int seriesXsize, int seriesYsize) {
+warpPath dtw<T>::calculatePath(int seriesXsize, int seriesYsize) const {
     warpPath warpPath;
     int i = seriesXsize - 1;
     int j = seriesYsize - 1;

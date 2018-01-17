@@ -6,7 +6,7 @@
 //  Copyright © 2016 Goldsmiths. All rights reserved.
 //
 
-#include <cmath>
+#include <math.h>
 #include <utility>
 #include <map>
 #include <vector>
@@ -128,7 +128,7 @@ T knnClassification<T>::run(const std::vector<T> &inputVector) {
     std::map<int, int> classVoteMap;
     typedef std::pair<int, int> classVotePair;
     for (int i = 0; i < currentK; ++i){
-        int classNum = (int) std::round(neighbours[nearestNeighbours[i].first].output[0]);
+        int classNum = (int) round(neighbours[nearestNeighbours[i].first].output[0]);
         if ( classVoteMap.find(classNum) == classVoteMap.end() ) {
             classVoteMap.insert(classVotePair(classNum, 1));
         } else {
