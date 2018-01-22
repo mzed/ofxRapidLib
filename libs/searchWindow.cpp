@@ -6,7 +6,7 @@
  * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
  */
 
-#include <limits>
+#include <limits>
 #include "searchWindow.h"
 
 template<typename T>

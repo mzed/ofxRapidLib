@@ -11,7 +11,7 @@
 #include <cmath>
 #include <cassert>
 #include <limits>
-#include "dtw.h"
+#include "dtw.h"
 
 template<typename T>
 dtw<T>::dtw() {};
