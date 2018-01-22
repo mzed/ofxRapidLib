@@ -27,7 +27,7 @@ public:
     
 private:
     int maxY;
-    void markVisited(int col, int row);
+    inline void markVisited(int col, int row);
     void expandWindow(int searchRadius);
 };
 

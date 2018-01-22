@@ -23,6 +23,7 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+private:
     //Drawing
     ofPolyline line;
     std::string instructions[3];

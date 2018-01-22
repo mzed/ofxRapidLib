@@ -54,7 +54,7 @@ warpPath fastDTW<T>::getWarpPath(const std::vector<std::vector<T>> &seriesX, con
 };
 
 template<typename T>
-std::vector<std::vector<T> > fastDTW<T>::downsample(const std::vector<std::vector<T>> &series, T resolution) {
+inline std::vector<std::vector<T> > fastDTW<T>::downsample(const std::vector<std::vector<T>> &series, T resolution) {
     std::vector<std::vector<T> > shrunkenSeries;
     for (int i = 0; i < series.size(); ++i) {
         if (i % 2 == 0) {

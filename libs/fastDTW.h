@@ -53,7 +53,7 @@ private:
      * @param resolution (not used)
      * @return downsampled series
      `*/
-    static std::vector<std::vector<T> > downsample(const std::vector<std::vector<T>> &series, T resolution);
+    inline static std::vector<std::vector<T> > downsample(const std::vector<std::vector<T>> &series, T resolution);
     
 };
 

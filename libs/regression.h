@@ -19,7 +19,7 @@
  */
 
 template<typename T>
-class regressionTemplate : public modelSet<T> {
+class regressionTemplate final : public modelSet<T> {
 public:
     /** with no arguments, just make an empty vector */
     regressionTemplate();
@@ -32,20 +32,30 @@ public:
     ~regressionTemplate() {};
     
     /** Train on a specified set, causes creation if not created */
-    bool train(const std::vector<trainingExampleTemplate<T> > &trainingSet);
+    bool train(const std::vector<trainingExampleTemplate<T> > &trainingSet) override;
+    
+    /** Check how many training epochs each model will run. This feature is temporary, and will be replaced by a different design. */
+    std::vector<int> getNumEpochs() const;
     
     /** Call before train, to set the number of training epochs */
     void setNumEpochs(const int &epochs);
     
     /** Check how many hidden layers are in each model. This feature is temporary, and will be replaced by a different design. */
-    std::vector<int> getNumHiddenLayers();
+    std::vector<int> getNumHiddenLayers() const;
     
     /** Set how many hidden layers are in all models. This feature is temporary, and will be replaced by a different design. */
     void setNumHiddenLayers(const int &num_hidden_layers);
     
+    /** Check how many hidden nodes are in each model. This feature is temporary, and will be replaced by a different design. */
+    std::vector<int> getNumHiddenNodes() const;
+    
+    /** Set how many hidden layers are in all models. This feature is temporary, and will be replaced by a different design. */
+    void setNumHiddenNodes(const int &num_hidden_nodes);
+    
 private:
     int numHiddenLayers; //Temporary -- this should be part of the nn class. -mz
     int numEpochs; //Temporary -- also should be part of nn only. -mz
+    int numHiddenNodes; //Temporary -- also should be part of nn only. -mz
 };
 
 //This is here so the old API still works

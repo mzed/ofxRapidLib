@@ -24,7 +24,7 @@
  * This class includes both running and training, and constructors for reading trained models from JSON.
  */
 template<typename T>
-class neuralNetwork : public baseModel<T> {
+class neuralNetwork final : public baseModel<T> {
     
 public:
     /** This is the constructor for building a trained model from JSON. */
@@ -60,18 +60,20 @@ public:
      * @param A standard vector of type T that feed-forward regression will run on.
      * @return A single value, which is the result of the feed-forward operation
      */
-    T run(const std::vector<T> &inputVector);
+    T run(const std::vector<T> &inputVector) override;
     
-    void reset();
+    void reset() override;
     
-    int getNumInputs() const;
-    std::vector<int> getWhichInputs() const;
+    int getNumInputs() const override;
+    std::vector<int> getWhichInputs() const override;
     
     int getNumHiddenLayers() const;
     void setNumHiddenLayers(int num_hidden_layers);
     
     int getNumHiddenNodes() const;
+    void setNumHiddenNodes(int num_hidden_nodes);
     
+    int getEpochs() const;
     void setEpochs(const int &epochs);
     
     std::vector<T> getWeights() const;
@@ -83,7 +85,7 @@ public:
     T getOutBase() const;
     
 #ifndef EMSCRIPTEN
-    void getJSONDescription(Json::Value &currentModel);
+    void getJSONDescription(Json::Value &currentModel) override;
 #endif
     
     
@@ -121,7 +123,7 @@ public:
      * @param The training set is a vector of training examples that contain both a vector of input values and a value specifying desired output.
      *
      */
-    void train(const std::vector<trainingExampleTemplate<T> > &trainingSet);
+    void train(const std::vector<trainingExampleTemplate<T> > &trainingSet) override;
     
 private:
     /** Parameters that influence learning */

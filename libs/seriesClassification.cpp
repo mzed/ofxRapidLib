@@ -9,6 +9,8 @@
 
 #include <vector>
 #include <cassert>
+#include <limits>
+#include <algorithm>
 #include "seriesClassification.h"
 #ifdef EMSCRIPTEN
 #include "emscripten/seriesClassificationEmbindings.h"
@@ -163,7 +165,7 @@ int seriesClassificationTemplate<T>::getMaxLength(std::string label) const {
 }
 
 template<typename T>
-seriesClassificationTemplate<T>::minMax<T> seriesClassificationTemplate<T>::calculateCosts(std::string label) const {
+typename seriesClassificationTemplate<T>::template minMax<T> seriesClassificationTemplate<T>::calculateCosts(std::string label) const {
     minMax<T> calculatedMinMax;
     bool foundSeries = false;
     std::vector<T> labelCosts;
@@ -188,7 +190,7 @@ seriesClassificationTemplate<T>::minMax<T> seriesClassificationTemplate<T>::calc
 }
 
 template<typename T>
-seriesClassificationTemplate<T>::minMax<T> seriesClassificationTemplate<T>::calculateCosts(std::string label1, std::string label2) const {
+typename seriesClassificationTemplate<T>::template minMax<T> seriesClassificationTemplate<T>::calculateCosts(std::string label1, std::string label2) const {
     minMax<T> calculatedMinMax;
     bool foundSeries = false;
     std::vector<T> labelCosts;

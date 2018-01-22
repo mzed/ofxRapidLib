@@ -29,7 +29,7 @@ numOutputs(-1)
 
 template<typename T>
 modelSet<T>::~modelSet() {
-    for (typename std::vector<baseModel<T>*>::iterator i = myModelSet.begin(); i != myModelSet.end(); ++i) {
+    for (typename std::vector<baseModel<T>*>::const_iterator i = myModelSet.cbegin(); i != myModelSet.cend(); ++i) {
         delete *i;
     }
 };
@@ -64,7 +64,7 @@ bool modelSet<T>::train(const std::vector<trainingExampleTemplate<T> > &training
 
 template<typename T>
 bool modelSet<T>::reset() {
-    for (typename std::vector<baseModel<T>*>::iterator i = myModelSet.begin(); i != myModelSet.end(); ++i) {
+    for (typename std::vector<baseModel<T>*>::const_iterator i = myModelSet.cbegin(); i != myModelSet.cend(); ++i) {
         delete *i;
     }
     myModelSet.clear();
@@ -226,6 +226,7 @@ void modelSet<T>::json2modelSet(const Json::Value &root) {
             myModelSet.push_back(new knnClassification<T>(modelNumInputs, whichInputs, trainingSet, k));
         }
     }
+    created = true;
 }
 
 template<typename T>

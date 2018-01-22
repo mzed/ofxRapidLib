@@ -18,7 +18,7 @@
 
 /** Class for implementing a knn classifier */
 template<typename T>
-class knnClassification : public baseModel<T> {
+class knnClassification final : public baseModel<T> {
     
 public:
     /** Constructor that takes training examples in
@@ -43,27 +43,27 @@ public:
      * @param A standard vector of type T to be evaluated.
      * @return A single value of type T: the nearest class as determined by k-nearest neighbor.
      */
-    T run(const std::vector<T> &inputVector);
+    T run(const std::vector<T> &inputVector) override;
     
     /** Fill the model with a vector of examples.
      *
      * @param The training set is a vector of training examples that contain both a vector of input values and a value specifying desired output class.
      *
      */
-    void train(const std::vector<trainingExampleTemplate<T> > &trainingSet);
+    void train(const std::vector<trainingExampleTemplate<T> > &trainingSet) override;
     
     /** Reset the model to its empty state. */
-    void reset();
+    void reset() override;
     
     /** Find out how many inputs the model expects
      * @return Integer number of intpus
      */
-    int getNumInputs() const;
+    int getNumInputs() const override;
     
     /** Find out which inputs in a vector will be used
      * @return Vector of ints, specifying input indices.
      */
-    std::vector<int> getWhichInputs() const;
+    std::vector<int> getWhichInputs() const override;
     
     /** Get the number of nearest neighbours used by the kNN algorithm. */
     int getK() const;
@@ -76,7 +76,7 @@ public:
     /** Populate a JSON value with a description of the current model
      * @param A JSON value to be populated
      */
-    void getJSONDescription(Json::Value &currentModel);
+    void getJSONDescription(Json::Value &currentModel) override;
 #endif
     
 private:

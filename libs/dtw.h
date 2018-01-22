@@ -32,7 +32,7 @@ public:
 private:
     inline T distanceFunction(const std::vector<T> &pointX, const std::vector<T> &point);
     std::vector<std::vector<T> > costMatrix;
-    warpPath calculatePath(int seriesXsize, int seriesYsize);
+    warpPath calculatePath(int seriesXsize, int seriesYsize) const;
 };
 
 #endif /* dtw_h */

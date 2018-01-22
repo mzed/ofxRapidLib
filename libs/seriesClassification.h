@@ -22,7 +22,7 @@
  */
 
 template<typename T>
-class seriesClassificationTemplate {
+class seriesClassificationTemplate final {
 public:
     
     /** Constructor, no params */

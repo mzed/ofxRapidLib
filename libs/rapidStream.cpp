@@ -15,7 +15,7 @@
 #endif
 
 template<typename T>
-rapidStream<T>::rapidStream(int window_size) {
+rapidStream<T>::rapidStream (int window_size) {
     windowSize = window_size;
     windowIndex = 0;
     circularWindow = new T[window_size];
@@ -24,8 +24,8 @@ rapidStream<T>::rapidStream(int window_size) {
     }
     
     //Baysian Filter setup
-    bayesFilt.diffusion = powf(10., -2);
-    bayesFilt.jump_rate = powf(10., -10);
+    bayesFilt.diffusion = powf (10., -2);
+    bayesFilt.jump_rate = powf (10., -10);
     bayesFilt.mvc[0] = 1.;
     bayesFilt.init();
     
@@ -62,22 +62,22 @@ void rapidStream<T>::pushToWindow(T input) {
 }
 
 template<typename T>
-inline T rapidStream<T>::calcCurrentVel(int i) {
-    return circularWindow[(i + windowIndex) % windowSize] - circularWindow[(i + windowIndex - 1) % windowSize];
+inline T rapidStream<T>::calcCurrentVel(int i) const {
+    return circularWindow[ (i + windowIndex) % windowSize] - circularWindow[ (i + windowIndex - 1) % windowSize];
 }
 
 template<typename T>
-T rapidStream<T>::velocity() {
-    return calcCurrentVel(-1);
+T rapidStream<T>::velocity() const {
+    return calcCurrentVel (-1);
 };
 
 template<typename T>
-T rapidStream<T>::acceleration() {
-    return calcCurrentVel(-2) - calcCurrentVel(-3);
+T rapidStream<T>::acceleration() const {
+  return calcCurrentVel (-2) - calcCurrentVel (-3);
 };
 
 template<typename T>
-T rapidStream<T>::minimum() {
+T rapidStream<T>::minimum() const {
     T minimum = std::numeric_limits<T>::infinity();
     for (int i = 0; i < windowSize; ++i) {
         if (circularWindow[i] < minimum) {
@@ -88,7 +88,7 @@ T rapidStream<T>::minimum() {
 }
 
 template<typename T>
-T rapidStream<T>::maximum() {
+T rapidStream<T>::maximum() const {
     T maximum = std::numeric_limits<T>::min();
     for (int i = 0; i < windowSize; ++i) {
         if (circularWindow[i] > maximum) {
@@ -99,22 +99,48 @@ T rapidStream<T>::maximum() {
 }
 
 template<typename T>
-T rapidStream<T>::sum() {
+uint32_t rapidStream<T>::numZeroCrossings() const {
+    uint32_t zeroCrossings = 0;
+    //Is the begininng positive, negative, or 0?
+    int previous = 1;
+    if (circularWindow[windowIndex] < 0) {
+        previous = -1;
+    } else if (circularWindow[windowIndex] == 0) {
+        ++zeroCrossings;
+        previous = 0;
+    }
+    for (int i =1; i < windowSize; ++i) {
+        int index = (windowIndex + i) % windowSize;
+        if (circularWindow[index] < 0 && previous >=0) { //Transition to negative
+            ++zeroCrossings;
+            previous = -1;
+        } else if (circularWindow[index] > 0 && previous <= 0){ //Transition to positive
+            ++zeroCrossings;
+            previous = 1;
+        } else { //Sample == 0
+            previous = 0;
+        }
+    }
+    return zeroCrossings;
+}
+
+
+template<typename T>
+T rapidStream<T>::sum() const {
     T newSum = 0;
-    for(int i = 0; i < windowSize; ++i)
-    {
+    for (int i = 0; i < windowSize; ++i) {
         newSum += circularWindow[i];
     }
     return newSum;
 }
 
 template<typename T>
-T rapidStream<T>::mean() {
+T rapidStream<T>::mean() const {
     return sum()/windowSize;
 }
 
 template<typename T>
-T rapidStream<T>::standardDeviation() {
+T rapidStream<T>::standardDeviation() const {
     T newMean = mean();
     T standardDeviation = 0.;
     for(int i = 0; i < windowSize; ++i) {
@@ -124,7 +150,7 @@ T rapidStream<T>::standardDeviation() {
 }
 
 template<typename T>
-T rapidStream<T>::rms() {
+T rapidStream<T>::rms() const {
     T rms = 0;
     for (int i = 0; i < windowSize; ++i) {
         rms += (circularWindow[i] * circularWindow[i]);
@@ -136,19 +162,19 @@ T rapidStream<T>::rms() {
 template<typename T>
 T rapidStream<T>::bayesFilter(T input) {
     std::vector<float> inputVec = { float(input) };
-    bayesFilt.update(inputVec);
-    return T(bayesFilt.output[0]);
+    bayesFilt.update (inputVec);
+    return T (bayesFilt.output[0]);
 }
 
 template<typename T>
 void rapidStream<T>::bayesSetDiffusion(float diffusion) {
-    bayesFilt.diffusion = powf(10., diffusion);
+    bayesFilt.diffusion = powf (10., diffusion);
     bayesFilt.init();
 }
 
 template<typename T>
 void rapidStream<T>::bayesSetJumpRate(float jump_rate) {
-    bayesFilt.jump_rate = powf(10., jump_rate);
+    bayesFilt.jump_rate = powf (10., jump_rate);
     bayesFilt.init();
 }
 
@@ -160,10 +186,10 @@ void rapidStream<T>::bayesSetMVC(float mvc) {
 
 
 template<typename T>
-T rapidStream<T>::minVelocity() {
+T rapidStream<T>::minVelocity() const {
     T minVel = std::numeric_limits<T>::infinity();
     for (int i = 0; i < windowSize; ++i) {
-        T currentVel = calcCurrentVel(i);
+        T currentVel = calcCurrentVel (i);
         if ( currentVel < minVel) {
             minVel = currentVel;
         }
@@ -172,10 +198,10 @@ T rapidStream<T>::minVelocity() {
 }
 
 template<typename T>
-T rapidStream<T>::maxVelocity() {
+T rapidStream<T>::maxVelocity() const {
     T maxVel = std::numeric_limits<T>::lowest();
     for (int i = 0; i < windowSize; ++i) {
-        T currentVel = calcCurrentVel(i);
+        T currentVel = calcCurrentVel (i);
         if (currentVel > maxVel) {
             maxVel = currentVel;
         }
@@ -184,11 +210,11 @@ T rapidStream<T>::maxVelocity() {
 }
 
 template<typename T>
-T rapidStream<T>::minAcceleration() {
+T rapidStream<T>::minAcceleration() const {
     T minAccel = std::numeric_limits<T>::infinity();
-    T lastVel = calcCurrentVel(1);
+    T lastVel = calcCurrentVel (1);
     for (int i = 2; i < windowSize; ++i) {
-        T currentVel = calcCurrentVel(i);
+        T currentVel = calcCurrentVel (i);
         T currentAccel =  currentVel - lastVel;
         lastVel = currentVel;
         if (currentAccel < minAccel) {
@@ -199,11 +225,11 @@ T rapidStream<T>::minAcceleration() {
 }
 
 template<typename T>
-T rapidStream<T>::maxAcceleration() {
+T rapidStream<T>::maxAcceleration() const {
     T maxAccel = std::numeric_limits<T>::lowest();
     T lastVel = calcCurrentVel(1);
     for (int i = 2; i < windowSize; ++i) {
-        T currentVel = calcCurrentVel(i);
+        T currentVel = calcCurrentVel (i);
         T currentAccel = currentVel - lastVel;
         lastVel = currentVel;
         if (currentAccel > maxAccel) {
