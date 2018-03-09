@@ -85,6 +85,6 @@ private:
     int recordingState;
     bool trained;
     
-    rapidStream<double> streamBuf = rapidStream<double>(25);
+    rapidStream<double> streamBuf{25};
     
 };
