@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 #include <atomic>
-#include "../dependencies/bayesfilter/src/BayesianFilter.h"
+#include "../dependencies/bayesfilter/BayesianFilter.h"
 
 template<typename T>
 class rapidStream {
