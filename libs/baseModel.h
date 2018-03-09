@@ -29,13 +29,14 @@ namespace std
         TempStream << Value;
         return TempStream.str();
     }
-
+    
     inline long double strtold(const char * str, char ** str_end)
     {
         return strtod(str, str_end);
     }
 }
 #endif
+
 
 /** Base class for wekinator models. Implemented by NN and KNN classes */
 template<typename T>
