@@ -7,26 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		083FB2094A4DE99F5A60397A /* maxiMFCC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 440B2B891BD019685EF360B8 /* maxiMFCC.cpp */; };
 		09CF5B9280532C6CF6B705F0 /* regression.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E52995B095947CA458545C02 /* regression.cpp */; };
-		0FCED26D40D46CF89A58E54C /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F3C78E7AB53E01022E9374A3 /* fft.cpp */; };
 		12F307E16B47B13A7E4BA1C7 /* rapidStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27D02B625A250983A66393CF /* rapidStream.cpp */; };
-		22F21CE3B902225374BA1CA2 /* maximilian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D3A0051CCB2C0F0ECA139E /* maximilian.cpp */; };
 		30C0DD82688FD76230057F93 /* seriesClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463F341BF6C339436264F282 /* seriesClassification.cpp */; };
 		31E86D8C989B466C3ED49B19 /* fastDTW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92C9759040C71E937176AA25 /* fastDTW.cpp */; };
 		33E4A99ECA1C324D9A5B2AE1 /* libsvm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F244D6EF8867E35EE6046253 /* libsvm.cpp */; };
 		401B4259DD31A5747942A494 /* knnClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AF844C0C5EBFE0F36528986 /* knnClassification.cpp */; };
 		4B4E224845BBEAEEB74132B3 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA292E8E2AEA4A57EC8B8AB2 /* jsoncpp.cpp */; };
 		4E169BF918C967A46B5AC16A /* neuralNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B21F6C7D645C44F01D60CD2C /* neuralNetwork.cpp */; };
-		5C4A4AA5D4784DF23EA43038 /* maxiAtoms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EFA3ACBB8D16CC0DA1E79C6 /* maxiAtoms.cpp */; };
 		64CD49DB2AEE555337F0F0BD /* svmClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4982F172451A9CF660B9F169 /* svmClassification.cpp */; };
 		66CA904322CB0FEB4EAEB6B6 /* classification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519A9B908B4B393B3C82A6C6 /* classification.cpp */; };
 		681F19F7152171CAB7CB20E9 /* warpPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17EA08CAE874AD8E8C7B00E8 /* warpPath.cpp */; };
 		7C3A42DE764187C9042B8684 /* filter_utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C4565618B92E9C4D0BFA6196 /* filter_utilities.cpp */; };
-		9514C2D90467055B1447D074 /* stb_vorbis.c in Sources */ = {isa = PBXBuildFile; fileRef = 80CD68E0DDF2C60D2715CC78 /* stb_vorbis.c */; };
-		96084990AF216648B8B98E00 /* maxiFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A4EE0E35ED739A31CD0153E /* maxiFFT.cpp */; };
-		ABA8875AF0C06690CC0B92B1 /* maxiBark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B9936002B519C1290F25FEC /* maxiBark.cpp */; };
-		AF0580829426DC6BCA135A5C /* maxiGrains.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D2FB19B70632A6F86622D94 /* maxiGrains.cpp */; };
 		C1BFCEEF1D0E6D35CFFC2554 /* searchWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7043A88D6AC95C7C62C03765 /* searchWindow.cpp */; };
 		D24E376090FA0DC8ABC30FD7 /* BayesianFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD0A2D7DD93A8FD06EFA3C28 /* BayesianFilter.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -71,47 +63,31 @@
 		1B423B21A94C0A31238F8361 /* json.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = json.h; path = ../../../addons/ofxRapidLib/libs/dependencies/json/json.h; sourceTree = SOURCE_ROOT; };
 		1C5B3D92FB88F79CD2D807E7 /* rapidStream.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = rapidStream.h; path = ../../../addons/ofxRapidLib/libs/rapidStream.h; sourceTree = SOURCE_ROOT; };
 		1D9D9D2E2AD9A881E5897DCF /* filter_utilities.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = filter_utilities.h; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/filter_utilities.h; sourceTree = SOURCE_ROOT; };
-		1EFA3ACBB8D16CC0DA1E79C6 /* maxiAtoms.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = maxiAtoms.cpp; path = ../../../addons/ofxMaxim/libs/maxiAtoms.cpp; sourceTree = SOURCE_ROOT; };
 		236A4DDEB9319747D4585082 /* dtw.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = dtw.cpp; path = ../../../addons/ofxRapidLib/libs/dtw.cpp; sourceTree = SOURCE_ROOT; };
 		27D02B625A250983A66393CF /* rapidStream.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = rapidStream.cpp; path = ../../../addons/ofxRapidLib/libs/rapidStream.cpp; sourceTree = SOURCE_ROOT; };
 		2AE8F6EA53AC6F87640B6DA7 /* searchWindow.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = searchWindow.h; path = ../../../addons/ofxRapidLib/libs/searchWindow.h; sourceTree = SOURCE_ROOT; };
 		353E61A97C6E155661C7A830 /* libsvm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = libsvm.h; path = ../../../addons/ofxRapidLib/libs/dependencies/libsvm/libsvm.h; sourceTree = SOURCE_ROOT; };
 		3B50F94515D25FC19E35C7A4 /* modelSet.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = modelSet.h; path = ../../../addons/ofxRapidLib/libs/modelSet.h; sourceTree = SOURCE_ROOT; };
-		440B2B891BD019685EF360B8 /* maxiMFCC.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = maxiMFCC.cpp; path = ../../../addons/ofxMaxim/libs/maxiMFCC.cpp; sourceTree = SOURCE_ROOT; };
 		463F341BF6C339436264F282 /* seriesClassification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = seriesClassification.cpp; path = ../../../addons/ofxRapidLib/libs/seriesClassification.cpp; sourceTree = SOURCE_ROOT; };
 		4982F172451A9CF660B9F169 /* svmClassification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = svmClassification.cpp; path = ../../../addons/ofxRapidLib/libs/svmClassification.cpp; sourceTree = SOURCE_ROOT; };
-		4CFB659E40D3D3DC5A3E9478 /* maxiGrains.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = maxiGrains.h; path = ../../../addons/ofxMaxim/libs/maxiGrains.h; sourceTree = SOURCE_ROOT; };
 		4EDD14D0735B0965D38F26FB /* baseModel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = baseModel.h; path = ../../../addons/ofxRapidLib/libs/baseModel.h; sourceTree = SOURCE_ROOT; };
 		519A9B908B4B393B3C82A6C6 /* classification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = classification.cpp; path = ../../../addons/ofxRapidLib/libs/classification.cpp; sourceTree = SOURCE_ROOT; };
 		52F65EE09306EB9EBEED35E3 /* fastDTW.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fastDTW.h; path = ../../../addons/ofxRapidLib/libs/fastDTW.h; sourceTree = SOURCE_ROOT; };
 		533F341AE69165B34A28E656 /* seriesClassification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = seriesClassification.h; path = ../../../addons/ofxRapidLib/libs/seriesClassification.h; sourceTree = SOURCE_ROOT; };
 		57123BFB33108C545ED26499 /* BayesianFilter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = BayesianFilter.h; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/BayesianFilter.h; sourceTree = SOURCE_ROOT; };
 		69415D8222D9379D1CBAD17C /* svmClassification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = svmClassification.h; path = ../../../addons/ofxRapidLib/libs/svmClassification.h; sourceTree = SOURCE_ROOT; };
-		6A4EE0E35ED739A31CD0153E /* maxiFFT.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = maxiFFT.cpp; path = ../../../addons/ofxMaxim/libs/maxiFFT.cpp; sourceTree = SOURCE_ROOT; };
 		6AF844C0C5EBFE0F36528986 /* knnClassification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = knnClassification.cpp; path = ../../../addons/ofxRapidLib/libs/knnClassification.cpp; sourceTree = SOURCE_ROOT; };
 		7043A88D6AC95C7C62C03765 /* searchWindow.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = searchWindow.cpp; path = ../../../addons/ofxRapidLib/libs/searchWindow.cpp; sourceTree = SOURCE_ROOT; };
 		716B32C4459C4B3FB85C14DE /* trainingExample.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = trainingExample.h; path = ../../../addons/ofxRapidLib/libs/trainingExample.h; sourceTree = SOURCE_ROOT; };
-		7D2CBAA6529BCE46CA661E02 /* maxiAtoms.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = maxiAtoms.h; path = ../../../addons/ofxMaxim/libs/maxiAtoms.h; sourceTree = SOURCE_ROOT; };
-		80CD68E0DDF2C60D2715CC78 /* stb_vorbis.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = stb_vorbis.c; path = ../../../addons/ofxMaxim/libs/stb_vorbis.c; sourceTree = SOURCE_ROOT; };
-		87D3A0051CCB2C0F0ECA139E /* maximilian.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = maximilian.cpp; path = ../../../addons/ofxMaxim/libs/maximilian.cpp; sourceTree = SOURCE_ROOT; };
 		91178C261360999F0F3B058F /* modelSet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = modelSet.cpp; path = ../../../addons/ofxRapidLib/libs/modelSet.cpp; sourceTree = SOURCE_ROOT; };
 		911F81FD1D0A007EB537FE0E /* knnClassification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = knnClassification.h; path = ../../../addons/ofxRapidLib/libs/knnClassification.h; sourceTree = SOURCE_ROOT; };
 		92C9759040C71E937176AA25 /* fastDTW.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = fastDTW.cpp; path = ../../../addons/ofxRapidLib/libs/fastDTW.cpp; sourceTree = SOURCE_ROOT; };
-		9312F3864ED05FC3E847FF69 /* ofxMaxim.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMaxim.h; path = ../../../addons/ofxMaxim/src/ofxMaxim.h; sourceTree = SOURCE_ROOT; };
 		951526F7E46ADB8782C2B891 /* neuralNetwork.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = neuralNetwork.h; path = ../../../addons/ofxRapidLib/libs/neuralNetwork.h; sourceTree = SOURCE_ROOT; };
-		95C3AC11BE0AC7EC464D2A36 /* maximilian.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = maximilian.h; path = ../../../addons/ofxMaxim/libs/maximilian.h; sourceTree = SOURCE_ROOT; };
-		9B9936002B519C1290F25FEC /* maxiBark.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = maxiBark.cpp; path = ../../../addons/ofxMaxim/libs/maxiBark.cpp; sourceTree = SOURCE_ROOT; };
 		9CB2B18A92566DBB24FD0A0F /* ofxRapidLib.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRapidLib.h; path = ../../../addons/ofxRapidLib/src/ofxRapidLib.h; sourceTree = SOURCE_ROOT; };
-		9D2FB19B70632A6F86622D94 /* maxiGrains.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = maxiGrains.cpp; path = ../../../addons/ofxMaxim/libs/maxiGrains.cpp; sourceTree = SOURCE_ROOT; };
-		A67372B9CAED43269F8D42D3 /* maxiBark.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = maxiBark.h; path = ../../../addons/ofxMaxim/libs/maxiBark.h; sourceTree = SOURCE_ROOT; };
 		A9F46810057A1F368B393FC7 /* warpPath.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = warpPath.h; path = ../../../addons/ofxRapidLib/libs/warpPath.h; sourceTree = SOURCE_ROOT; };
 		B21F6C7D645C44F01D60CD2C /* neuralNetwork.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = neuralNetwork.cpp; path = ../../../addons/ofxRapidLib/libs/neuralNetwork.cpp; sourceTree = SOURCE_ROOT; };
-		B2F326FA07783558EF3CDD2A /* stb_vorbis.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = stb_vorbis.h; path = ../../../addons/ofxMaxim/libs/stb_vorbis.h; sourceTree = SOURCE_ROOT; };
-		B34D3539DB6F889A78540F7C /* sineTable.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = sineTable.h; path = ../../../addons/ofxMaxim/libs/sineTable.h; sourceTree = SOURCE_ROOT; };
-		BA5114869056DFF1A50CFA4A /* fft.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fft.h; path = ../../../addons/ofxMaxim/libs/fft.h; sourceTree = SOURCE_ROOT; };
 		C4565618B92E9C4D0BFA6196 /* filter_utilities.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = filter_utilities.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/filter_utilities.cpp; sourceTree = SOURCE_ROOT; };
 		C6CC8D0736C19ACA7949C20E /* json-forwards.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "json-forwards.h"; path = "../../../addons/ofxRapidLib/libs/dependencies/json/json-forwards.h"; sourceTree = SOURCE_ROOT; };
-		D1C864AE2FE539BE7FD1F628 /* maxiMFCC.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = maxiMFCC.h; path = ../../../addons/ofxMaxim/libs/maxiMFCC.h; sourceTree = SOURCE_ROOT; };
 		DA292E8E2AEA4A57EC8B8AB2 /* jsoncpp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = jsoncpp.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/jsoncpp.cpp; sourceTree = SOURCE_ROOT; };
 		E0051A4C08E294EA7AE3AD97 /* dtw.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = dtw.h; path = ../../../addons/ofxRapidLib/libs/dtw.h; sourceTree = SOURCE_ROOT; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -124,9 +100,7 @@
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		E52995B095947CA458545C02 /* regression.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = regression.cpp; path = ../../../addons/ofxRapidLib/libs/regression.cpp; sourceTree = SOURCE_ROOT; };
 		EC2B6A2F988C01FF72271F08 /* classification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = classification.h; path = ../../../addons/ofxRapidLib/libs/classification.h; sourceTree = SOURCE_ROOT; };
-		EFA729F2F65D97F65DB52E44 /* maxiFFT.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = maxiFFT.h; path = ../../../addons/ofxMaxim/libs/maxiFFT.h; sourceTree = SOURCE_ROOT; };
 		F244D6EF8867E35EE6046253 /* libsvm.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = libsvm.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/libsvm/libsvm.cpp; sourceTree = SOURCE_ROOT; };
-		F3C78E7AB53E01022E9374A3 /* fft.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = fft.cpp; path = ../../../addons/ofxMaxim/libs/fft.cpp; sourceTree = SOURCE_ROOT; };
 		FD0A2D7DD93A8FD06EFA3C28 /* BayesianFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = BayesianFilter.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/BayesianFilter.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -169,39 +143,6 @@
 				87F610BBA4D33B2799A0E153 /* libs */,
 			);
 			name = ofxRapidLib;
-			sourceTree = "<group>";
-		};
-		4ACC32F17B7623DA048865D1 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				F3C78E7AB53E01022E9374A3 /* fft.cpp */,
-				BA5114869056DFF1A50CFA4A /* fft.h */,
-				1EFA3ACBB8D16CC0DA1E79C6 /* maxiAtoms.cpp */,
-				7D2CBAA6529BCE46CA661E02 /* maxiAtoms.h */,
-				9B9936002B519C1290F25FEC /* maxiBark.cpp */,
-				A67372B9CAED43269F8D42D3 /* maxiBark.h */,
-				6A4EE0E35ED739A31CD0153E /* maxiFFT.cpp */,
-				EFA729F2F65D97F65DB52E44 /* maxiFFT.h */,
-				9D2FB19B70632A6F86622D94 /* maxiGrains.cpp */,
-				4CFB659E40D3D3DC5A3E9478 /* maxiGrains.h */,
-				440B2B891BD019685EF360B8 /* maxiMFCC.cpp */,
-				D1C864AE2FE539BE7FD1F628 /* maxiMFCC.h */,
-				87D3A0051CCB2C0F0ECA139E /* maximilian.cpp */,
-				95C3AC11BE0AC7EC464D2A36 /* maximilian.h */,
-				B34D3539DB6F889A78540F7C /* sineTable.h */,
-				80CD68E0DDF2C60D2715CC78 /* stb_vorbis.c */,
-				B2F326FA07783558EF3CDD2A /* stb_vorbis.h */,
-			);
-			name = libs;
-			sourceTree = "<group>";
-		};
-		6234D3BCE87D1C3BA2230F19 /* ofxMaxim */ = {
-			isa = PBXGroup;
-			children = (
-				8F6BFB59AB6D0A458C2F3C53 /* src */,
-				4ACC32F17B7623DA048865D1 /* libs */,
-			);
-			name = ofxMaxim;
 			sourceTree = "<group>";
 		};
 		6948EE371B920CB800B5AC1A /* local_addons */ = {
@@ -262,18 +203,9 @@
 			name = libs;
 			sourceTree = "<group>";
 		};
-		8F6BFB59AB6D0A458C2F3C53 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				9312F3864ED05FC3E847FF69 /* ofxMaxim.h */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				6234D3BCE87D1C3BA2230F19 /* ofxMaxim */,
 				1EC827CCBC829917E7575E36 /* ofxRapidLib */,
 			);
 			name = addons;
@@ -419,14 +351,6 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
-				0FCED26D40D46CF89A58E54C /* fft.cpp in Sources */,
-				5C4A4AA5D4784DF23EA43038 /* maxiAtoms.cpp in Sources */,
-				ABA8875AF0C06690CC0B92B1 /* maxiBark.cpp in Sources */,
-				96084990AF216648B8B98E00 /* maxiFFT.cpp in Sources */,
-				AF0580829426DC6BCA135A5C /* maxiGrains.cpp in Sources */,
-				083FB2094A4DE99F5A60397A /* maxiMFCC.cpp in Sources */,
-				22F21CE3B902225374BA1CA2 /* maximilian.cpp in Sources */,
-				9514C2D90467055B1447D074 /* stb_vorbis.c in Sources */,
 				66CA904322CB0FEB4EAEB6B6 /* classification.cpp in Sources */,
 				D24E376090FA0DC8ABC30FD7 /* BayesianFilter.cpp in Sources */,
 				7C3A42DE764187C9042B8684 /* filter_utilities.cpp in Sources */,
