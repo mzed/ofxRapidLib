@@ -31,9 +31,9 @@
 #ifndef ofxRapidLib_h
 #define ofxRapidLib_h
 
-#include "classification.h"
-#include "regression.h"
-#include "seriesclassification.h"
-#include "rapidStream.h"
+#include "../libs/classification.h"
+#include "../libs/regression.h"
+#include "../libs/seriesClassification.h"
+#include "../libs/rapidStream.h"
 
 #endif
