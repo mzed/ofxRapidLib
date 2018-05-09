@@ -22,7 +22,6 @@ void ofApp::setup(){
     std::cout << "Rows: " << senselInfo.num_rows <<std::endl;
     
     senselSetFrameContent(senselHandle, FRAME_CONTENT_PRESSURE_MASK);
-    //senselSetFrameContent(senselHandle, FRAME_CONTENT_CONTACTS_MASK);
     senselAllocateFrameData(senselHandle, &senselFrame);
     //Start scanning the Sensel device
     senselStartScanning(senselHandle);
@@ -50,8 +49,6 @@ void ofApp::update(){
 
     //------- SENSEL ---------------//
     std::vector<double> senselInput;
-    std::vector<double> trainingOutput;
-    
     uint numFrames=0;
     senselReadSensor(senselHandle);
     senselGetNumAvailableFrames(senselHandle, &numFrames);
@@ -92,7 +89,6 @@ void ofApp::update(){
     }
     
     if (recordingState) {
-        trainingOutput = { double(recordingState) };
         trainingExample tempExample;
         tempExample.input = senselInput;
         tempExample.output = { double(recordingState) };
@@ -104,8 +100,9 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofDrawBitmapString("Press 1 to record an example of an empty class", 20, 20);
-    ofDrawBitmapString("Put an object on the morph and pres 2, 3, or 4 to record examples of that class", 20, 40);
-    ofDrawBitmapString("identified class " + std::to_string(result), 20, 60);
+    ofDrawBitmapString("Put an object on the morph and pres 2, 3, or 4 to record", 20, 40);
+    ofDrawBitmapString("examples of that class", 20, 55);
+    ofDrawBitmapString("identified class " + std::to_string(result), 20, 200);
 }
 
 
