@@ -35,6 +35,7 @@ public:
     SenselDeviceList senselList;
     SenselSensorInfo senselInfo;
     SenselFrameData *senselFrame = NULL;
+    bool senselFound = false;
     
     //-----RAPID-LIB-----//
     std::vector<trainingExample> trainingSet;

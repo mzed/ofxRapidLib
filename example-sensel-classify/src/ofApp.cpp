@@ -11,20 +11,24 @@ void ofApp::setup(){
     if (senselList.num_devices == 0)
     {
         std::cerr << "No device found" << std::endl;
+        senselFound = false;
+    } else {
+        
+        senselFound = true;
+        senselOpenDeviceByID(&senselHandle, senselList.devices[0].idx);
+        senselGetSensorInfo(senselHandle, &senselInfo);
+        
+        std::cout << "Sensel Device: " <<senselList.devices[0].serial_num << std::endl;
+        std::cout << "Width: " << senselInfo.width << "mm" << std::endl;
+        std::cout << "Height: " << senselInfo.height << "mm" << std::endl;
+        std::cout << "Cols: " << senselInfo.num_cols << std::endl;
+        std::cout << "Rows: " << senselInfo.num_rows <<std::endl;
+        
+        senselSetFrameContent(senselHandle, FRAME_CONTENT_PRESSURE_MASK);
+        senselAllocateFrameData(senselHandle, &senselFrame);
+        //Start scanning the Sensel device
+        senselStartScanning(senselHandle);
     }
-    senselOpenDeviceByID(&senselHandle, senselList.devices[0].idx);
-    senselGetSensorInfo(senselHandle, &senselInfo);
-    
-    std::cout << "Sensel Device: " <<senselList.devices[0].serial_num << std::endl;
-    std::cout << "Width: " << senselInfo.width << "mm" << std::endl;
-    std::cout << "Height: " << senselInfo.height << "mm" << std::endl;
-    std::cout << "Cols: " << senselInfo.num_cols << std::endl;
-    std::cout << "Rows: " << senselInfo.num_rows <<std::endl;
-    
-    senselSetFrameContent(senselHandle, FRAME_CONTENT_PRESSURE_MASK);
-    senselAllocateFrameData(senselHandle, &senselFrame);
-    //Start scanning the Sensel device
-    senselStartScanning(senselHandle);
     
     //Maxim
     sampleRate 	= 44100; /* Sampling Rate */
@@ -39,84 +43,90 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::exit(){
-    senselClose(senselHandle);
+    if (senselFound) {
+        senselClose(senselHandle);
+    }
     ofSoundStreamStop();
     ofSoundStreamClose();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
-    //------- SENSEL ---------------//
-    std::vector<double> senselInput;
-    uint numFrames=0;
-    senselReadSensor(senselHandle);
-    senselGetNumAvailableFrames(senselHandle, &numFrames);
-    for (int i = 0; i < numFrames; ++i) {
-        senselGetFrame(senselHandle, senselFrame);
-        senselInput.clear();
-        int arraySize = senselInfo.num_cols * senselInfo.num_rows;
-        for (int j = 0; j < arraySize; ++j) {
-            senselInput.push_back(double(senselFrame->force_array[j]));
+    if (senselFound) {
+        //------- SENSEL ---------------//
+        std::vector<double> senselInput;
+        uint numFrames=0;
+        senselReadSensor(senselHandle);
+        senselGetNumAvailableFrames(senselHandle, &numFrames);
+        for (int i = 0; i < numFrames; ++i) {
+            senselGetFrame(senselHandle, senselFrame);
+            senselInput.clear();
+            int arraySize = senselInfo.num_cols * senselInfo.num_rows;
+            for (int j = 0; j < arraySize; ++j) {
+                senselInput.push_back(double(senselFrame->force_array[j]));
+            }
         }
-    }
-    
-    //-------RapidLib---------------//
-    if (runToggle) {
-        result = myKnn.run(senselInput)[0];
-        std::cout << "result " << result << std::endl;
-        switch (result) {
-            case 2:
-                senselSetLEDBrightness(senselHandle, 4, 255);
-                senselSetLEDBrightness(senselHandle, 12, 0);
-                senselSetLEDBrightness(senselHandle, 20, 0);
-                break;
-            case 3:
-                senselSetLEDBrightness(senselHandle, 12, 255);
-                senselSetLEDBrightness(senselHandle, 4, 0);
-                senselSetLEDBrightness(senselHandle, 20, 0);
-                break;
-            case 4:
-                senselSetLEDBrightness(senselHandle, 20, 255);
-                senselSetLEDBrightness(senselHandle, 4, 0);
-                senselSetLEDBrightness(senselHandle, 12, 0);
-                break;
-            default:
-                senselSetLEDBrightness(senselHandle, 4, 0);
-                senselSetLEDBrightness(senselHandle, 12, 0);
-                senselSetLEDBrightness(senselHandle, 20, 0);
+        
+        //-------RapidLib---------------//
+        if (runToggle) {
+            result = myKnn.run(senselInput)[0];
+            std::cout << "result " << result << std::endl;
+            switch (result) {
+                case 2:
+                    senselSetLEDBrightness(senselHandle, 4, 255);
+                    senselSetLEDBrightness(senselHandle, 12, 0);
+                    senselSetLEDBrightness(senselHandle, 20, 0);
+                    break;
+                case 3:
+                    senselSetLEDBrightness(senselHandle, 12, 255);
+                    senselSetLEDBrightness(senselHandle, 4, 0);
+                    senselSetLEDBrightness(senselHandle, 20, 0);
+                    break;
+                case 4:
+                    senselSetLEDBrightness(senselHandle, 20, 255);
+                    senselSetLEDBrightness(senselHandle, 4, 0);
+                    senselSetLEDBrightness(senselHandle, 12, 0);
+                    break;
+                default:
+                    senselSetLEDBrightness(senselHandle, 4, 0);
+                    senselSetLEDBrightness(senselHandle, 12, 0);
+                    senselSetLEDBrightness(senselHandle, 20, 0);
+            }
         }
-    }
-    
-    if (recordingState) {
-        trainingExample tempExample;
-        tempExample.input = senselInput;
-        tempExample.output = { double(recordingState) };
-        trainingSet.push_back(tempExample);
-        recordingState = 0;
+        
+        if (recordingState) {
+            trainingExample tempExample;
+            tempExample.input = senselInput;
+            tempExample.output = { double(recordingState) };
+            trainingSet.push_back(tempExample);
+            recordingState = 0;
+        }
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofDrawBitmapString("Press 1 to record an example of an empty class", 20, 20);
-    ofDrawBitmapString("Put an object on the morph and pres 2, 3, or 4 to record", 20, 40);
-    ofDrawBitmapString("examples of that class", 20, 55);
-    ofDrawBitmapString("identified class " + std::to_string(result), 20, 200);
+    if (senselFound) {
+        ofDrawBitmapString("Press 1 to record an example of an empty class", 20, 20);
+        ofDrawBitmapString("Put an object on the morph and pres 2, 3, or 4 to record", 20, 40);
+        ofDrawBitmapString("examples of that class", 20, 55);
+        ofDrawBitmapString("identified class " + std::to_string(result), 20, 200);
+    } else {
+        ofDrawBitmapString("Could not find a sensel device", 20, 200);
+    }
 }
 
 
 //--------------------------------------------------------------
 void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
     for (int i = 0; i < bufferSize; ++i) {
-        
         double loopOutput;
         switch (result) {
             case 2:
-            loopOutput = loop_1.play();
+                loopOutput = loop_1.play();
                 break;
             case 3:
-            loopOutput = loop_2.play();
+                loopOutput = loop_2.play();
                 break;
             case 4:
                 loopOutput = loop_3.play();
