@@ -33,6 +33,7 @@ void ofApp::setup(){
     //Maxim
     sampleRate 	= 44100; /* Sampling Rate */
     bufferSize	= 512; /* Buffer Size. you have to fill this buffer with sound using the for loop in the audioOut method */
+    ofSetDataPathRoot("../Resources/data/");
     loop_1.load(ofToDataPath("SOLAR.WAV"));
     loop_2.load(ofToDataPath("DE-LA-~1.WAV"));
     loop_3.load(ofToDataPath("ENGLISH.WAV"));
@@ -131,6 +132,8 @@ void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
             case 4:
                 loopOutput = loop_3.play();
                 break;
+            default:
+                loopOutput = 0;
         }
         
         mymix.stereo(loopOutput, outputs, 0.5);
