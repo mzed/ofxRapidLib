@@ -34,9 +34,13 @@ void ofApp::setup(){
     sampleRate 	= 44100; /* Sampling Rate */
     bufferSize	= 512; /* Buffer Size. you have to fill this buffer with sound using the for loop in the audioOut method */
     ofSetDataPathRoot("../Resources/data/");
-    loop_1.load(ofToDataPath("SOLAR.WAV"));
-    loop_2.load(ofToDataPath("DE-LA-~1.WAV"));
-    loop_3.load(ofToDataPath("ENGLISH.WAV"));
+    
+    loaded1 = loop_1.load(ofToDataPath("SOLAR.WAV"));
+    std::cout << "Sample 1 " << loaded1 << std::endl;
+    loaded2 = loop_2.load(ofToDataPath("DE-LA-~1.WAV"));
+    std::cout << "Sample 2 " << loaded2 << std::endl;
+    loaded3 = loop_3.load(ofToDataPath("ENGLISH.WAV"));
+    std::cout << "Sample 3 " << loaded3 << std::endl;
     
     ofxMaxiSettings::setup(sampleRate, 2, initialBufferSize);
     ofSoundStreamSetup(2,0,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */
@@ -124,13 +128,13 @@ void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
         double loopOutput;
         switch (result) {
             case 2:
-                loopOutput = loop_1.play();
+                if (loaded1) loopOutput = loop_1.play();
                 break;
             case 3:
-                loopOutput = loop_2.play();
+                if (loaded2) loopOutput = loop_2.play();
                 break;
             case 4:
-                loopOutput = loop_3.play();
+                if (loaded3) loopOutput = loop_3.play();
                 break;
             default:
                 loopOutput = 0;
