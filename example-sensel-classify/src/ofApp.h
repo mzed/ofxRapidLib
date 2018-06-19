@@ -82,4 +82,5 @@ public:
     maxiMix mymix;
     maxiSample loop_1, loop_2, loop_3;
     bool loaded1, loaded2, loaded3;
+    bool soundOn;
 };
