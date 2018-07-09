@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/mzed/of_v0.10.0_osx_release/addons/ofxRapidLib/drumRegression_0_10_0/prob_drums.xcodeproj">
    </FileRef>
 </Workspace>

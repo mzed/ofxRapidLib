@@ -11,6 +11,8 @@
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include <thread>
+#include <iostream>
 #include "modelSet.h"
 
 #ifndef EMSCRIPTEN
@@ -36,6 +38,7 @@ modelSet<T>::~modelSet() {
 
 template<typename T>
 bool modelSet<T>::train(const std::vector<trainingExampleTemplate<T> > &training_set) {
+    
     for (trainingExampleTemplate<T> example : training_set) {
         if (example.input.size() != numInputs) {
             throw std::length_error("unequal feature vectors in input.");
@@ -46,6 +49,7 @@ bool modelSet<T>::train(const std::vector<trainingExampleTemplate<T> > &training
             return false;
         }
     }
+
     for (int i = 0; i < myModelSet.size(); ++i) {
         std::vector<trainingExampleTemplate<T> > modelTrainingSet; //just one output
         for (trainingExampleTemplate<T> example : training_set) {
@@ -56,10 +60,21 @@ bool modelSet<T>::train(const std::vector<trainingExampleTemplate<T> > &training
             trainingExampleTemplate<T> tempObj = {tempT, std::vector<T> {example.output[i]}};
             modelTrainingSet.push_back(tempObj);
         }
-        myModelSet[i]->train(modelTrainingSet);
+        trainingThreads.push_back(std::thread(&modelSet<T>::threadTrain, this, i, modelTrainingSet));
+        //myModelSet[i]->train(modelTrainingSet);
     }
+    for (int i = 0; i < myModelSet.size(); ++i) {
+        trainingThreads.at(i).join();
+    }
+    trainingThreads.clear();
     created = true;
     return true;
+}
+
+template<typename T>
+void modelSet<T>::threadTrain(int i, std::vector<trainingExampleTemplate<T> > modelTrainingSet) {
+    std::cout << "Training: " << i << std::endl;
+    myModelSet[i]->train(modelTrainingSet);
 }
 
 template<typename T>
