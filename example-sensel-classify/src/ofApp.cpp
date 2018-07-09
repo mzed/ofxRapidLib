@@ -63,6 +63,7 @@ void ofApp::exit()
 {
     if (senselFound)
     {
+        senselStopScanning(senselHandle);
         senselClose(senselHandle);
     }
     ofSoundStreamStop();
@@ -121,7 +122,7 @@ void ofApp::update()
         
         if (recordingState)
         {
-            trainingExample tempExample;
+            rapidlib::trainingExample tempExample;
             tempExample.input = senselInput;
             tempExample.output = { double(recordingState) };
             trainingSet.push_back(tempExample);

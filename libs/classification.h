@@ -50,8 +50,10 @@ private:
     classificationTypes classificationType;
 };
 
-//This is here so that the old API still works as expected.
-using classification = classificationTemplate<double>;
-using classificationFloat = classificationTemplate<float>;
+namespace rapidlib {
+    //This is here so that the old API still works as expected.
+    using classification = classificationTemplate<double>;
+    using classificationFloat = classificationTemplate<float>;
+}
 
 #endif

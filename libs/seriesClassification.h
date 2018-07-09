@@ -116,8 +116,10 @@ private:
     int counter;
 };
 
-//This is here to keep the old API working
-using seriesClassification = seriesClassificationTemplate<double>;
-using seriesClassificationFloat = seriesClassificationTemplate<float>;
+namespace rapidlib {
+    //This is here to keep the old API working
+    using seriesClassification = seriesClassificationTemplate<double>;
+    using seriesClassificationFloat = seriesClassificationTemplate<float>;
+}
 
 #endif

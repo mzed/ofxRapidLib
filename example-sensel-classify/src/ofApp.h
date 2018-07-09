@@ -67,9 +67,9 @@ public:
     bool senselFound = false;
     
     //-----RAPID-LIB-----//
-    std::vector<trainingExample> trainingSet;
+    std::vector<rapidlib::trainingExample> trainingSet;
     int recordingState;
-    classification myKnn;
+    rapidlib::classification myKnn;
     bool runToggle;
     int result;
     
