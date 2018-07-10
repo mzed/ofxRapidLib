@@ -114,6 +114,8 @@ private:
     std::vector<std::vector<T> > seriesBuffer;
     int hopSize;
     int counter;
+    
+    void runThread(const std::vector<std::vector<T>> &inputSeries, int i);
 };
 
 namespace rapidlib {

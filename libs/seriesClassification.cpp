@@ -11,6 +11,7 @@
 #include <cassert>
 #include <limits>
 #include <algorithm>
+#include <thread>
 #include "seriesClassification.h"
 #ifdef EMSCRIPTEN
 #include "emscripten/seriesClassificationEmbindings.h"
@@ -83,14 +84,19 @@ std::string seriesClassificationTemplate<T>::run(const std::vector<std::vector<T
     //TODO: Check to see if trained
     int closestSeries = 0;
     allCosts.clear();
-    T lowestCost = fastDTW<T>::getCost(inputSeries, allTrainingSeries[0].input, SEARCH_RADIUS);
-    allCosts.push_back(lowestCost);
-    
-    for (int i = 1; i < allTrainingSeries.size(); ++i) {
-        T currentCost = fastDTW<T>::getCost(inputSeries, allTrainingSeries[i].input, SEARCH_RADIUS);
-        allCosts.push_back(currentCost);
-        if (currentCost < lowestCost) {
-            lowestCost = currentCost;
+    std::vector<std::thread> runningThreads;
+    for (int i = 0; i < allTrainingSeries.size(); ++i) {
+        allCosts.push_back(-1); //initialized cost
+        runningThreads.push_back(std::thread(&seriesClassificationTemplate<T>::runThread, this, inputSeries, i));
+    }
+    for (int i = 0; i < allTrainingSeries.size(); ++i) {
+        runningThreads.at(i).join();
+    }
+    //find closest series
+    T lowestCost = allCosts[0];
+    for (int i = 1; i < allCosts.size(); ++i) {
+        if (allCosts[i] >= 0 && allCosts[i] < lowestCost) {
+            lowestCost = allCosts[i];
             closestSeries = i;
         }
     }
@@ -115,6 +121,11 @@ T seriesClassificationTemplate<T>::run(const std::vector<std::vector<T>> &inputS
     }
     return lowestCost;
 };
+
+template<typename T>
+void seriesClassificationTemplate<T>::runThread(const std::vector<std::vector<T>> &inputSeries, int i) {
+    allCosts[i] = fastDTW<T>::getCost(inputSeries, allTrainingSeries[i].input, SEARCH_RADIUS);    
+}
 
 template<typename T>
 std::string seriesClassificationTemplate<T>::runContinuous(const std::vector<T> &inputVector) {
