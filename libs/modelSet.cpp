@@ -73,7 +73,6 @@ void modelSet<T>::threadTrain(int i, const std::vector<trainingExampleTemplate<T
         trainingExampleTemplate<T> tempObj = {tempT, std::vector<T> {example.output[i]}};
         modelTrainingSet.push_back(tempObj);
     }
-    
     myModelSet[i]->train(modelTrainingSet);
 }
 
