@@ -1,12 +1,14 @@
 #include "ofApp.h"
 
+#define SCALE_FACTOR 4
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     
     ofBackground(0,0,0);
     
-    camWidth 		= 32;	// try to grab at this size.
-    camHeight 		= 24;
+    camWidth 		= 160;	// try to grab at this size.
+    camHeight 		= 120;
     
     vidGrabber.setVerbose(true);
     vidGrabber.setup(camWidth,camHeight);
@@ -51,7 +53,6 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    
     // change background video alpha value based on the mouse position
     float videoAlphaValue = ofMap(mouseX, 0,ofGetWidth(),0,255);
     
@@ -84,8 +85,8 @@ void ofApp::draw(){
     }
     
     
-    for (int i = 0; i < camWidth; ++i){
-        for (int j = 0; j < camHeight; ++j){
+    for (int i = 0; i < camWidth; i += 5){
+        for (int j = 0; j < camHeight; j += 5){
             // get the pixel and its lightness (lightness is the average of its RGB values)
             float lightness = pixelsRef.getColor(i,j).getLightness();
             //RAPIDMIX
@@ -96,15 +97,15 @@ void ofApp::draw(){
                 // calculate the index of the character from our asciiCharacters array
                 int character = powf( ofMap(lightness, 0, 255, 0, 1), 2.5) * asciiCharacters.size();
                 // draw the character at the correct location
-                font.drawString(ofToString(asciiCharacters[character]), i * 20, j * 20);
+                font.drawString(ofToString(asciiCharacters[character]), i * SCALE_FACTOR, j * SCALE_FACTOR);
             }
         }
     }
     
     if (runToggle) {
         result = myKnn.run(trainingInput)[0];
-        for (int i = 0; i < camWidth; ++i){
-            for (int j = 0; j < camHeight; ++j){
+        for (int i = 0; i < camWidth; i += 5){
+            for (int j = 0; j < camHeight; j += 5){
                 float lightness = pixelsRef.getColor(i,j).getLightness();
                 switch (result) {
                     case 1:
@@ -119,7 +120,7 @@ void ofApp::draw(){
                     default:
                         ofSetColor(lightness, lightness, lightness, lightness);
                 }
-                font.drawString(ofToString(result), i * 20, j * 20);
+                font.drawString(ofToString(result), i * SCALE_FACTOR, j * SCALE_FACTOR);
             }
         }
     }
