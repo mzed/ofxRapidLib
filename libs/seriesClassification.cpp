@@ -117,7 +117,7 @@ T seriesClassificationTemplate<T>::run(const std::vector<std::vector<T>> &inputS
 };
 
 template<typename T>
-int seriesClassificationTemplate<T>::findClosestSeries() {
+int seriesClassificationTemplate<T>::findClosestSeries() const {
     T lowestCost = allCosts[0];
     int closestSeries = 0;
     for (int i = 1; i < allCosts.size(); ++i) {
