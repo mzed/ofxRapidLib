@@ -10,7 +10,6 @@
 #define modelSet_h
 
 #include <vector>
-#include <thread>
 #include "trainingExample.h"
 #include "baseModel.h"
 #include "neuralNetwork.h"
@@ -54,9 +53,7 @@ public:
 private:
     Json::Value parse2json();
     void json2modelSet(const Json::Value &root);
-    
-    void threadTrain(int i, const std::vector<trainingExampleTemplate<T> > training_set);
-    std::vector<std::thread> trainingThreads;
+    void threadTrain(int i, const std::vector<trainingExampleTemplate<T> > &training_set);
 
 #endif
 };

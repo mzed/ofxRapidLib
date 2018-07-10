@@ -92,7 +92,7 @@ void ofApp::setup(){
     bufferSize	= 512;
     
     ofxMaxiSettings::setup(sampleRate, 2, initialBufferSize);
-    ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4);
+    ofSoundStreamSetup(2, 2, this, sampleRate, bufferSize, 4);
 }
 
 //--------------------------------------------------------------
