@@ -115,6 +115,7 @@ private:
     int hopSize;
     int counter;
     
+    int findClosestSeries();
     void runThread(const std::vector<std::vector<T>> &inputSeries, int i);
 };
 

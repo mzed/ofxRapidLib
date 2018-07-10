@@ -86,45 +86,53 @@ std::string seriesClassificationTemplate<T>::run(const std::vector<std::vector<T
     allCosts.clear();
     std::vector<std::thread> runningThreads;
     for (int i = 0; i < allTrainingSeries.size(); ++i) {
-        allCosts.push_back(-1); //initialized cost
         runningThreads.push_back(std::thread(&seriesClassificationTemplate<T>::runThread, this, inputSeries, i));
     }
     for (int i = 0; i < allTrainingSeries.size(); ++i) {
         runningThreads.at(i).join();
     }
-    //find closest series
-    T lowestCost = allCosts[0];
-    for (int i = 1; i < allCosts.size(); ++i) {
-        if (allCosts[i] >= 0 && allCosts[i] < lowestCost) {
-            lowestCost = allCosts[i];
-            closestSeries = i;
-        }
-    }
+    
+    closestSeries = findClosestSeries();
     return allTrainingSeries[closestSeries].label;
 };
 
 template<typename T>
 T seriesClassificationTemplate<T>::run(const std::vector<std::vector<T>> &inputSeries, std::string label) {
     //TODO: Check to see if trained
-    int closestSeries = 0;
     allCosts.clear();
+    std::vector<std::thread> runningThreads;
     T lowestCost = std::numeric_limits<T>::max();
+    int seriesIndex;
     for (int i = 0; i < allTrainingSeries.size(); ++i) {
         if (allTrainingSeries[i].label == label) {
-            T currentCost = fastDTW<T>::getCost(inputSeries, allTrainingSeries[i].input, SEARCH_RADIUS);
-            allCosts.push_back(currentCost);
-            if (currentCost < lowestCost) {
-                lowestCost = currentCost;
-                closestSeries = i;
-            }
+            runningThreads.push_back(std::thread(&seriesClassificationTemplate<T>::runThread, this, inputSeries, seriesIndex));
+            ++seriesIndex;
         }
     }
-    return lowestCost;
+    for (int i = 0; i < allTrainingSeries.size(); ++i) {
+        runningThreads.at(i).join();
+    }
+    
+    return allCosts.at(findClosestSeries());
 };
 
 template<typename T>
+int seriesClassificationTemplate<T>::findClosestSeries() {
+    T lowestCost = allCosts[0];
+    int closestSeries = 0;
+    for (int i = 1; i < allCosts.size(); ++i) {
+        if (allCosts[i] < lowestCost) {
+            lowestCost = allCosts[i];
+            closestSeries = i;
+        }
+    }
+    return closestSeries;
+}
+
+template<typename T>
 void seriesClassificationTemplate<T>::runThread(const std::vector<std::vector<T>> &inputSeries, int i) {
-    allCosts[i] = fastDTW<T>::getCost(inputSeries, allTrainingSeries[i].input, SEARCH_RADIUS);    
+    allCosts.push_back(std::numeric_limits<T>::max()); //initialized cost
+    allCosts[i] = fastDTW<T>::getCost(inputSeries, allTrainingSeries[i].input, SEARCH_RADIUS);
 }
 
 template<typename T>
