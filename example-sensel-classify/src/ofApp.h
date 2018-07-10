@@ -67,9 +67,9 @@ public:
     bool senselFound = false;
     
     //-----RAPID-LIB-----//
-    std::vector<trainingExample> trainingSet;
+    std::vector<rapidlib::trainingExample> trainingSet;
     int recordingState;
-    classification myKnn;
+    rapidlib::classification myKnn;
     bool runToggle;
     int result;
     
@@ -82,4 +82,5 @@ public:
     maxiMix mymix;
     maxiSample loop_1, loop_2, loop_3;
     bool loaded1, loaded2, loaded3;
+    bool soundOn;
 };

@@ -58,50 +58,50 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		17EA08CAE874AD8E8C7B00E8 /* warpPath.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = warpPath.cpp; path = ../../../addons/ofxRapidLib/libs/warpPath.cpp; sourceTree = SOURCE_ROOT; };
-		19DA3D2721141521EB714ED0 /* regression.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = regression.h; path = ../../../addons/ofxRapidLib/libs/regression.h; sourceTree = SOURCE_ROOT; };
-		1B423B21A94C0A31238F8361 /* json.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = json.h; path = ../../../addons/ofxRapidLib/libs/dependencies/json/json.h; sourceTree = SOURCE_ROOT; };
-		1C5B3D92FB88F79CD2D807E7 /* rapidStream.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = rapidStream.h; path = ../../../addons/ofxRapidLib/libs/rapidStream.h; sourceTree = SOURCE_ROOT; };
-		1D9D9D2E2AD9A881E5897DCF /* filter_utilities.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = filter_utilities.h; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/filter_utilities.h; sourceTree = SOURCE_ROOT; };
-		236A4DDEB9319747D4585082 /* dtw.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = dtw.cpp; path = ../../../addons/ofxRapidLib/libs/dtw.cpp; sourceTree = SOURCE_ROOT; };
-		27D02B625A250983A66393CF /* rapidStream.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = rapidStream.cpp; path = ../../../addons/ofxRapidLib/libs/rapidStream.cpp; sourceTree = SOURCE_ROOT; };
-		2AE8F6EA53AC6F87640B6DA7 /* searchWindow.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = searchWindow.h; path = ../../../addons/ofxRapidLib/libs/searchWindow.h; sourceTree = SOURCE_ROOT; };
-		353E61A97C6E155661C7A830 /* libsvm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = libsvm.h; path = ../../../addons/ofxRapidLib/libs/dependencies/libsvm/libsvm.h; sourceTree = SOURCE_ROOT; };
-		3B50F94515D25FC19E35C7A4 /* modelSet.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = modelSet.h; path = ../../../addons/ofxRapidLib/libs/modelSet.h; sourceTree = SOURCE_ROOT; };
-		463F341BF6C339436264F282 /* seriesClassification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = seriesClassification.cpp; path = ../../../addons/ofxRapidLib/libs/seriesClassification.cpp; sourceTree = SOURCE_ROOT; };
-		4982F172451A9CF660B9F169 /* svmClassification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = svmClassification.cpp; path = ../../../addons/ofxRapidLib/libs/svmClassification.cpp; sourceTree = SOURCE_ROOT; };
-		4EDD14D0735B0965D38F26FB /* baseModel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = baseModel.h; path = ../../../addons/ofxRapidLib/libs/baseModel.h; sourceTree = SOURCE_ROOT; };
-		519A9B908B4B393B3C82A6C6 /* classification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = classification.cpp; path = ../../../addons/ofxRapidLib/libs/classification.cpp; sourceTree = SOURCE_ROOT; };
-		52F65EE09306EB9EBEED35E3 /* fastDTW.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fastDTW.h; path = ../../../addons/ofxRapidLib/libs/fastDTW.h; sourceTree = SOURCE_ROOT; };
-		533F341AE69165B34A28E656 /* seriesClassification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = seriesClassification.h; path = ../../../addons/ofxRapidLib/libs/seriesClassification.h; sourceTree = SOURCE_ROOT; };
-		57123BFB33108C545ED26499 /* BayesianFilter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = BayesianFilter.h; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/BayesianFilter.h; sourceTree = SOURCE_ROOT; };
-		69415D8222D9379D1CBAD17C /* svmClassification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = svmClassification.h; path = ../../../addons/ofxRapidLib/libs/svmClassification.h; sourceTree = SOURCE_ROOT; };
-		6AF844C0C5EBFE0F36528986 /* knnClassification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = knnClassification.cpp; path = ../../../addons/ofxRapidLib/libs/knnClassification.cpp; sourceTree = SOURCE_ROOT; };
-		7043A88D6AC95C7C62C03765 /* searchWindow.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = searchWindow.cpp; path = ../../../addons/ofxRapidLib/libs/searchWindow.cpp; sourceTree = SOURCE_ROOT; };
-		716B32C4459C4B3FB85C14DE /* trainingExample.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = trainingExample.h; path = ../../../addons/ofxRapidLib/libs/trainingExample.h; sourceTree = SOURCE_ROOT; };
-		91178C261360999F0F3B058F /* modelSet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = modelSet.cpp; path = ../../../addons/ofxRapidLib/libs/modelSet.cpp; sourceTree = SOURCE_ROOT; };
-		911F81FD1D0A007EB537FE0E /* knnClassification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = knnClassification.h; path = ../../../addons/ofxRapidLib/libs/knnClassification.h; sourceTree = SOURCE_ROOT; };
-		92C9759040C71E937176AA25 /* fastDTW.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = fastDTW.cpp; path = ../../../addons/ofxRapidLib/libs/fastDTW.cpp; sourceTree = SOURCE_ROOT; };
-		951526F7E46ADB8782C2B891 /* neuralNetwork.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = neuralNetwork.h; path = ../../../addons/ofxRapidLib/libs/neuralNetwork.h; sourceTree = SOURCE_ROOT; };
-		9CB2B18A92566DBB24FD0A0F /* ofxRapidLib.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxRapidLib.h; path = ../../../addons/ofxRapidLib/src/ofxRapidLib.h; sourceTree = SOURCE_ROOT; };
-		A9F46810057A1F368B393FC7 /* warpPath.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = warpPath.h; path = ../../../addons/ofxRapidLib/libs/warpPath.h; sourceTree = SOURCE_ROOT; };
-		B21F6C7D645C44F01D60CD2C /* neuralNetwork.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = neuralNetwork.cpp; path = ../../../addons/ofxRapidLib/libs/neuralNetwork.cpp; sourceTree = SOURCE_ROOT; };
-		C4565618B92E9C4D0BFA6196 /* filter_utilities.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = filter_utilities.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/filter_utilities.cpp; sourceTree = SOURCE_ROOT; };
-		C6CC8D0736C19ACA7949C20E /* json-forwards.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "json-forwards.h"; path = "../../../addons/ofxRapidLib/libs/dependencies/json/json-forwards.h"; sourceTree = SOURCE_ROOT; };
-		DA292E8E2AEA4A57EC8B8AB2 /* jsoncpp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = jsoncpp.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/jsoncpp.cpp; sourceTree = SOURCE_ROOT; };
-		E0051A4C08E294EA7AE3AD97 /* dtw.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = dtw.h; path = ../../../addons/ofxRapidLib/libs/dtw.h; sourceTree = SOURCE_ROOT; };
+		17EA08CAE874AD8E8C7B00E8 /* warpPath.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = warpPath.cpp; path = ../../../addons/ofxRapidLib/libs/warpPath.cpp; sourceTree = SOURCE_ROOT; };
+		19DA3D2721141521EB714ED0 /* regression.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = regression.h; path = ../../../addons/ofxRapidLib/libs/regression.h; sourceTree = SOURCE_ROOT; };
+		1B423B21A94C0A31238F8361 /* json.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = json.h; path = ../../../addons/ofxRapidLib/libs/dependencies/json/json.h; sourceTree = SOURCE_ROOT; };
+		1C5B3D92FB88F79CD2D807E7 /* rapidStream.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = rapidStream.h; path = ../../../addons/ofxRapidLib/libs/rapidStream.h; sourceTree = SOURCE_ROOT; };
+		1D9D9D2E2AD9A881E5897DCF /* filter_utilities.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = filter_utilities.h; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/filter_utilities.h; sourceTree = SOURCE_ROOT; };
+		236A4DDEB9319747D4585082 /* dtw.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = dtw.cpp; path = ../../../addons/ofxRapidLib/libs/dtw.cpp; sourceTree = SOURCE_ROOT; };
+		27D02B625A250983A66393CF /* rapidStream.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = rapidStream.cpp; path = ../../../addons/ofxRapidLib/libs/rapidStream.cpp; sourceTree = SOURCE_ROOT; };
+		2AE8F6EA53AC6F87640B6DA7 /* searchWindow.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = searchWindow.h; path = ../../../addons/ofxRapidLib/libs/searchWindow.h; sourceTree = SOURCE_ROOT; };
+		353E61A97C6E155661C7A830 /* libsvm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = libsvm.h; path = ../../../addons/ofxRapidLib/libs/dependencies/libsvm/libsvm.h; sourceTree = SOURCE_ROOT; };
+		3B50F94515D25FC19E35C7A4 /* modelSet.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = modelSet.h; path = ../../../addons/ofxRapidLib/libs/modelSet.h; sourceTree = SOURCE_ROOT; };
+		463F341BF6C339436264F282 /* seriesClassification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = seriesClassification.cpp; path = ../../../addons/ofxRapidLib/libs/seriesClassification.cpp; sourceTree = SOURCE_ROOT; };
+		4982F172451A9CF660B9F169 /* svmClassification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = svmClassification.cpp; path = ../../../addons/ofxRapidLib/libs/svmClassification.cpp; sourceTree = SOURCE_ROOT; };
+		4EDD14D0735B0965D38F26FB /* baseModel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = baseModel.h; path = ../../../addons/ofxRapidLib/libs/baseModel.h; sourceTree = SOURCE_ROOT; };
+		519A9B908B4B393B3C82A6C6 /* classification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = classification.cpp; path = ../../../addons/ofxRapidLib/libs/classification.cpp; sourceTree = SOURCE_ROOT; };
+		52F65EE09306EB9EBEED35E3 /* fastDTW.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = fastDTW.h; path = ../../../addons/ofxRapidLib/libs/fastDTW.h; sourceTree = SOURCE_ROOT; };
+		533F341AE69165B34A28E656 /* seriesClassification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = seriesClassification.h; path = ../../../addons/ofxRapidLib/libs/seriesClassification.h; sourceTree = SOURCE_ROOT; };
+		57123BFB33108C545ED26499 /* BayesianFilter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = BayesianFilter.h; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/BayesianFilter.h; sourceTree = SOURCE_ROOT; };
+		69415D8222D9379D1CBAD17C /* svmClassification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = svmClassification.h; path = ../../../addons/ofxRapidLib/libs/svmClassification.h; sourceTree = SOURCE_ROOT; };
+		6AF844C0C5EBFE0F36528986 /* knnClassification.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = knnClassification.cpp; path = ../../../addons/ofxRapidLib/libs/knnClassification.cpp; sourceTree = SOURCE_ROOT; };
+		7043A88D6AC95C7C62C03765 /* searchWindow.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = searchWindow.cpp; path = ../../../addons/ofxRapidLib/libs/searchWindow.cpp; sourceTree = SOURCE_ROOT; };
+		716B32C4459C4B3FB85C14DE /* trainingExample.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = trainingExample.h; path = ../../../addons/ofxRapidLib/libs/trainingExample.h; sourceTree = SOURCE_ROOT; };
+		91178C261360999F0F3B058F /* modelSet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = modelSet.cpp; path = ../../../addons/ofxRapidLib/libs/modelSet.cpp; sourceTree = SOURCE_ROOT; };
+		911F81FD1D0A007EB537FE0E /* knnClassification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = knnClassification.h; path = ../../../addons/ofxRapidLib/libs/knnClassification.h; sourceTree = SOURCE_ROOT; };
+		92C9759040C71E937176AA25 /* fastDTW.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = fastDTW.cpp; path = ../../../addons/ofxRapidLib/libs/fastDTW.cpp; sourceTree = SOURCE_ROOT; };
+		951526F7E46ADB8782C2B891 /* neuralNetwork.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = neuralNetwork.h; path = ../../../addons/ofxRapidLib/libs/neuralNetwork.h; sourceTree = SOURCE_ROOT; };
+		9CB2B18A92566DBB24FD0A0F /* ofxRapidLib.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxRapidLib.h; path = ../../../addons/ofxRapidLib/src/ofxRapidLib.h; sourceTree = SOURCE_ROOT; };
+		A9F46810057A1F368B393FC7 /* warpPath.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = warpPath.h; path = ../../../addons/ofxRapidLib/libs/warpPath.h; sourceTree = SOURCE_ROOT; };
+		B21F6C7D645C44F01D60CD2C /* neuralNetwork.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = neuralNetwork.cpp; path = ../../../addons/ofxRapidLib/libs/neuralNetwork.cpp; sourceTree = SOURCE_ROOT; };
+		C4565618B92E9C4D0BFA6196 /* filter_utilities.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = filter_utilities.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/filter_utilities.cpp; sourceTree = SOURCE_ROOT; };
+		C6CC8D0736C19ACA7949C20E /* json-forwards.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = "json-forwards.h"; path = "../../../addons/ofxRapidLib/libs/dependencies/json/json-forwards.h"; sourceTree = SOURCE_ROOT; };
+		DA292E8E2AEA4A57EC8B8AB2 /* jsoncpp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = jsoncpp.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/jsoncpp.cpp; sourceTree = SOURCE_ROOT; };
+		E0051A4C08E294EA7AE3AD97 /* dtw.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = dtw.h; path = ../../../addons/ofxRapidLib/libs/dtw.h; sourceTree = SOURCE_ROOT; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* dtw_exampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dtw_exampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
-		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
-		E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
-		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
+		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		E52995B095947CA458545C02 /* regression.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = regression.cpp; path = ../../../addons/ofxRapidLib/libs/regression.cpp; sourceTree = SOURCE_ROOT; };
-		EC2B6A2F988C01FF72271F08 /* classification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = classification.h; path = ../../../addons/ofxRapidLib/libs/classification.h; sourceTree = SOURCE_ROOT; };
-		F244D6EF8867E35EE6046253 /* libsvm.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = libsvm.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/libsvm/libsvm.cpp; sourceTree = SOURCE_ROOT; };
-		FD0A2D7DD93A8FD06EFA3C28 /* BayesianFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = BayesianFilter.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/BayesianFilter.cpp; sourceTree = SOURCE_ROOT; };
+		E52995B095947CA458545C02 /* regression.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = regression.cpp; path = ../../../addons/ofxRapidLib/libs/regression.cpp; sourceTree = SOURCE_ROOT; };
+		EC2B6A2F988C01FF72271F08 /* classification.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = classification.h; path = ../../../addons/ofxRapidLib/libs/classification.h; sourceTree = SOURCE_ROOT; };
+		F244D6EF8867E35EE6046253 /* libsvm.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = libsvm.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/libsvm/libsvm.cpp; sourceTree = SOURCE_ROOT; };
+		FD0A2D7DD93A8FD06EFA3C28 /* BayesianFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = BayesianFilter.cpp; path = ../../../addons/ofxRapidLib/libs/dependencies/bayesfilter/BayesianFilter.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,10 +119,10 @@
 		08D3265D372A9DE6D640B5C4 /* bayesfilter */ = {
 			isa = PBXGroup;
 			children = (
-				FD0A2D7DD93A8FD06EFA3C28 /* BayesianFilter.cpp */,
-				57123BFB33108C545ED26499 /* BayesianFilter.h */,
-				C4565618B92E9C4D0BFA6196 /* filter_utilities.cpp */,
 				1D9D9D2E2AD9A881E5897DCF /* filter_utilities.h */,
+				C4565618B92E9C4D0BFA6196 /* filter_utilities.cpp */,
+				57123BFB33108C545ED26499 /* BayesianFilter.h */,
+				FD0A2D7DD93A8FD06EFA3C28 /* BayesianFilter.cpp */,
 			);
 			name = bayesfilter;
 			sourceTree = "<group>";
@@ -130,8 +130,8 @@
 		1468CFFE2EEE1588D05A065C /* libsvm */ = {
 			isa = PBXGroup;
 			children = (
-				F244D6EF8867E35EE6046253 /* libsvm.cpp */,
 				353E61A97C6E155661C7A830 /* libsvm.h */,
+				F244D6EF8867E35EE6046253 /* libsvm.cpp */,
 			);
 			name = libsvm;
 			sourceTree = "<group>";
@@ -214,10 +214,10 @@
 		CE5685AA1FB4279783AAA268 /* dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				08D3265D372A9DE6D640B5C4 /* bayesfilter */,
 				837A266648C57A73FD8B2EF7 /* json */,
-				DA292E8E2AEA4A57EC8B8AB2 /* jsoncpp.cpp */,
 				1468CFFE2EEE1588D05A065C /* libsvm */,
+				08D3265D372A9DE6D640B5C4 /* bayesfilter */,
+				DA292E8E2AEA4A57EC8B8AB2 /* jsoncpp.cpp */,
 			);
 			name = dependencies;
 			sourceTree = "<group>";
@@ -273,6 +273,7 @@
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
 				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
 				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+				8466F1851C04CA0E00918B1C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -290,7 +291,7 @@
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "dtw_example" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -329,6 +330,19 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8466F1851C04CA0E00918B1C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"$GCC_PREPROCESSOR_DEFINITIONS\";\nAPPSTORE=`expr \"$GCC_PREPROCESSOR_DEFINITIONS\" : \".*APPSTORE=\\([0-9]*\\)\"`\nif [ -z \"$APPSTORE\" ] ; then\necho \"Note: Not copying bin/data to App Package or doing App Code signing. Use AppStore target for AppStore distribution\";\nelse\n# Copy bin/data into App/Resources\nrsync -avz --exclude='.DS_Store' \"${SRCROOT}/bin/data/\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/data/\"\n\n# ---- Code Sign App Package ----\n\n# WARNING: You may have to run Clean in Xcode after changing CODE_SIGN_IDENTITY!\n\n# Verify that $CODE_SIGN_IDENTITY is set\nif [ -z \"${CODE_SIGN_IDENTITY}\" ] ; then\necho \"CODE_SIGN_IDENTITY needs to be set for framework code-signing\"\nexit 0\nfi\n\nif [ -z \"${CODE_SIGN_ENTITLEMENTS}\" ] ; then\necho \"CODE_SIGN_ENTITLEMENTS needs to be set for framework code-signing!\"\n\nif [ \"${CONFIGURATION}\" = \"Release\" ] ; then\nexit 1\nelse\n# Code-signing is optional for non-release builds.\nexit 0\nfi\nfi\n\nITEMS=\"\"\n\nFRAMEWORKS_DIR=\"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\necho \"$FRAMEWORKS_DIR\"\nif [ -d \"$FRAMEWORKS_DIR\" ] ; then\nFRAMEWORKS=$(find \"${FRAMEWORKS_DIR}\" -depth -type d -name \"*.framework\" -or -name \"*.dylib\" -or -name \"*.bundle\" | sed -e \"s/\\(.*framework\\)/\\1\\/Versions\\/A\\//\")\nRESULT=$?\nif [[ $RESULT != 0 ]] ; then\nexit 1\nfi\n\nITEMS=\"${FRAMEWORKS}\"\nfi\n\nLOGINITEMS_DIR=\"${TARGET_BUILD_DIR}/${CONTENTS_FOLDER_PATH}/Library/LoginItems/\"\nif [ -d \"$LOGINITEMS_DIR\" ] ; then\nLOGINITEMS=$(find \"${LOGINITEMS_DIR}\" -depth -type d -name \"*.app\")\nRESULT=$?\nif [[ $RESULT != 0 ]] ; then\nexit 1\nfi\n\nITEMS=\"${ITEMS}\"$'\\n'\"${LOGINITEMS}\"\nfi\n\n# Prefer the expanded name, if available.\nCODE_SIGN_IDENTITY_FOR_ITEMS=\"${EXPANDED_CODE_SIGN_IDENTITY_NAME}\"\nif [ \"${CODE_SIGN_IDENTITY_FOR_ITEMS}\" = \"\" ] ; then\n# Fall back to old behavior.\nCODE_SIGN_IDENTITY_FOR_ITEMS=\"${CODE_SIGN_IDENTITY}\"\nfi\n\necho \"Identity:\"\necho \"${CODE_SIGN_IDENTITY_FOR_ITEMS}\"\n\necho \"Entitlements:\"\necho \"${CODE_SIGN_ENTITLEMENTS}\"\n\necho \"Found:\"\necho \"${ITEMS}\"\n\n# Change the Internal Field Separator (IFS) so that spaces in paths will not cause problems below.\nSAVED_IFS=$IFS\nIFS=$(echo -en \"\\n\\b\")\n\n# Loop through all items.\nfor ITEM in $ITEMS;\ndo\necho \"Signing '${ITEM}'\"\ncodesign --force --verbose --sign \"${CODE_SIGN_IDENTITY_FOR_ITEMS}\" --entitlements \"${CODE_SIGN_ENTITLEMENTS}\" \"${ITEM}\"\nRESULT=$?\nif [[ $RESULT != 0 ]] ; then\necho \"Failed to sign '${ITEM}'.\"\nIFS=$SAVED_IFS\nexit 1\nfi\ndone\n\n# Restore $IFS.\nIFS=$SAVED_IFS\n\nfi\n";
+		};
 		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -340,7 +354,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy default icon file into App/Resources\nrsync -aved \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy libfmod and change install directory for fmod to run\nrsync -aved ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/\";\ninstall_name_tool -change @executable_path/libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n# Copy GLUT framework (must remove for AppStore submissions)\nrsync -aved ../../../libs/glut/lib/osx/GLUT.framework \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/\"\n";
+			shellScript = "mkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy default icon file into App/Resources\nrsync -aved \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n# Copy libfmod and change install directory for fmod to run\nrsync -aved \"$OF_PATH/libs/fmodex/lib/osx/libfmodex.dylib\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/\";\ninstall_name_tool -change @executable_path/libfmodex.dylib @executable_path/../Frameworks/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n\necho \"$GCC_PREPROCESSOR_DEFINITIONS\";\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -351,22 +365,22 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
-				66CA904322CB0FEB4EAEB6B6 /* classification.cpp in Sources */,
-				D24E376090FA0DC8ABC30FD7 /* BayesianFilter.cpp in Sources */,
-				7C3A42DE764187C9042B8684 /* filter_utilities.cpp in Sources */,
-				4B4E224845BBEAEEB74132B3 /* jsoncpp.cpp in Sources */,
-				33E4A99ECA1C324D9A5B2AE1 /* libsvm.cpp in Sources */,
-				F60091D9E1574D60F473C31C /* dtw.cpp in Sources */,
-				31E86D8C989B466C3ED49B19 /* fastDTW.cpp in Sources */,
-				401B4259DD31A5747942A494 /* knnClassification.cpp in Sources */,
-				F8AD4AFCCDE980720BD58729 /* modelSet.cpp in Sources */,
-				4E169BF918C967A46B5AC16A /* neuralNetwork.cpp in Sources */,
 				12F307E16B47B13A7E4BA1C7 /* rapidStream.cpp in Sources */,
 				09CF5B9280532C6CF6B705F0 /* regression.cpp in Sources */,
-				C1BFCEEF1D0E6D35CFFC2554 /* searchWindow.cpp in Sources */,
-				30C0DD82688FD76230057F93 /* seriesClassification.cpp in Sources */,
 				64CD49DB2AEE555337F0F0BD /* svmClassification.cpp in Sources */,
+				31E86D8C989B466C3ED49B19 /* fastDTW.cpp in Sources */,
+				F60091D9E1574D60F473C31C /* dtw.cpp in Sources */,
+				4E169BF918C967A46B5AC16A /* neuralNetwork.cpp in Sources */,
+				33E4A99ECA1C324D9A5B2AE1 /* libsvm.cpp in Sources */,
+				7C3A42DE764187C9042B8684 /* filter_utilities.cpp in Sources */,
+				D24E376090FA0DC8ABC30FD7 /* BayesianFilter.cpp in Sources */,
+				4B4E224845BBEAEEB74132B3 /* jsoncpp.cpp in Sources */,
+				C1BFCEEF1D0E6D35CFFC2554 /* searchWindow.cpp in Sources */,
+				F8AD4AFCCDE980720BD58729 /* modelSet.cpp in Sources */,
+				66CA904322CB0FEB4EAEB6B6 /* classification.cpp in Sources */,
 				681F19F7152171CAB7CB20E9 /* warpPath.cpp in Sources */,
+				30C0DD82688FD76230057F93 /* seriesClassification.cpp in Sources */,
+				401B4259DD31A5747942A494 /* knnClassification.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +395,101 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		99FA3DBB1C7456C400CFA0EE /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "DISTRIBUTION=1";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxRapidLib/libs,
+					../../../addons/ofxRapidLib/libs/dependencies,
+					../../../addons/ofxRapidLib/libs/dependencies/bayesfilter,
+					../../../addons/ofxRapidLib/libs/dependencies/json,
+					../../../addons/ofxRapidLib/libs/dependencies/libsvm,
+					../../../addons/ofxRapidLib/src,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-mtune=native",
+				);
+				SDKROOT = macosx;
+			};
+			name = AppStore;
+		};
+		99FA3DBC1C7456C400CFA0EE /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = "APPSTORE=1";
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxRapidLib/libs,
+					../../../addons/ofxRapidLib/libs/dependencies,
+					../../../addons/ofxRapidLib/libs/dependencies/bayesfilter,
+					../../../addons/ofxRapidLib/libs/dependencies/json,
+					../../../addons/ofxRapidLib/libs/dependencies/libsvm,
+					../../../addons/ofxRapidLib/src,
+				);
+				ICON = "$(ICON_NAME_RELEASE)";
+				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = /Applications;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.openFrameworks.ofapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
+			};
+			name = AppStore;
+		};
 		E4B69B4E0A3A1720003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
@@ -390,11 +499,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -425,8 +536,6 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					../../../addons/ofxMaxim/libs,
-					../../../addons/ofxMaxim/src,
 					../../../addons/ofxRapidLib/libs,
 					../../../addons/ofxRapidLib/libs/dependencies,
 					../../../addons/ofxRapidLib/libs/dependencies/bayesfilter,
@@ -434,7 +543,7 @@
 					../../../addons/ofxRapidLib/libs/dependencies/libsvm,
 					../../../addons/ofxRapidLib/src,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
@@ -453,11 +562,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -488,8 +599,6 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					../../../addons/ofxMaxim/libs,
-					../../../addons/ofxMaxim/src,
 					../../../addons/ofxRapidLib/libs,
 					../../../addons/ofxRapidLib/libs/dependencies,
 					../../../addons/ofxRapidLib/libs/dependencies/bayesfilter,
@@ -497,7 +606,7 @@
 					../../../addons/ofxRapidLib/libs/dependencies/libsvm,
 					../../../addons/ofxRapidLib/src,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
@@ -510,20 +619,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					../../../addons/ofxMaxim/libs,
-					../../../addons/ofxMaxim/src,
 					../../../addons/ofxRapidLib/libs,
 					../../../addons/ofxRapidLib/libs/dependencies,
 					../../../addons/ofxRapidLib/libs/dependencies/bayesfilter,
@@ -546,19 +650,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					../../../addons/ofxMaxim/libs,
-					../../../addons/ofxMaxim/src,
 					../../../addons/ofxRapidLib/libs,
 					../../../addons/ofxRapidLib/libs/dependencies,
 					../../../addons/ofxRapidLib/libs/dependencies/bayesfilter,
@@ -586,6 +685,7 @@
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
 				E4B69B4F0A3A1720003C02F2 /* Release */,
+				99FA3DBB1C7456C400CFA0EE /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -595,6 +695,7 @@
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,
 				E4B69B610A3A1757003C02F2 /* Release */,
+				99FA3DBC1C7456C400CFA0EE /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

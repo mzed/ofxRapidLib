@@ -34,9 +34,9 @@ public:
     ofTrueTypeFont  font;
     
     //-----RAPID-MIX-----//
-    std::vector<trainingExample> myData;
+    std::vector<rapidlib::trainingExample> myData;
     int recordingState;
-    classification myKnn;
+    rapidlib::classification myKnn;
     bool runToggle;
     int result;
     

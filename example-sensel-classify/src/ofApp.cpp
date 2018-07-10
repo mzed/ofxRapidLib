@@ -1,13 +1,15 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){
+void ofApp::setup()
+{
     
     ofBackground(0,0,0);
     ofEnableAlphaBlending();
     
     //Sensel
     senselGetDeviceList(&senselList);
+    
     if (senselList.num_devices == 0)
     {
         std::cerr << "No device found" << std::endl;
@@ -31,10 +33,11 @@ void ofApp::setup(){
     }
     
     //Maxim
+    soundOn = false;
     sampleRate 	= 44100; /* Sampling Rate */
     bufferSize	= 512; /* Buffer Size. you have to fill this buffer with sound using the for loop in the audioOut method */
     ofSetDataPathRoot("../Resources/data/");
-    
+    loaded1 = loaded2 = loaded2 = false;
     loaded1 = loop_1.load(ofToDataPath("SOLAR.WAV"));
     std::cout << "Sample 1 " << loaded1 << std::endl;
     loaded2 = loop_2.load(ofToDataPath("DE-LA-~1.WAV"));
@@ -43,12 +46,24 @@ void ofApp::setup(){
     std::cout << "Sample 3 " << loaded3 << std::endl;
     
     ofxMaxiSettings::setup(sampleRate, 2, initialBufferSize);
-    ofSoundStreamSetup(2,0,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */
+    
+    //ofSoundStreamSettings ofSSS;
+    //ofSSS.numOutputChannels = 2;
+    //ofSSS.numBuffers = 4;
+    //ofSSS.bufferSize = bufferSize;
+    //ofSSS.sampleRate = sampleRate;
+    //ofSSS.setOutListener(this);
+    //ofSoundStreamSetup(ofSSS); // this has to happen at the end of setup - it switches on the DAC
+    
+    ofSoundStreamSetup(2, 0, this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */
 }
 
 //--------------------------------------------------------------
-void ofApp::exit(){
-    if (senselFound) {
+void ofApp::exit()
+{
+    if (senselFound)
+    {
+        senselStopScanning(senselHandle);
         senselClose(senselHandle);
     }
     ofSoundStreamStop();
@@ -56,27 +71,33 @@ void ofApp::exit(){
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
-    if (senselFound) {
+void ofApp::update()
+{
+    if (senselFound)
+    {
         //------- SENSEL ---------------//
         std::vector<double> senselInput;
         uint numFrames=0;
         senselReadSensor(senselHandle);
         senselGetNumAvailableFrames(senselHandle, &numFrames);
-        for (int i = 0; i < numFrames; ++i) {
+        for (int i = 0; i < numFrames; ++i)
+        {
             senselGetFrame(senselHandle, senselFrame);
             senselInput.clear();
             int arraySize = senselInfo.num_cols * senselInfo.num_rows;
-            for (int j = 0; j < arraySize; ++j) {
+            for (int j = 0; j < arraySize; ++j)
+            {
                 senselInput.push_back(double(senselFrame->force_array[j]));
             }
         }
         
         //-------RapidLib---------------//
-        if (runToggle) {
+        if (runToggle)
+        {
             result = myKnn.run(senselInput)[0];
             std::cout << "result " << result << std::endl;
-            switch (result) {
+            switch (result)
+            {
                 case 2:
                     senselSetLEDBrightness(senselHandle, 4, 255);
                     senselSetLEDBrightness(senselHandle, 12, 0);
@@ -99,8 +120,9 @@ void ofApp::update(){
             }
         }
         
-        if (recordingState) {
-            trainingExample tempExample;
+        if (recordingState)
+        {
+            rapidlib::trainingExample tempExample;
             tempExample.input = senselInput;
             tempExample.output = { double(recordingState) };
             trainingSet.push_back(tempExample);
@@ -110,46 +132,56 @@ void ofApp::update(){
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
-    if (senselFound) {
+void ofApp::draw()
+{
+    if (senselFound)
+    {
         ofDrawBitmapString("Press 1 to record an example of an empty class", 20, 20);
         ofDrawBitmapString("Put an object on the morph and pres 2, 3, or 4 to record", 20, 40);
-        ofDrawBitmapString("examples of that class", 20, 55);
+        ofDrawBitmapString("examples of that class. Examples are sensitive to position,", 20, 55);
+        ofDrawBitmapString("so record multiple examples of the object in different places.", 20, 70);
         ofDrawBitmapString("identified class " + std::to_string(result), 20, 200);
-    } else {
+        if (!soundOn) ofDrawBitmapString("Press space to turn on sound", 20, 250);
+        ofDrawBitmapString("v0.1", 600, 470);
+    } else
+    {
         ofDrawBitmapString("Could not find a sensel device", 20, 200);
     }
 }
 
 
 //--------------------------------------------------------------
-void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
+void ofApp::audioOut(float * output, int bufferSize, int nChannels)
+{
     for (int i = 0; i < bufferSize; ++i) {
-        double loopOutput;
-        switch (result) {
+        double loopOutput = 0;
+        switch (result)
+        {
             case 2:
-                if (loaded1) loopOutput = loop_1.play();
+                if (loaded1 && soundOn) loopOutput = loop_1.play();
                 break;
             case 3:
-                if (loaded2) loopOutput = loop_2.play();
+                if (loaded2 && soundOn) loopOutput = loop_2.play();
                 break;
             case 4:
-                if (loaded3) loopOutput = loop_3.play();
+                if (loaded3 && soundOn) loopOutput = loop_3.play();
                 break;
             default:
                 loopOutput = 0;
         }
         
         mymix.stereo(loopOutput, outputs, 0.5);
-        output[i*nChannels    ] = outputs[0];
-        output[i*nChannels + 1] = outputs[1];
+        output[i * nChannels    ] = outputs[0];
+        output[i * nChannels + 1] = outputs[1];
     }
 }
 
 
 //--------------------------------------------------------------
-void ofApp::keyPressed  (int key){
-    switch(key) {
+void ofApp::keyPressed (int key)
+{
+    switch(key)
+    {
         case 49:
             recordingState = 1;
             break;
@@ -163,18 +195,17 @@ void ofApp::keyPressed  (int key){
             recordingState = 4;
             break;
         case 32:
-            runToggle = (runToggle) ? false : true;
-            if (!runToggle) {
-                result = 0;
-            }
+            soundOn = true;
+            break;
     }
-    std::cout << "runToggle " << runToggle << std::endl;
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key){
+void ofApp::keyReleased (int key)
+{
     recordingState = 0;
-    if(trainingSet.size() > 0) {
+    if(trainingSet.size() > 0)
+    {
         myKnn.train(trainingSet);
         std::cout << "Trained with " << trainingSet.size() << " examples." << std::endl;
         runToggle = true;

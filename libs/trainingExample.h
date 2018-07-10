@@ -13,6 +13,8 @@
 #include <vector>
 #include <string>
 
+
+
 /** This is used by both NN and KNN models for training */
 template<typename T>
 struct trainingExampleTemplate {
@@ -20,9 +22,11 @@ struct trainingExampleTemplate {
     std::vector<T> output;
 };
 
-//This is here to keep the old API working
-using trainingExample = trainingExampleTemplate<double>;
-using trainingExampleFloat = trainingExampleTemplate<float>;
+namespace rapidlib {
+    //This is here to keep the old API working
+    using trainingExample = trainingExampleTemplate<double>;
+    using trainingExampleFloat = trainingExampleTemplate<float>;
+}
 
 /** This is used by DTW models for training */
 template<typename T>
@@ -31,8 +35,11 @@ struct trainingSeriesTemplate {
     std::string label;
 };
 
-//This is here to keep the old API working
-using trainingSeries = trainingSeriesTemplate<double> ;
-using trainingSeriesFloat = trainingSeriesTemplate<float>;
+namespace rapidlib {
+    
+    //This is here to keep the old API working
+    using trainingSeries = trainingSeriesTemplate<double> ;
+    using trainingSeriesFloat = trainingSeriesTemplate<float>;
+}
 
 #endif

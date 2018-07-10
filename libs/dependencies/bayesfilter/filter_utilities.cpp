@@ -15,11 +15,11 @@
 
 void filtfilt(vector<double> const& b, vector<double> const& a, vector<double> & x, vector<double> & y, PADTYPE padtype, int padlen)
 {
-    int ntaps = max(a.size(), b.size());
+    unsigned long ntaps = max(a.size(), b.size());
     
     if (padtype == NONE)
         padlen=0;
-    unsigned int edge;
+    unsigned long edge;
     if (padlen < 0)
         edge = ntaps * 3;
     else
@@ -81,7 +81,7 @@ void lfilter(vector<double> const& b, vector<double> const& a, vector<double> co
     vector<double> _a = a;
     
     // Pad a or b with zeros so they are the same length.
-    unsigned int k = max(a.size(), b.size());
+    unsigned long k = max(a.size(), b.size());
     
     if (_a.size() < k)
         _a.resize(k, 0.);
@@ -97,7 +97,7 @@ void lfilter(vector<double> const& b, vector<double> const& a, vector<double> co
     }
     
     vector<double> z = zi;
-    unsigned int n = x.size();
+    unsigned long n = x.size();
     y.resize(n);
     for (unsigned int m=0; m<n; m++) {
         y[m] = _b[0] * x[m] + z[0];
@@ -121,7 +121,7 @@ void lfilter_zi(vector<double> const& b, vector<double> const& a, vector<double>
         }
     }
     
-    unsigned int n = max(_a.size(), _b.size());
+    unsigned long n = max(_a.size(), _b.size());
     
     // Pad a or b with zeros so they are the same length.
     if (_a.size() < n)

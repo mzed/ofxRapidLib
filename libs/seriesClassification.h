@@ -114,10 +114,15 @@ private:
     std::vector<std::vector<T> > seriesBuffer;
     int hopSize;
     int counter;
+    
+    int findClosestSeries() const;
+    void runThread(const std::vector<std::vector<T>> &inputSeries, int i);
 };
 
-//This is here to keep the old API working
-using seriesClassification = seriesClassificationTemplate<double>;
-using seriesClassificationFloat = seriesClassificationTemplate<float>;
+namespace rapidlib {
+    //This is here to keep the old API working
+    using seriesClassification = seriesClassificationTemplate<double>;
+    using seriesClassificationFloat = seriesClassificationTemplate<float>;
+}
 
 #endif

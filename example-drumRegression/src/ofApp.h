@@ -34,7 +34,6 @@ public:
     ofxIntSlider thung0, thung1, thung2, thung3;
     ofxIntSlider thung4, thung5, thung6, thung7;
     ofxIntSlider thung8, thung9, thung10, thung11;
-    std::vector<ofxIntSlider> thungs;
     ofxPanel guiThung;
 
     ofxIntSlider tong0, tong1, tong2, tong3;
@@ -49,7 +48,7 @@ public:
     ofxButton probsClear;
     ofxPanel guiGeneral;
     
-    std::vector<ofxIntSlider> allSliders;
+    std::vector<ofxIntSlider *> allSliders;
     
     //Maxi
     void audioOut(float * output, int bufferSize, int nChannels);
@@ -80,11 +79,11 @@ private:
     int currentBeat;
     
     //---------RapidLib---------------//
-    regression myNN;
-    std::vector<trainingExample> trainingSet;
+    rapidlib::regression myNN;
+    std::vector<rapidlib::trainingExample> trainingSet;
     int recordingState;
     bool trained;
     
-    rapidStream<double> streamBuf{25};
+    rapidlib::rapidStream<double> streamBuf{25};
     
 };

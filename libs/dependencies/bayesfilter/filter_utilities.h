@@ -38,7 +38,7 @@ void lfilter(vector<double> const& b, vector<double> const& a, vector<double> co
  
  */
 template <typename datatype>
-void even_ext(vector<datatype> const& src, vector<datatype> & dst, unsigned int n)
+void even_ext(vector<datatype> const& src, vector<datatype> & dst, unsigned long n)
 {
     if (n<1)
         dst = src;
@@ -48,20 +48,20 @@ void even_ext(vector<datatype> const& src, vector<datatype> & dst, unsigned int 
     dst.resize(2 * n + src.size());
     
     int t(0);
-    for (int i=n; i>0; i--) {
+    for (unsigned long i = n; i > 0; --i) {
         dst[t++] = src[i];
     }
     copy(src.begin(), src.end(), dst.begin()+n);
     
     t += src.size();
-    for (unsigned int i=src.size()-2; i>src.size()-n-2; i--) {
+    for (unsigned long i = src.size() - 2; i > src.size() - n - 2; --i) {
         dst[t++] = src[i];
     }
 }
 
 // 1D python-like odd_ext
 template <typename datatype>
-void odd_ext(vector<datatype> const& src, vector<datatype> & dst, unsigned int n)
+void odd_ext(vector<datatype> const& src, vector<datatype> & dst, unsigned long n)
 {
     if (n<1)
         dst = src;
@@ -71,20 +71,20 @@ void odd_ext(vector<datatype> const& src, vector<datatype> & dst, unsigned int n
     dst.resize(2 * n + src.size());
     
     int t(0);
-    for (int i=n; i>0; i--) {
+    for (unsigned long i=n; i>0; i--) {
         dst[t++] = 2 * src[0] - src[i];
     }
     copy(src.begin(), src.end(), dst.begin()+n);
     
     t += src.size();
-    for (unsigned int i=src.size()-2; i>src.size()-n-2; i--) {
+    for (unsigned long i = src.size() - 2; i > src.size() - n - 2; --i) {
         dst[t++] = 2 * src[src.size()-1] - src[i];
     }
 }
 
 // 1D python-like const_ext
 template <typename datatype>
-void const_ext(vector<datatype> const& src, vector<datatype> & dst, unsigned int n)
+void const_ext(vector<datatype> const& src, vector<datatype> & dst, unsigned long n)
 {
     if (n<1)
         dst = src;
@@ -94,13 +94,13 @@ void const_ext(vector<datatype> const& src, vector<datatype> & dst, unsigned int
     dst.resize(2 * n + src.size());
     
     int t(0);
-    for (int i=n; i>0; i--) {
+    for (unsigned long i = n; i > 0; --i) {
         dst[t++] = src[0];
     }
     copy(src.begin(), src.end(), dst.begin()+n);
     
     t += src.size();
-    for (unsigned int i=src.size()-2; i>src.size()-n-2; i--) {
+    for (unsigned long i = src.size() - 2; i > src.size() - n - 2; --i) {
         dst[t++] = src[src.size()-1];
     }
 }

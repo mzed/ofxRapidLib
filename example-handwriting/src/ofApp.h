@@ -30,9 +30,9 @@ private:
     char instructionCount;
     
     //RapidLib
-    seriesClassification classifier;
-    std::vector<trainingSeries> trainingSet;
-    trainingSeries tempSeries;
+    rapidlib::seriesClassification classifier;
+    std::vector<rapidlib::trainingSeries> trainingSet;
+    rapidlib::trainingSeries tempSeries;
     bool trained;
     std::string classLabel;
     

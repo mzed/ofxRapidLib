@@ -11,6 +11,7 @@
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include <thread>
 #include "modelSet.h"
 
 #ifndef EMSCRIPTEN
@@ -29,13 +30,15 @@ numOutputs(-1)
 
 template<typename T>
 modelSet<T>::~modelSet() {
-    for (typename std::vector<baseModel<T>*>::const_iterator i = myModelSet.cbegin(); i != myModelSet.cend(); ++i) {
-        delete *i;
+    for (auto& model : myModelSet) {
+        delete model;
     }
 };
 
 template<typename T>
 bool modelSet<T>::train(const std::vector<trainingExampleTemplate<T> > &training_set) {
+    
+    //Check to see if the set is consistant
     for (trainingExampleTemplate<T> example : training_set) {
         if (example.input.size() != numInputs) {
             throw std::length_error("unequal feature vectors in input.");
@@ -46,26 +49,37 @@ bool modelSet<T>::train(const std::vector<trainingExampleTemplate<T> > &training
             return false;
         }
     }
+    
+    // Multithreaded training
+    std::vector<std::thread> trainingThreads;
     for (int i = 0; i < myModelSet.size(); ++i) {
-        std::vector<trainingExampleTemplate<T> > modelTrainingSet; //just one output
-        for (trainingExampleTemplate<T> example : training_set) {
-            std::vector<T> tempT;
-            for (int j = 0; j < numInputs; ++j) {
-                tempT.push_back(example.input[j]);
-            }
-            trainingExampleTemplate<T> tempObj = {tempT, std::vector<T> {example.output[i]}};
-            modelTrainingSet.push_back(tempObj);
-        }
-        myModelSet[i]->train(modelTrainingSet);
+        trainingThreads.push_back(std::thread(&modelSet<T>::threadTrain, this, i, training_set));
+    }
+    for (int i = 0; i < myModelSet.size(); ++i) {
+        trainingThreads.at(i).join();
     }
     created = true;
     return true;
 }
 
 template<typename T>
+void modelSet<T>::threadTrain(int i, const std::vector<trainingExampleTemplate<T> > &training_set) {
+    std::vector<trainingExampleTemplate<T> > modelTrainingSet; //just one output
+    for (trainingExampleTemplate<T> example : training_set) {
+        std::vector<T> tempT;
+        for (int j = 0; j < numInputs; ++j) {
+            tempT.push_back(example.input[j]);
+        }
+        trainingExampleTemplate<T> tempObj = {tempT, std::vector<T> {example.output[i]}};
+        modelTrainingSet.push_back(tempObj);
+    }
+    myModelSet[i]->train(modelTrainingSet);
+}
+
+template<typename T>
 bool modelSet<T>::reset() {
-    for (typename std::vector<baseModel<T>*>::const_iterator i = myModelSet.cbegin(); i != myModelSet.cend(); ++i) {
-        delete *i;
+    for (auto& model : myModelSet) {
+        delete model;
     }
     myModelSet.clear();
     numInputs = -1;

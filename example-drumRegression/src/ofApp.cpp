@@ -51,30 +51,30 @@ void ofApp::setup(){
     guiGeneral.add(probsClear.setup("clear"));
     
     //This will make life easier later
-    allSliders.push_back(tong0);
-    allSliders.push_back(tong1);
-    allSliders.push_back(tong2);
-    allSliders.push_back(tong3);
-    allSliders.push_back(tong4);
-    allSliders.push_back(tong5);
-    allSliders.push_back(tong6);
-    allSliders.push_back(tong7);
-    allSliders.push_back(tong8);
-    allSliders.push_back(tong9);
-    allSliders.push_back(tong10);
-    allSliders.push_back(tong11);
-    allSliders.push_back(thung0);
-    allSliders.push_back(thung1);
-    allSliders.push_back(thung2);
-    allSliders.push_back(thung3);
-    allSliders.push_back(thung4);
-    allSliders.push_back(thung5);
-    allSliders.push_back(thung6);
-    allSliders.push_back(thung7);
-    allSliders.push_back(thung8);
-    allSliders.push_back(thung9);
-    allSliders.push_back(thung10);
-    allSliders.push_back(thung11);
+    allSliders.push_back(&tong0);
+    allSliders.push_back(&tong1);
+    allSliders.push_back(&tong2);
+    allSliders.push_back(&tong3);
+    allSliders.push_back(&tong4);
+    allSliders.push_back(&tong5);
+    allSliders.push_back(&tong6);
+    allSliders.push_back(&tong7);
+    allSliders.push_back(&tong8);
+    allSliders.push_back(&tong9);
+    allSliders.push_back(&tong10);
+    allSliders.push_back(&tong11);
+    allSliders.push_back(&thung0);
+    allSliders.push_back(&thung1);
+    allSliders.push_back(&thung2);
+    allSliders.push_back(&thung3);
+    allSliders.push_back(&thung4);
+    allSliders.push_back(&thung5);
+    allSliders.push_back(&thung6);
+    allSliders.push_back(&thung7);
+    allSliders.push_back(&thung8);
+    allSliders.push_back(&thung9);
+    allSliders.push_back(&thung10);
+    allSliders.push_back(&thung11);
     
     //RapidLib
     trained = false;
@@ -92,7 +92,7 @@ void ofApp::setup(){
     bufferSize	= 512;
     
     ofxMaxiSettings::setup(sampleRate, 2, initialBufferSize);
-    ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4);
+    ofSoundStreamSetup(2, 2, this, sampleRate, bufferSize, 4);
 }
 
 //--------------------------------------------------------------
@@ -113,10 +113,10 @@ void ofApp::update(){
         
         if (inputDevice) {
             if (recordingState > 0) {
-                trainingExample tempExample;
+                rapidlib::trainingExample tempExample;
                 tempExample.input = { myoX, myoY, myoZ, myoW };
                 for (int i = 0; i < allSliders.size() ; ++i) {
-                    tempExample.output.push_back(double(allSliders[i]));
+                    tempExample.output.push_back(double(*allSliders[i]));
                 }
                 trainingSet.push_back(tempExample);
             } else if (trained && modelControl == 1) {
@@ -128,7 +128,7 @@ void ofApp::update(){
                 std::vector<double> output = myNN.run(inputVec);
                 
                 for (int i = 0; i < output.size(); ++i) {
-                    allSliders[i] = int(output[i]);
+                    allSliders[i]->operator=(int(output[i]));
                 }
             }
         }
@@ -137,7 +137,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::exit(){
-    myo.stop();
+    //myo.stop();
 }
 
 
@@ -153,7 +153,7 @@ void ofApp::draw(){
     
     if (inputDevice) {
         ofSetColor(255);
-        for ( int i=0; i<myo.getDevices().size(); i++ ) {
+        for ( int i = 0; i < myo.getDevices().size(); ++i ) {
             stringstream s;
             s << "id: " << myo.getDevices()[i]->getId() << endl;
             s << "which: " << myo.getDevices()[i]->getWhichArm() << endl;
@@ -185,7 +185,6 @@ void ofApp::draw(){
             ofDrawBitmapString(s.str(), 10, 400 + i*100);
         }
     }
-    
 }
 
 //--------------------------------------------------------------
@@ -220,8 +219,8 @@ void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
     bool beatsTong[12];
     bool beats2[12];
     for (int i = 0; i < 12; ++i) {
-        beatsTong[i] = eventTest(allSliders[i]);
-        beats2[i] = eventTest(allSliders[i + 12]);
+        beatsTong[i] = eventTest(*allSliders[i]);
+        beats2[i] = eventTest(*allSliders[i + 12]);
     }
     int lastCount = 0;
     int testMe = 0;
@@ -272,10 +271,10 @@ void ofApp::keyReleased(int key){
 void ofApp::mouseMoved(int x, int y ){
     if (inputDevice == false) { //don't do this with Myo is on
         if (recordingState > 0) {
-            trainingExample tempExample;
+            rapidlib::trainingExample tempExample;
             tempExample.input = { double(x), double(y) };
             for (int i = 0; i < allSliders.size() ; ++i) {
-                tempExample.output.push_back(double(allSliders[i]));
+                tempExample.output.push_back(double(*allSliders[i]));
             }
             trainingSet.push_back(tempExample);
         } else if (trained && modelControl == 1) {
@@ -285,7 +284,7 @@ void ofApp::mouseMoved(int x, int y ){
             std::vector<double> output = myNN.run(inputVec);
             
             for (int i = 0; i < output.size(); ++i) {
-                allSliders[i] = int(output[i]);
+                allSliders[i]->operator=(int(output[i]));
             }
         }
     }
