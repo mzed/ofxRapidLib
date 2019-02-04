@@ -16,6 +16,8 @@
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>NSCameraUsageDescription</key>
+	<string>for object classification</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 </dict>

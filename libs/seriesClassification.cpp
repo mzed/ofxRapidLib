@@ -101,7 +101,6 @@ T seriesClassificationTemplate<T>::run(const std::vector<std::vector<T>> &inputS
     //TODO: Check to see if trained
     allCosts.clear();
     std::vector<std::thread> runningThreads;
-    T lowestCost = std::numeric_limits<T>::max();
     int seriesIndex;
     for (int i = 0; i < allTrainingSeries.size(); ++i) {
         if (allTrainingSeries[i].label == label) {
