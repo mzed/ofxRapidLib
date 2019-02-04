@@ -13,7 +13,7 @@
 #include "baseModel.h"
 
 #ifndef EMSCRIPTEN
-#include "../dependencies/json/json.h"
+#include "../libs/dependencies/json/json.h"
 #endif
 
 /** Class for implementing a knn classifier */

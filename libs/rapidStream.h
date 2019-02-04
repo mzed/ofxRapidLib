@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 #include <atomic>
-#include "../dependencies/bayesfilter/BayesianFilter.h"
+#include "../libs/dependencies/bayesfilter/BayesianFilter.h"
 
 namespace rapidlib {
     template<typename T>

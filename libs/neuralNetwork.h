@@ -12,7 +12,7 @@
 #include "baseModel.h"
 
 #ifndef EMSCRIPTEN
-#include "../dependencies/json/json.h"
+#include "../libs/dependencies/json/json.h"
 #endif
 
 #define LEARNING_RATE 0.3
