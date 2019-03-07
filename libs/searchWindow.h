@@ -6,8 +6,7 @@
  * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
  */
 
-#ifndef searchWindow_h
-#define searchWindow_h
+#pragma once
 
 #include <vector>
 #include "warpPath.h"
@@ -16,7 +15,8 @@
  * These are cells within a specified search radius of a lower resolution path.
  */
 template<typename T>
-class searchWindow {
+class searchWindow
+{
 public:
     searchWindow(const int seriesXSize,
                  const int seriesYSize,
@@ -30,5 +30,3 @@ private:
     inline void markVisited(int col, int row);
     void expandWindow(int searchRadius);
 };
-
-#endif /* searchWindow_h */

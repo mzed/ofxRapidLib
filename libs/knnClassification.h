@@ -6,8 +6,7 @@
 //  Copyright © 2016 Goldsmiths. All rights reserved.
 //
 
-#ifndef knnClassification_h
-#define knnClassification_h
+#pragma once
 
 #include <vector>
 #include "baseModel.h"
@@ -88,6 +87,3 @@ private:
     inline void updateK();
     std::pair<int, T>* nearestNeighbours;
 };
-
-#endif
-

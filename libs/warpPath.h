@@ -6,13 +6,13 @@
  * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
  */
 
-#ifndef warpPath_h
-#define warpPath_h
+#pragma once
 
 #include <vector>
 
 /** Class to hold warp paths through a cost matrix */
-class warpPath {
+class warpPath
+{
 public:
     warpPath();
     ~warpPath();
@@ -26,11 +26,10 @@ public:
 };
 
 /** return struct holding a warp path and the cost of that path */
-struct warpInfo {
+struct warpInfo
+{
 public:
     warpPath path;
     double cost;
     
 };
-
-#endif /* warpPath_h */

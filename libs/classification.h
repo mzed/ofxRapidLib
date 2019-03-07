@@ -6,8 +6,7 @@
 //  Copyright © 2016 Goldsmiths. All rights reserved.
 //
 
-#ifndef classification_h
-#define classification_h
+#pragma once
 
 #include <vector>
 #include "modelSet.h"
@@ -18,7 +17,8 @@
  */
 
 template<typename T>
-class classificationTemplate final : public modelSet<T> {
+class classificationTemplate final : public modelSet<T>
+{
 public:
     enum classificationTypes { knn, svm };
     
@@ -50,10 +50,9 @@ private:
     classificationTypes classificationType;
 };
 
-namespace rapidlib {
+namespace rapidlib
+{
     //This is here so that the old API still works as expected.
     using classification = classificationTemplate<double>;
     using classificationFloat = classificationTemplate<float>;
 }
-
-#endif

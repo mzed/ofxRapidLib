@@ -8,8 +8,7 @@
  */
 
 
-#ifndef baseModel_h
-#define baseModel_h
+#pragma once
 
 #include <vector>
 #include "trainingExample.h"
@@ -62,6 +61,4 @@ protected:
         return toReturn;
     }
 #endif
-    
 };
-#endif

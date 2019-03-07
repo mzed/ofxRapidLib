@@ -7,8 +7,7 @@
  * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
  */
 
-#ifndef dtw_h
-#define dtw_h
+#pragma once
 
 #include <vector>
 #include "warpPath.h"
@@ -34,5 +33,3 @@ private:
     std::vector<std::vector<T> > costMatrix;
     warpPath calculatePath(int seriesXsize, int seriesYsize) const;
 };
-
-#endif /* dtw_h */

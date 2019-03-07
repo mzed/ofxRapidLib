@@ -17,7 +17,8 @@ template<typename T>
 fastDTW<T>::~fastDTW() {};
 
 template<typename T>
-warpInfo fastDTW<T>::fullFastDTW(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY, int searchRadius){
+warpInfo fastDTW<T>::fullFastDTW(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY, int searchRadius)
+{
     
 #ifndef EMSCRIPTEN
     if (seriesY.size() > seriesX.size()) {

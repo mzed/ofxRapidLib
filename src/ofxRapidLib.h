@@ -2,7 +2,7 @@
  * RapidLib - a simple machine learning library for creative misues
  *
  * Created by Michael Zbyszynski, 13/07/2017
- * Copyright (c) 2016, 2017 Goldsmiths College University of London
+ * Copyright (c) 2016-2019 Goldsmiths College University of London
  * All rights reserved.
  *  Permission is hereby granted, free of charge, to any person
  *  obtaining a copy of this software and associated documentation
@@ -28,12 +28,9 @@
  *
  */
 
-#ifndef ofxRapidLib_h
-#define ofxRapidLib_h
+#pragma once
 
 #include "../libs/classification.h"
 #include "../libs/regression.h"
 #include "../libs/seriesClassification.h"
 #include "../libs/rapidStream.h"
-
-#endif

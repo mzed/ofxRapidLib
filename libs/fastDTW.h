@@ -6,15 +6,15 @@
  * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
  */
 
-#ifndef fastDTW_h
-#define fastDTW_h
+#pragma once
 
 #include <vector>
 #include "warpPath.h"
 
 /** Class for performing an fast dynamic time warping between two time series*/
 template<typename T>
-class fastDTW {
+class fastDTW
+{
 public:
     fastDTW();
     ~fastDTW();
@@ -56,6 +56,3 @@ private:
     inline static std::vector<std::vector<T> > downsample(const std::vector<std::vector<T>> &series, T resolution);
     
 };
-
-
-#endif /* fastDTW_h */

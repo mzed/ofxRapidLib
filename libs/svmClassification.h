@@ -7,8 +7,7 @@
  * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
  */
 
-#ifndef svm_h
-#define svm_h
+#pragma once
 
 #include <vector>
 #include "baseModel.h"
@@ -124,10 +123,3 @@ private:
     
     bool trained;
 };
-
-#endif
-
-
-
-
-

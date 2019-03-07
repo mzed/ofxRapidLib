@@ -41,9 +41,8 @@ public:
     int result;
     
     //-----MAXI-----//
-    int bufferSize;
-    int	initialBufferSize;
-    int sampleRate;
+    std::size_t bufferSize;
+    std::size_t sampleRate;
     void audioOut(ofSoundBuffer& output) override;
     ofSoundStream soundStream;
     double outputs[2];

@@ -6,8 +6,7 @@
 //  Copyright © 2016 Goldsmiths. All rights reserved.
 //
 
-#ifndef modelSet_h
-#define modelSet_h
+#pragma once
 
 #include <vector>
 #include "trainingExample.h"
@@ -57,5 +56,3 @@ private:
 
 #endif
 };
-
-#endif

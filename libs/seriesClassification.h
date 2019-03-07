@@ -7,8 +7,7 @@
  * @copyright Copyright © 2017 Goldsmiths. All rights reserved.
  */
 
-#ifndef seriesClassification_hpp
-#define seriesClassification_hpp
+#pragma once
 
 #include <vector>
 #include <string>
@@ -125,4 +124,3 @@ namespace rapidlib {
     using seriesClassificationFloat = seriesClassificationTemplate<float>;
 }
 
-#endif
