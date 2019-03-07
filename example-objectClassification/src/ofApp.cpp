@@ -23,8 +23,8 @@ void ofApp::setup(){
     
     ofEnableAlphaBlending();
     
-    sampleRate 	= 44100; /* Sampling Rate */
-    bufferSize	= 512; /* Buffer Size. you have to fill this buffer with sound using the for loop in the audioOut method */
+    sampleRate 	= 44100;
+    bufferSize	= 512;
     
     gam_1.load(ofToDataPath("261938__digitopia-cdm__saron-sdpl1.wav"));
     gam_3.load(ofToDataPath("261730__digitopia-cdm__saron-sdpl3.wav"));
@@ -34,8 +34,15 @@ void ofApp::setup(){
     gam_7.load(ofToDataPath("261883__digitopia-cdm__saron-sdpl7.wav"));
     
     
-    ofxMaxiSettings::setup(sampleRate, 2, initialBufferSize);
-    ofSoundStreamSetup(2,0,this, sampleRate, bufferSize, 4); /* this has to happen at the end of setup - it switches on the DAC */
+    ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
+    
+    ofSoundStreamSettings settings;
+    settings.setOutListener(this);
+    settings.sampleRate = sampleRate;
+    settings.numOutputChannels = 2;
+    settings.numInputChannels = 0;
+    settings.bufferSize = bufferSize;
+    soundStream.setup(settings);
 }
 
 //--------------------------------------------------------------
@@ -136,30 +143,25 @@ void ofApp::draw(){
 
 
 //--------------------------------------------------------------
-void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
-    for (int i = 0; i < bufferSize; ++i){
-        
-        
+void ofApp::audioOut(ofSoundBuffer& output)
+{
+    for (int i = 0; i < output.getNumFrames(); ++i)
+    {
         currentCount=(int)timer.phasor(8);//this sets up a metronome that ticks 8 times a second
         
-        
-        if (lastCount!=currentCount) {//if we have a new timer int this sample, play the sound
-            
+        if (lastCount!=currentCount)
+        {//if we have a new timer int this sample, play the sound
             //This is a 16-step step sequencer
-            switch (playHead%16) {
+            switch (playHead%16)
+            {
                 case 1:
                     gam_4.trigger();
                     break;
-                    
                 case 5:
-                    if (result == 3 || result == 2) {
-                        gam_6.trigger();
-                    }
+                    if (result == 3 || result == 2) gam_6.trigger();
                     break;
                 case 7:
-                    if (result == 1) {
-                        gam_5.trigger();
-                    }
+                    if (result == 1) gam_5.trigger();
                     break;
                 case 9:
                     if (result == 1) {
@@ -172,30 +174,23 @@ void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
                     }
                     break;
                 case 13:
-                    if (result == 3) {
-                        gam_1.trigger();
-                    }
+                    if (result == 3) gam_1.trigger();
+                    break;
                 case 15:
-                    if (result == 2) {
-                        gam_3.trigger();
-                    }
-                    
-                    
+                    if (result == 2) gam_3.trigger();
             }
             
             ++playHead;//iterate the playhead
-            lastCount=0;//reset the metrotest
+            lastCount = 0;//reset the metrotest
         }
         
-        
         double gamOutput = gam_1.playOnce() + gam_3.playOnce() + gam_4.playOnce() + gam_5.playOnce() + gam_6.playOnce() + gam_7.playOnce();
-        
-        mymix.stereo(gamOutput, outputs, 0.5);
-        output[i*nChannels    ] = outputs[0];
-        output[i*nChannels + 1] = outputs[1];
-        
-    }
     
+        mymix.stereo(gamOutput, outputs, 0.5);
+        output[i * output.getNumChannels()    ] = outputs[0];
+        output[i * output.getNumChannels() + 1] = outputs[1];
+    
+    }
 }
 
 
@@ -208,11 +203,10 @@ void ofApp::keyPressed  (int key){
     // use alt-tab to navigate to the settings
     // window. we are working on a fix for this...
     
-    if (key == 's' || key == 'S'){
-        vidGrabber.videoSettings();
-    }
+    if (key == 's' || key == 'S') vidGrabber.videoSettings();
     
-    switch(key) {
+    switch(key)
+    {
         case 49:
             recordingState = 1;
             break;
@@ -229,11 +223,11 @@ void ofApp::keyPressed  (int key){
             }
     }
     std::cout << "runToggle " << runToggle << std::endl;
-    
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key){
+void ofApp::keyReleased(int key)
+{
     recordingState = 0;
     if(myData.size() > 0) {
         myKnn.train(myData);

@@ -41,11 +41,11 @@ public:
     int result;
     
     //-----MAXI-----//
-
     int bufferSize;
     int	initialBufferSize;
     int sampleRate;
-    void audioOut(float * output, int bufferSize, int nChannels) override;
+    void audioOut(ofSoundBuffer& output) override;
+    ofSoundStream soundStream;
     double outputs[2];
     maxiMix mymix;
     
