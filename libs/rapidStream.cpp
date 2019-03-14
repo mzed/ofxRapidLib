@@ -26,11 +26,7 @@ rapidlib::rapidStream<T>::rapidStream (std::size_t window_size)
         circularWindow[i] = 0;
     }
     
-    //Baysian Filter setup
-    bayesFilt.diffusion = powf (10., -2);
-    bayesFilt.jump_rate = powf (10., -10);
-    bayesFilt.mvc[0] = 1.;
-    bayesFilt.init();
+    setupBayesianFilter();
 }
 
 template<typename T>
@@ -44,6 +40,16 @@ rapidlib::rapidStream<T>::rapidStream()
     {
         circularWindow[i] = 0;
     }
+    
+    setupBayesianFilter();
+}
+
+template<typename T>
+inline void rapidlib::rapidStream<T>::setupBayesianFilter() {
+    bayesFilt.diffusion = powf (10., -2);
+    bayesFilt.jump_rate = powf (10., -10);
+    bayesFilt.mvc[0] = 1.;
+    bayesFilt.init();
 }
 
 template<typename T>

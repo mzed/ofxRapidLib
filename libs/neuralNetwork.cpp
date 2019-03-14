@@ -17,7 +17,8 @@
 #endif
 
 template<typename T>
-void neuralNetwork<T>::initTrainer() {
+void neuralNetwork<T>::initTrainer()
+{
     //initialize deltas
     deltaWeights = std::vector<std::vector<std::vector<T> > >(numHiddenLayers, std::vector<std::vector<T> >(numHiddenNodes, std::vector<T>((numInputs + 1), 0)));
     deltaHiddenOutput = std::vector<T>((numHiddenNodes + 1), 0);

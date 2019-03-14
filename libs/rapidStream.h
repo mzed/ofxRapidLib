@@ -119,6 +119,7 @@ namespace rapidlib
         T *circularWindow;
         
         inline T calcCurrentVel (std::size_t i) const;
+        inline void setupBayesianFilter();
         
         BayesianFilter bayesFilt;
     };
