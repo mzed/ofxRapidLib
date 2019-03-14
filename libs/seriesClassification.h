@@ -21,7 +21,8 @@
  */
 
 template<typename T>
-class seriesClassificationTemplate final {
+class seriesClassificationTemplate final
+{
 public:
     
     /** Constructor, no params */
@@ -118,7 +119,8 @@ private:
     void runThread(const std::vector<std::vector<T>> &inputSeries, int i);
 };
 
-namespace rapidlib {
+namespace rapidlib
+{
     //This is here to keep the old API working
     using seriesClassification = seriesClassificationTemplate<double>;
     using seriesClassificationFloat = seriesClassificationTemplate<float>;

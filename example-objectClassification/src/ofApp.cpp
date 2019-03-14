@@ -26,7 +26,7 @@ void ofApp::setup(){
     sampleRate 	= 44100;
     bufferSize	= 512;
     
-    gam_1.load(ofToDataPath("261938__digitopia-cdm__saron-sdpl1.wav"));
+    std:cout << "Sample 1 loaded = " <<gam_1.load(ofToDataPath("261938__digitopia-cdm__saron-sdpl1.wav")) << std::endl;
     gam_3.load(ofToDataPath("261730__digitopia-cdm__saron-sdpl3.wav"));
     gam_4.load(ofToDataPath("261927__digitopia-cdm__saron-sdpl4.wav"));
     gam_5.load(ofToDataPath("261924__digitopia-cdm__saron-sdpl5.wav"));

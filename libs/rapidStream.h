@@ -11,9 +11,11 @@
 #include <atomic>
 #include "../libs/dependencies/bayesfilter/BayesianFilter.h"
 
-namespace rapidlib {
+namespace rapidlib
+{
     template<typename T>
-    class rapidStream {
+    class rapidStream
+    {
     public:
         
         /**
@@ -24,7 +26,7 @@ namespace rapidlib {
          * Create a circular buffer with an arbitrary number of elements.
          * @param int: number of elements to hold in the buffer
          */
-        rapidStream (int windowSize);
+        rapidStream (std::size_t windowSize);
         
         ~rapidStream();
         
@@ -112,11 +114,11 @@ namespace rapidlib {
         T maxAcceleration() const;
         
     private:
-        uint32_t windowSize;
-        std::atomic<uint32_t> windowIndex;
+        std::size_t windowSize;
+        std::atomic<std::size_t> windowIndex;
         T *circularWindow;
         
-        inline T calcCurrentVel (int i) const;
+        inline T calcCurrentVel (std::size_t i) const;
         
         BayesianFilter bayesFilt;
     };

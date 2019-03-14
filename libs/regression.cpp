@@ -18,7 +18,8 @@
 #endif
 
 template<typename T>
-regressionTemplate<T>::regressionTemplate() {
+regressionTemplate<T>::regressionTemplate()
+{
     modelSet<T>::numInputs = -1;
     modelSet<T>::numOutputs = -1;
     numHiddenLayers = 1;
@@ -28,7 +29,8 @@ regressionTemplate<T>::regressionTemplate() {
 };
 
 template<typename T>
-regressionTemplate<T>::regressionTemplate(const int &num_inputs, const int &num_outputs) {
+regressionTemplate<T>::regressionTemplate(const int &num_inputs, const int &num_outputs)
+{
     modelSet<T>::numInputs = num_inputs;
     modelSet<T>::numOutputs = num_outputs;
     numHiddenLayers = 1;
