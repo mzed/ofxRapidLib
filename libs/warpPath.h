@@ -20,9 +20,9 @@ public:
      * Add a point to the beginning of the warp path.
      * (Paths are calculated starting from the end)
      */
-    void add(int x, int y);
+    void add(std::size_t x, std::size_t y);
     
-    std::vector< std::pair<int, int> > indices;
+    std::vector< std::pair<std::size_t, std::size_t> > indices;
 };
 
 /** return struct holding a warp path and the cost of that path */

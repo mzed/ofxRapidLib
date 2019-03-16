@@ -18,15 +18,15 @@ template<typename T>
 class searchWindow
 {
 public:
-    searchWindow(const int seriesXSize,
-                 const int seriesYSize,
+    searchWindow(const std::size_t seriesXSize,
+                 const std::size_t seriesYSize,
                  const warpPath &shrunkenWarpPath,
                  const int searchRadius);
     
-     std::vector< std::pair<int, int> > minMaxValues;
+     std::vector< std::pair<std::size_t, std::size_t> > minMaxValues;
     
 private:
-    int maxY;
-    inline void markVisited(int col, int row);
+    std::size_t maxY;
+    inline void markVisited(std::size_t col, std::size_t row);
     void expandWindow(int searchRadius);
 };
