@@ -61,9 +61,9 @@ inline std::vector<std::vector<T> > fastDTW<T>::downsample(const std::vector<std
         if (i % 2 == 0) {
             shrunkenSeries.push_back(series[i]);
         } else {
-            int shrunkIndex = int(i/2);
+            int shrunkIndex = int(i * 0.5);
             for (std::size_t j = 0; j < series[i].size(); ++j) {
-                shrunkenSeries[shrunkIndex][j] = (shrunkenSeries[shrunkIndex][j] + series[i][j]) / 2;
+                shrunkenSeries[shrunkIndex][j] = (shrunkenSeries[shrunkIndex][j] + series[i][j]) * 0.5;
             }
         }
     }

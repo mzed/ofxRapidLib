@@ -140,7 +140,7 @@ warpInfo dtw<T>::constrainedDTW(const std::vector<std::vector<T> > &seriesX, con
     //fill cost matrix cells based on window
     for (std::size_t currentX = 0; currentX < window.minMaxValues.size(); ++currentX)
     {
-        for (int currentY = window.minMaxValues[currentX].first; currentY <= window.minMaxValues[currentX].second; ++currentY) //FIXME: should be <= ?
+        for (std::size_t currentY = window.minMaxValues[currentX].first; currentY <= window.minMaxValues[currentX].second; ++currentY) //FIXME: should be <= ?
         {
             if (currentX == 0 && currentY == 0) { //bottom left cell
                 costMatrix[0][0] = distanceFunction(seriesX[0], seriesY[0]);
