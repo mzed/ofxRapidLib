@@ -7,6 +7,7 @@
  */
 
 #include <limits>
+#include <algorithm>
 #include "searchWindow.h"
 
 template<typename T>
