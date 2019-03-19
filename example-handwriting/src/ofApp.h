@@ -3,9 +3,8 @@
 #include "ofMain.h"
 #include "ofxRapidLib.h"
 
-
-class ofApp : public ofBaseApp{
-    
+class ofApp : public ofBaseApp
+{   
 public:
     void setup() override;
     void update() override;
