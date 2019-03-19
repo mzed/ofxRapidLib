@@ -5,7 +5,10 @@ ofxRapidLib is an [openFrameworks](http://openframeworks.cc/) wrapper for the Ra
 
 RapidLib is an open source, cross-platform project and is avaiable under a BSD license.
 
-The master branch of ofxRapidLib has been tested with ofx_0.10.0 and MacOS 10.13.
+### The master branch of ofxRapidLib has been tested with:
+- ofx_0.10.1
+- MacOS 10.14 with XCode 10
+- Windows 10 with Visual Studio 2017
 
 # Documentation
 ### [RapidLib DOxygen documentation](http://doc.gold.ac.uk/eavi/rapidmix/docs_cpp/annotated.html)
