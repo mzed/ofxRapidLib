@@ -1,6 +1,6 @@
 ![alt text](ofxaddons_thumbnail.png "rapidmix")  
 
-[![GitHub license](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/mzed/ofxRepidLib/blob/master/LICENSE
+[![GitHub license](https://img.shields.io/badge/License-BSD%203--Clause-brightgreen.svg)](https://github.com/mzed/ofxRepidLib/blob/master/LICENSE)
 
 # ofxRapidLib
 ofxRapidLib is an [openFrameworks](http://openframeworks.cc/) wrapper for the RapidLib library. RapidLib is a lightweight, interactive machine learning library intended to be used in interactive music and visual projects. It was directly inspired by Rebecca Fiebrink's [Wekinator](http://www.wekinator.org/), and was written in collaboration with her at Goldsmiths, University of London, as part of the [RAPID-MIX](http://rapidmix.goldsmithsdigital.com/) project.
