@@ -3,17 +3,17 @@
 [![GitHub license](https://img.shields.io/badge/License-BSD%203--Clause-brightgreen.svg)](https://github.com/mzed/ofxRapidLib/blob/master/LICENSE)
 
 # ofxRapidLib
-ofxRapidLib is an [openFrameworks](http://openframeworks.cc/) wrapper for the RapidLib library. RapidLib is a lightweight, interactive machine learning library intended to be used in interactive music and visual projects. It was directly inspired by Rebecca Fiebrink's [Wekinator](http://www.wekinator.org/), and was written in collaboration with her at Goldsmiths, University of London, as part of the [RAPID-MIX](http://rapidmix.goldsmithsdigital.com/) project.
+ofxRapidLib is an [openFrameworks](http://openframeworks.cc/) wrapper for the [RapidLib](https://mzed.github.io/RapidLib/) library. [RapidLib](https://mzed.github.io/RapidLib/) is a lightweight, interactive machine learning library intended to be used in interactive music and visual projects. It was directly inspired by Rebecca Fiebrink's [Wekinator](http://www.wekinator.org/), and was written in collaboration with her at Goldsmiths, University of London, as part of the [RAPID-MIX](http://rapidmix.goldsmithsdigital.com/) project.
 
 RapidLib is an open source, cross-platform project and is avaiable under a BSD license.
 
 ### The master branch of ofxRapidLib has been tested with:
-- ofx_0.10.1
+- ofx_0.10.1, 0.11.0
 - MacOS 10.14 with XCode 10
-- Windows 10 with Visual Studio 2017
+- Windows 10 with Visual Studio 2017, 2019
 
 # Documentation
-### [RapidLib DOxygen documentation](http://doc.gold.ac.uk/eavi/rapidmix/docs_cpp/annotated.html)
+### [RapidLib DOxygen documentation](https://mzed.github.io/RapidLib/doxygen/annotated.html)
 
 ### Interactive machine learning
 
