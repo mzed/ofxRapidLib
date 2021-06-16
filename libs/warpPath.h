@@ -11,11 +11,12 @@
 #include <vector>
 
 /** Class to hold warp paths through a cost matrix */
-class warpPath
+class warpPath 
 {
 public:
     warpPath();
     ~warpPath();
+
     /**
      * Add a point to the beginning of the warp path.
      * (Paths are calculated starting from the end)
@@ -26,10 +27,11 @@ public:
 };
 
 /** return struct holding a warp path and the cost of that path */
-struct warpInfo
+template<typename T>
+struct warpInfo 
 {
 public:
     warpPath path;
-    double cost;
+    T cost;
     
 };

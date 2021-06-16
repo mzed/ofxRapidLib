@@ -5,8 +5,8 @@
 #include "ofxRapidLib.h"
 #include "ofxMaxim.h"
 
-class ofApp : public ofBaseApp{
-    
+class ofApp : public ofBaseApp
+{    
 public:
     
     void setup() override;
@@ -34,9 +34,9 @@ public:
     ofTrueTypeFont  font;
     
     //-----RAPID-MIX-----//
-    std::vector<rapidlib::trainingExample> myData;
+    std::vector<rapidLib::trainingExample> myData;
     int recordingState;
-    rapidlib::classification myKnn;
+    rapidLib::classification myKnn;
     bool runToggle;
     int result;
     

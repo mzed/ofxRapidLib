@@ -11,7 +11,7 @@
 
 #include <vector>
 #include "baseModel.h"
-#include "../libs/dependencies/libsvm/libsvm.h"
+#include "../dependencies/libsvm/libsvm.h"
 
 template<typename T>
 class svmClassification final : public baseModel<T>
@@ -65,6 +65,14 @@ public:
      *
      */
     void train(const std::vector<trainingExampleTemplate<T> > &trainingSet) override;
+
+    /** Fill the model with a vector of examples. Use this when part of a modelSet
+     *
+     * @param The training set is a vector of training examples that contain both a vector of input values and a double specifying desired output class.
+     * @param The second argument specifies which output this model is using.
+     *
+     */
+    void train(const std::vector<trainingExampleTemplate<T> >& trainingSet, const std::size_t whichOutput) override;
     
     /** Generate an output value from a single input vector.
      * @param A standard vector of doubles to be evaluated.
@@ -101,8 +109,8 @@ public:
               unsigned int kFoldValue
               );
     
-    int getNumInputs() const override;
-    std::vector<int> getWhichInputs() const override;
+    size_t getNumInputs() const override;
+    std::vector<size_t> getWhichInputs() const override;
         
 #ifndef EMSCRIPTEN
     void getJSONDescription(Json::Value &currentModel) override;

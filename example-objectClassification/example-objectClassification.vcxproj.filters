@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMaxim\libs\fft.cpp">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMaxim\libs\maxiAtoms.cpp">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMaxim\libs\maxiBark.cpp">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMaxim\libs\maxiFFT.cpp">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMaxim\libs\maxiGrains.cpp">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMaxim\libs\maxiMFCC.cpp">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMaxim\libs\maximilian.cpp">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMaxim\libs\stb_vorbis.c">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\classification.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\dependencies\bayesfilter\BayesianFilter.cpp">
+      <Filter>addons\ofxRapidLib\libs\dependencies\bayesfilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\dependencies\bayesfilter\filter_utilities.cpp">
+      <Filter>addons\ofxRapidLib\libs\dependencies\bayesfilter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\dependencies\jsoncpp.cpp">
+      <Filter>addons\ofxRapidLib\libs\dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\dependencies\libsvm\libsvm.cpp">
+      <Filter>addons\ofxRapidLib\libs\dependencies\libsvm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\dtw.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\fastDTW.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\knnClassification.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\modelSet.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\neuralNetwork.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\rapidStream.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\regression.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\searchWindow.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\seriesClassification.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\svmClassification.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxRapidLib\libs\warpPath.cpp">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMaxim">
+      <UniqueIdentifier>{BB11635E-CB83-2754-C30E-4383}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMaxim\src">
+      <UniqueIdentifier>{A5FE3CBF-BB0C-BCAC-6243-EC28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMaxim\libs">
+      <UniqueIdentifier>{093ACE73-2DC8-CF52-36D5-72AA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxRapidLib">
+      <UniqueIdentifier>{8E754BD4-59E8-5FC0-D910-ACBD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxRapidLib\src">
+      <UniqueIdentifier>{1FBE29AF-4D88-D2A7-A524-4481}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxRapidLib\libs">
+      <UniqueIdentifier>{85B89CAA-E73B-A248-EDEE-E022}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxRapidLib\libs\dependencies">
+      <UniqueIdentifier>{7AE70DA0-14B5-0A19-9292-7C40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxRapidLib\libs\dependencies\bayesfilter">
+      <UniqueIdentifier>{91FE650A-E6AE-C414-CB10-C5DA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxRapidLib\libs\dependencies\json">
+      <UniqueIdentifier>{56AF60C4-F559-A598-20B6-EA43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxRapidLib\libs\dependencies\libsvm">
+      <UniqueIdentifier>{ED361355-6B23-3B5F-C163-C999}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMaxim\src\ofxMaxim.h">
+      <Filter>addons\ofxMaxim\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMaxim\libs\fft.h">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMaxim\libs\maxiAtoms.h">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMaxim\libs\maxiBark.h">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMaxim\libs\maxiFFT.h">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMaxim\libs\maxiGrains.h">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMaxim\libs\maxiMFCC.h">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMaxim\libs\maximilian.h">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMaxim\libs\sineTable.h">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMaxim\libs\stb_vorbis.h">
+      <Filter>addons\ofxMaxim\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\src\ofxRapidLib.h">
+      <Filter>addons\ofxRapidLib\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\baseModel.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\classification.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\dependencies\bayesfilter\BayesianFilter.h">
+      <Filter>addons\ofxRapidLib\libs\dependencies\bayesfilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\dependencies\bayesfilter\filter_utilities.h">
+      <Filter>addons\ofxRapidLib\libs\dependencies\bayesfilter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\dependencies\json\json-forwards.h">
+      <Filter>addons\ofxRapidLib\libs\dependencies\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\dependencies\json\json.h">
+      <Filter>addons\ofxRapidLib\libs\dependencies\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\dependencies\libsvm\libsvm.h">
+      <Filter>addons\ofxRapidLib\libs\dependencies\libsvm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\dtw.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\fastDTW.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\knnClassification.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\modelSet.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\neuralNetwork.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\rapidStream.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\regression.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\searchWindow.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\seriesClassification.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\svmClassification.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\trainingExample.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\warpPath.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxRapidLib\libs\rapidLib.h">
+      <Filter>addons\ofxRapidLib\libs</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>

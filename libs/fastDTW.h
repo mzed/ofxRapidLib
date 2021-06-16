@@ -36,7 +36,7 @@ private:
      * @param searchRadius search radius (usually 1)
      * @return information about optimal time warp
      */
-    static warpInfo fullFastDTW(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY, int searchRadius);
+    static warpInfo<T> fullFastDTW(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY, int searchRadius);
 
     /**
      * Returns just lowest cost path to warping one series into a second.

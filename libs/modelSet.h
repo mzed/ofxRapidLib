@@ -15,7 +15,7 @@
 #include "knnClassification.h"
 #include "svmClassification.h"
 #ifndef EMSCRIPTEN
-#include "../libs/dependencies/json/json.h"
+#include "../dependencies/json/json.h"
 #endif
 
 /** This class holds a set of models with the same or different algorithms. */
@@ -28,7 +28,14 @@ public:
     virtual bool train(const std::vector<trainingExampleTemplate<T> > &trainingSet);
     /** reset to pre-training state */
     bool reset();
-    /** run regression or classification for each model */
+    
+    /** Generate an output value from a single input vector.
+    *
+    * Will return an error if training in progress.
+    * 
+    * @param vector A standard vector of type T that is the input for classification or regression.
+    * @return vector A vector type T that are the predictions for each model in the set.
+    */
     std::vector<T> run(const std::vector<T> &inputVector);
     
 protected:
@@ -36,14 +43,26 @@ protected:
     int numInputs;
     std::vector<std::string> inputNames;
     int numOutputs;
-    bool created;
+    bool isTraining; //This is true while the models are training, and will block running
+    bool isTrained;
+    void threadTrain(std::size_t i, const std::vector<trainingExampleTemplate<T> >& training_set);
 
 #ifndef EMSCRIPTEN //The javascript code will do its own JSON parsing
 public:
-    /** Get a JSON representation of the model in the form of a styled string */
+
+    /** Get a JSON representation of the model
+    * 
+    * @return Styled string JSON representation
+    */
     std::string getJSON();
-    /** Write a JSON model description to specified file path */
+
+    /** Write a JSON model description to specified file path 
+    *
+    * @param file path
+    * 
+    */
     void writeJSON(const std::string &filepath);
+
     /** configure empty model with string. See getJSON() */
     bool putJSON(const std::string &jsonMessage);
     /** read a JSON file at file path and build a modelSet from it */
@@ -52,7 +71,5 @@ public:
 private:
     Json::Value parse2json();
     void json2modelSet(const Json::Value &root);
-    void threadTrain(int i, const std::vector<trainingExampleTemplate<T> > &training_set);
-
 #endif
 };

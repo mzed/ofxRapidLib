@@ -20,7 +20,7 @@ struct trainingExampleTemplate
     std::vector<T> output;
 };
 
-namespace rapidlib
+namespace rapidLib
 {
     //This is here to keep the old API working
     using trainingExample = trainingExampleTemplate<double>;
@@ -35,7 +35,7 @@ struct trainingSeriesTemplate
     std::string label;
 };
 
-namespace rapidlib
+namespace rapidLib
 {
     //This is here to keep the old API working
     using trainingSeries = trainingSeriesTemplate<double> ;

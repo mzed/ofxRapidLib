@@ -23,7 +23,7 @@ template<typename T>
 inline T dtw<T>::distanceFunction(const std::vector<T> &x, const std::vector<T> &y)
 {
     assert(x.size() == y.size());
-    T euclidianDistance = 0;
+    double euclidianDistance = 0;
     
     for(std::size_t j = 0; j < x.size() ; ++j)
     {
@@ -31,7 +31,7 @@ inline T dtw<T>::distanceFunction(const std::vector<T> &x, const std::vector<T> 
     }
     
     euclidianDistance = sqrt(euclidianDistance);
-    return euclidianDistance;
+    return (T)euclidianDistance;
 };
 
 /* Just returns the cost, doesn't calculate the path */
@@ -58,8 +58,7 @@ T dtw<T>::getCost(const std::vector<std::vector<T> > &seriesX, const std::vector
     
     //Calculate values for the first column
     costMatrix[0][0] = distanceFunction(seriesX[0], seriesY[0]);
-    for (std::size_t j = 1; j <= maxY; ++j)
-    {
+    for (int j = 1; j <= maxY; ++j) {
         costMatrix[0][j] = costMatrix[0][j - 1] + distanceFunction(seriesX[0], seriesY[j]);
     }
     
@@ -91,17 +90,26 @@ warpPath dtw<T>::calculatePath(std::size_t seriesXsize, std::size_t seriesYsize)
         T leftCost = (i > 0) ? costMatrix[i - 1][j] : std::numeric_limits<T>::infinity();
         T downCost = (j > 0) ? costMatrix[i][j - 1] : std::numeric_limits<T>::infinity();
 
-        if ((diagonalCost <= leftCost) && (diagonalCost <= downCost)) {
+        if ((diagonalCost <= leftCost) && (diagonalCost <= downCost)) 
+        {
             if (i > 0) --i;
             if (j > 0) --j;
-        } else if ((leftCost < diagonalCost) && (leftCost < downCost)){
-            if (i > 0) --i;
-        } else if ((downCost < diagonalCost) && (downCost < leftCost)) {
-            if (j > 0) --j;
-        } else if (i <= j) {
-            if (j > 0) --j;
-        } else {
-            if (i > 0) --i;
+        } 
+        else if ((leftCost < diagonalCost) && (leftCost < downCost))
+        {
+            --i;
+        } 
+        else if ((downCost < diagonalCost) && (downCost < leftCost)) 
+        {
+            --j;
+        } 
+        else if (i <= j) 
+        {
+            --j;
+        } 
+        else 
+        {
+            --i;
         }
         warpPath.add(i, j);
     }
@@ -110,9 +118,9 @@ warpPath dtw<T>::calculatePath(std::size_t seriesXsize, std::size_t seriesYsize)
 
 /* calculates both the cost and the warp path*/
 template<typename T>
-warpInfo dtw<T>::dynamicTimeWarp(const std::vector<std::vector<T> > &seriesX, const std::vector<std::vector<T> > &seriesY)
+warpInfo<T> dtw<T>::dynamicTimeWarp(const std::vector<std::vector<T> > &seriesX, const std::vector<std::vector<T> > &seriesY)
 {
-    warpInfo info;
+    warpInfo<T> info;
     //calculate cost matrix
     info.cost = getCost(seriesX, seriesY);
     info.path = calculatePath(seriesX.size(), seriesY.size());
@@ -121,7 +129,7 @@ warpInfo dtw<T>::dynamicTimeWarp(const std::vector<std::vector<T> > &seriesX, co
 
 /* calculates warp info based on window */
 template<typename T>
-warpInfo dtw<T>::constrainedDTW(const std::vector<std::vector<T> > &seriesX, const std::vector<std::vector<T> > &seriesY, searchWindow<T> window)
+warpInfo<T> dtw<T>::constrainedDTW(const std::vector<std::vector<T> > &seriesX, const std::vector<std::vector<T> > &seriesY, searchWindow<T> window)
 {
     //initialize cost matrix
     costMatrix.clear();
@@ -154,7 +162,7 @@ warpInfo dtw<T>::constrainedDTW(const std::vector<std::vector<T> > &seriesX, con
             }
         }
     }
-    warpInfo info;
+    warpInfo<T> info;
     info.cost = costMatrix[maxX][maxY];
     info.path = calculatePath(seriesX.size(), seriesY.size());
     return info;

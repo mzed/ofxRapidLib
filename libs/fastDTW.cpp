@@ -17,9 +17,9 @@ template<typename T>
 fastDTW<T>::~fastDTW() {};
 
 template<typename T>
-warpInfo fastDTW<T>::fullFastDTW(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY, int searchRadius)
+warpInfo<T> fastDTW<T>::fullFastDTW(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY, int searchRadius)
 {
-    
+   
 #ifndef EMSCRIPTEN
     if (seriesY.size() > seriesX.size()) {
         return fullFastDTW(seriesY, seriesX, searchRadius); //TODO: I'm not sure why I need this. Also, not sure why it fails with Emscripten.
@@ -38,19 +38,19 @@ warpInfo fastDTW<T>::fullFastDTW(const std::vector<std::vector<T>> &seriesX, con
     std::vector<std::vector<T>> shrunkenY = downsample(seriesY, resolution);
     
     //some nice recursion here
-    searchWindow<T> window(seriesX.size(), seriesY.size(), getWarpPath(shrunkenX, shrunkenY, searchRadius), searchRadius);
+    searchWindow<T> window(int(seriesX.size()), int(seriesY.size()), getWarpPath(shrunkenX, shrunkenY, searchRadius), searchRadius);
     return dtw.constrainedDTW(seriesX, seriesY, window);
 };
 
 template<typename T>
 T fastDTW<T>::getCost(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY, int searchRadius){
-    warpInfo info = fullFastDTW(seriesX, seriesY, searchRadius);
+    warpInfo<T> info = fullFastDTW(seriesX, seriesY, searchRadius);
     return info.cost;
 };
 
 template<typename T>
 warpPath fastDTW<T>::getWarpPath(const std::vector<std::vector<T>> &seriesX, const std::vector<std::vector<T > > &seriesY, int searchRadius){
-    warpInfo info = fullFastDTW(seriesX, seriesY, searchRadius);
+    warpInfo<T> info = fullFastDTW(seriesX, seriesY, searchRadius);
     return info.path;
 };
 
@@ -63,7 +63,7 @@ inline std::vector<std::vector<T> > fastDTW<T>::downsample(const std::vector<std
         } else {
             int shrunkIndex = int(i * 0.5);
             for (std::size_t j = 0; j < series[i].size(); ++j) {
-                shrunkenSeries[shrunkIndex][j] = (shrunkenSeries[shrunkIndex][j] + series[i][j]) * 0.5;
+                shrunkenSeries[shrunkIndex][j] = (shrunkenSeries[shrunkIndex][j] + series[i][j]) * (T)0.5;
             }
         }
     }

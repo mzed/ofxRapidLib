@@ -15,6 +15,7 @@
 /*! Class for implementing a set of regression models.
  *
  * This doesn't do anything modelSet can't do. But, it's simpler and more like wekinator.
+ * It has some calls that are specifc to neural networks
  */
 
 template<typename T>
@@ -33,12 +34,15 @@ public:
     
     /** Train on a specified set, causes creation if not created */
     bool train(const std::vector<trainingExampleTemplate<T> > &trainingSet) override;
+
+    /** Check how far the training has gotten. Averages progress over all models in training */
+    float getTrainingProgress();
     
     /** Check how many training epochs each model will run. This feature is temporary, and will be replaced by a different design. */
-    std::vector<int> getNumEpochs() const;
+    std::vector<size_t> getNumEpochs() const;
     
     /** Call before train, to set the number of training epochs */
-    void setNumEpochs(const int &epochs);
+    void setNumEpochs(const size_t &epochs);
     
     /** Check how many hidden layers are in each model. This feature is temporary, and will be replaced by a different design. */
     std::vector<int> getNumHiddenLayers() const;
@@ -54,14 +58,15 @@ public:
     
 private:
     int numHiddenLayers; //Temporary -- this should be part of the nn class. -mz
-    int numEpochs; //Temporary -- also should be part of nn only. -mz
+    size_t numEpochs; //Temporary -- also should be part of nn only. -mz
     int numHiddenNodes; //Temporary -- also should be part of nn only. -mz
+    bool created;
 };
 
-namespace rapidlib
+namespace rapidLib
 {
     //This is here so the old API still works
     using regression = regressionTemplate<double>;
     using regressionFloat = regressionTemplate<float>;
-}
+};
 

@@ -3,8 +3,8 @@
 #define SCALE_FACTOR 4
 
 //--------------------------------------------------------------
-void ofApp::setup(){
-    
+void ofApp::setup()
+{    
     ofBackground(0,0,0);
     
     camWidth 		= 160;	// try to grab at this size.
@@ -23,16 +23,15 @@ void ofApp::setup(){
     
     ofEnableAlphaBlending();
     
-    sampleRate 	= 44100;
-    bufferSize	= 512;
+    sampleRate = 44100;
+    bufferSize = 512;
     
-    std:cout << "Sample 1 loaded = " <<gam_1.load(ofToDataPath("261938__digitopia-cdm__saron-sdpl1.wav")) << std::endl;
+    std:cout << "Sample 1 loaded = " << gam_1.load(ofToDataPath("261938__digitopia-cdm__saron-sdpl1.wav")) << std::endl;
     gam_3.load(ofToDataPath("261730__digitopia-cdm__saron-sdpl3.wav"));
     gam_4.load(ofToDataPath("261927__digitopia-cdm__saron-sdpl4.wav"));
     gam_5.load(ofToDataPath("261924__digitopia-cdm__saron-sdpl5.wav"));
     gam_6.load(ofToDataPath("261968__digitopia-cdm__saron-sdpl6.wav"));
     gam_7.load(ofToDataPath("261883__digitopia-cdm__saron-sdpl7.wav"));
-    
     
     ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
     
@@ -46,20 +45,21 @@ void ofApp::setup(){
 }
 
 //--------------------------------------------------------------
-void ofApp::exit(){
+void ofApp::exit()
+{
     ofSoundStreamStop();
     ofSoundStreamClose();
 }
 
-
 //--------------------------------------------------------------
-void ofApp::update(){
+void ofApp::update()
+{
     vidGrabber.update();
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
-    
+void ofApp::draw()
+{
     // change background video alpha value based on the mouse position
     float videoAlphaValue = ofMap(mouseX, 0,ofGetWidth(),0,255);
     
@@ -77,7 +77,8 @@ void ofApp::draw(){
     std::vector<double> trainingInput;
     std::vector<double> trainingOutput;
     
-    switch (recordingState) {
+    switch (recordingState) 
+    {
         case 1:
             ofSetColor(255, 0, 0);
             break;
@@ -92,15 +93,17 @@ void ofApp::draw(){
     }
     
     
-    for (int i = 0; i < camWidth; i += 5){
-        for (int j = 0; j < camHeight; j += 5){
+    for (int i = 0; i < camWidth; i += 5)
+    {
+        for (int j = 0; j < camHeight; j += 5)
+        {
             // get the pixel and its lightness (lightness is the average of its RGB values)
             float lightness = pixelsRef.getColor(i,j).getLightness();
             //RAPIDMIX
             trainingInput.push_back(double(lightness));
             
-            
-            if (!runToggle) {
+            if (!runToggle) 
+            {
                 // calculate the index of the character from our asciiCharacters array
                 int character = powf( ofMap(lightness, 0, 255, 0, 1), 2.5) * asciiCharacters.size();
                 // draw the character at the correct location
@@ -109,12 +112,16 @@ void ofApp::draw(){
         }
     }
     
-    if (runToggle) {
+    if (runToggle) 
+    {
         result = myKnn.run(trainingInput)[0];
-        for (int i = 0; i < camWidth; i += 5){
-            for (int j = 0; j < camHeight; j += 5){
+        for (int i = 0; i < camWidth; i += 5)
+        {
+            for (int j = 0; j < camHeight; j += 5)
+            {
                 float lightness = pixelsRef.getColor(i,j).getLightness();
-                switch (result) {
+                switch (result) 
+                {
                     case 1:
                         ofSetColor(lightness, 0, 0, lightness);
                         break;
@@ -132,9 +139,10 @@ void ofApp::draw(){
         }
     }
     
-    if (recordingState) {
+    if (recordingState) 
+    {
         trainingOutput = { double(recordingState) };
-        rapidlib::trainingExample tempExample;
+        rapidLib::trainingExample tempExample;
         tempExample.input = trainingInput;
         tempExample.output = trainingOutput;
         myData.push_back(tempExample);
@@ -195,8 +203,8 @@ void ofApp::audioOut(ofSoundBuffer& output)
 
 
 //--------------------------------------------------------------
-void ofApp::keyPressed  (int key){
-    
+void ofApp::keyPressed  (int key)
+{
     // in fullscreen mode, on a pc at least, the
     // first time video settings the come up
     // they come up *under* the fullscreen window
@@ -229,52 +237,32 @@ void ofApp::keyPressed  (int key){
 void ofApp::keyReleased(int key)
 {
     recordingState = 0;
-    if(myData.size() > 0) {
-        myKnn.train(myData);
-    }
+    if (myData.size() > 0) myKnn.train(myData);
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
-    
-}
+void ofApp::mouseMoved(int x, int y ){}
 
 //--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-    
-}
+void ofApp::mouseDragged(int x, int y, int button){}
 
 //--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-    
-}
+void ofApp::mousePressed(int x, int y, int button){}
 
 //--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-    
-}
+void ofApp::mouseReleased(int x, int y, int button){}
 
 //--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
-    
-}
+void ofApp::mouseEntered(int x, int y){}
 
 //--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
-    
-}
+void ofApp::mouseExited(int x, int y){}
 
 //--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-    
-}
+void ofApp::windowResized(int w, int h){}
 
 //--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-    
-}
+void ofApp::gotMessage(ofMessage msg){}
 
 //--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){
-    
-}
+void ofApp::dragEvent(ofDragInfo dragInfo){}

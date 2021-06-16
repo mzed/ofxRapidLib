@@ -7,14 +7,13 @@
  * @copyright Copyright © 2016 Goldsmiths. All rights reserved.
  */
 
-
 #pragma once
 
 #include <vector>
 #include "trainingExample.h"
 
 #ifndef EMSCRIPTEN
-#include "../libs/dependencies/json/json.h"
+#include "../dependencies/json/json.h"
 #endif
 
 #ifdef __ANDROID__
@@ -28,29 +27,30 @@ namespace std
         TempStream << Value;
         return TempStream.str();
     }
-    
-    inline long double strtold(const char * str, char ** str_end)
+
+    inline long double strtold(const char* str, char** str_end)
     {
         return strtod(str, str_end);
     }
 }
 #endif
 
-
 /** Base class for wekinator models. Implemented by NN and KNN classes */
 template<typename T>
-class baseModel {
+class baseModel
+{
 public:
     virtual ~baseModel() {};
-    virtual T run(const std::vector<T> &inputVector) = 0;
-    virtual void train(const std::vector<trainingExampleTemplate<T> > &trainingSet) = 0;
+    virtual T run(const std::vector<T>& inputVector) = 0; //TODO: I'd like this to be const
+    virtual void train(const std::vector<trainingExampleTemplate<T> >& trainingSet) = 0;
+    virtual void train(const std::vector<trainingExampleTemplate<T> >& trainingSet, const std::size_t whichOutput) = 0;
     virtual void reset() = 0;;
-    virtual int getNumInputs() const = 0;
-    virtual std::vector<int> getWhichInputs() const = 0;
-    
+    virtual size_t getNumInputs() const = 0;
+    virtual std::vector<size_t> getWhichInputs() const = 0;
+
 #ifndef EMSCRIPTEN
-    virtual void getJSONDescription(Json::Value &currentModel) = 0;
-    
+    virtual void getJSONDescription(Json::Value& currentModel) = 0;
+
 protected:
     template<typename TT>
     Json::Value vector2json(TT vec) {
@@ -61,4 +61,5 @@ protected:
         return toReturn;
     }
 #endif
+
 };

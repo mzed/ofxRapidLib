@@ -30,7 +30,4 @@
 
 #pragma once
 
-#include "../libs/classification.h"
-#include "../libs/regression.h"
-#include "../libs/seriesClassification.h"
-#include "../libs/rapidStream.h"
+#include "../libs/rapidLib.h"
