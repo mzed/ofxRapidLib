@@ -7,7 +7,8 @@
  * @copyright Copyright © 2016 Goldsmiths. All rights reserved.
  */
 
-#pragma once
+#ifndef BASEMODEL_H
+#define BASEMODEL_H
 
 #include <vector>
 #include "trainingExample.h"
@@ -52,14 +53,31 @@ public:
     virtual void getJSONDescription(Json::Value& currentModel) = 0;
 
 protected:
-    template<typename TT>
-    Json::Value vector2json(TT vec) {
+    
+    template<typename TT, class Dummy=int>
+    Json::Value vector2json(TT vec) 
+    {
+        Json::Value toReturn; 
+        for (auto value : vec)
+        {
+            toReturn.append( (Json::Value)value );
+        }
+        return toReturn;
+    }
+
+    //FIXME: This is a temporary hack because Json::Value doesn't know what to do with unsinged longs, and XCode cares
+    template<class Dummy=int>
+    Json::Value vector2json(std::vector<unsigned long> vec)
+    {
         Json::Value toReturn;
-        for (int i = 0; i < vec.size(); ++i) {
-            toReturn.append(vec[i]);
+        for (auto value : vec)
+        {
+            toReturn.append( (double)value ); //I chose double here because that's close to what JS uses
         }
         return toReturn;
     }
 #endif
 
 };
+
+#endif
